@@ -1,0 +1,25 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Navbar from '../components/Navbar.astro';
+import Hero from '../components/Hero.astro';
+import Services from '../components/Services.astro';
+import Benefits from '../components/Benefits.astro';
+import Pricing from '../components/Pricing.astro';
+import Contact from '../components/Contact.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<Layout 
+  title="Clickora | Desarrollo Web, E-commerce y Landing Pages que Convierten"
+  description="Expertos en desarrollo de aplicaciones web, tiendas online y landing pages optimizadas para ventas. Diseño UI futurista, SEO avanzado y máxima velocidad. ¡Pide tu presupuesto!"
+>
+  <Navbar />
+  <main>
+    <Hero />
+    <Services />
+    <Benefits />
+    <Pricing />
+    <Contact />
+  </main>
+  <Footer />
+</Layout>

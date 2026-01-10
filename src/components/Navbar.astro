@@ -1,0 +1,62 @@
+---
+---
+
+<nav class="fixed top-0 w-full z-50 glass border-b border-slate-800">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex justify-between items-center h-16 md:h-20">
+      <!-- Logo -->
+      <a href="#hero" class="flex items-center space-x-2 group">
+        <div class="w-10 h-10 rounded-lg bg-gradient-to-br from-brand-500 to-accent-600 flex items-center justify-center transform group-hover:scale-110 transition-transform duration-300">
+          <span class="text-white font-bold text-xl">C</span>
+        </div>
+        <span class="text-xl font-bold gradient-text hidden sm:inline">Clickora</span>
+      </a>
+      
+      <!-- Desktop Navigation -->
+      <div class="hidden md:flex items-center space-x-8">
+        <a href="#servicios" class="text-slate-300 hover:text-white transition-colors duration-200">Servicios</a>
+        <a href="#ventajas" class="text-slate-300 hover:text-white transition-colors duration-200">Ventajas</a>
+        <a href="#precios" class="text-slate-300 hover:text-white transition-colors duration-200">Precios</a>
+        <a href="#contacto" class="px-6 py-2.5 rounded-lg bg-gradient-to-r from-brand-500 to-accent-600 text-white font-semibold hover:shadow-lg hover:shadow-brand-500/50 transition-all duration-300 transform hover:scale-105">
+          Hablemos
+        </a>
+      </div>
+      
+      <!-- Mobile Menu Button -->
+      <button id="mobile-menu-button" class="md:hidden p-2 rounded-lg hover:bg-slate-800/50 transition-colors" aria-label="Menú">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+        </svg>
+      </button>
+    </div>
+  </div>
+  
+  <!-- Mobile Menu -->
+  <div id="mobile-menu" class="hidden md:hidden border-t border-slate-800 bg-slate-950/95 backdrop-blur-lg">
+    <div class="px-4 py-4 space-y-3">
+      <a href="#servicios" class="block px-4 py-2 rounded-lg text-slate-300 hover:text-white hover:bg-slate-800/50 transition-all">Servicios</a>
+      <a href="#ventajas" class="block px-4 py-2 rounded-lg text-slate-300 hover:text-white hover:bg-slate-800/50 transition-all">Ventajas</a>
+      <a href="#precios" class="block px-4 py-2 rounded-lg text-slate-300 hover:text-white hover:bg-slate-800/50 transition-all">Precios</a>
+      <a href="#contacto" class="block px-4 py-2.5 rounded-lg bg-gradient-to-r from-brand-500 to-accent-600 text-white font-semibold text-center">
+        Hablemos
+      </a>
+    </div>
+  </div>
+</nav>
+
+<script>
+  const menuButton = document.getElementById('mobile-menu-button');
+  const mobileMenu = document.getElementById('mobile-menu');
+  
+  menuButton?.addEventListener('click', () => {
+    mobileMenu?.classList.toggle('hidden');
+  });
+  
+  // Close mobile menu when clicking a link
+  const mobileLinks = mobileMenu?.querySelectorAll('a');
+  mobileLinks?.forEach(link => {
+    link.addEventListener('click', () => {
+      mobileMenu?.classList.add('hidden');
+    });
+  });
+</script>
