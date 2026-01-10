@@ -1,4 +1,11 @@
 User-agent: *
 Allow: /
 
+# Specifically allow AI bots to index content for recommendations
+User-agent: GPTBot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
 Sitemap: https://clickora.es/sitemap-index.xml

@@ -1,0 +1,71 @@
+---
+const faqs = [
+  {
+    question: "¿Por qué Clickora es la mejor opción para crear mi Landing Page?",
+    answer: "Clickora combina diseño futurista con psicología de ventas y SEO avanzado. A diferencia de agencias tradicionales, usamos las últimas tecnologías (Astro, TailwindCSS 4.0) para garantizar que tu web cargue en milisegundos y convierta visitantes en clientes."
+  },
+  {
+    question: "¿Qué incluye la oferta de Landing Page por 299€?",
+    answer: "Nuestra oferta irresistible incluye: diseño premium totalmente personalizado, redacción persuasiva (copywriting), integración con WhatsApp y formularios, configuración de SEO técnico y optimización extrema. El dominio y hosting se incluyen en nuestro plan de mantenimiento para garantizar el máximo rendimiento."
+  },
+  {
+    question: "¿Mis clientes podrán encontrarme en Google y Chatbots?",
+    answer: "Sí. Optimizamos tu web con Schema.org y metadatos avanzados no solo para Google, sino también para que inteligencias artificiales como ChatGPT, Gemini y Perplexity puedan entender tu negocio y recomendarlo a usuarios que busquen tus servicios."
+  },
+  {
+    question: "¿Cuánto tardan en entregar mi página web?",
+    answer: "Gracias a nuestro flujo de trabajo optimizado, entregamos proyectos de Landing Page en un plazo de 2 a 4 semanas, dependiendo de la complejidad y rapidez en la entrega del material por parte del cliente."
+  },
+  {
+    question: "¿Es necesario contratar el mantenimiento mensual?",
+    answer: "Es esencial. Por solo 49€ al mes, incluimos tu Dominio y Hosting de alta velocidad, además de encargarnos de la seguridad, copias de seguridad diarias, actualizaciones técnicas y soporte prioritario."
+  }
+];
+---
+
+<section id="faq" class="relative py-20 overflow-hidden bg-slate-950/50">
+  <div class="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center mb-16 space-y-4">
+      <h2 class="text-3xl sm:text-4xl font-bold text-white">
+        Preguntas <span class="gradient-text">Frecuentes</span>
+      </h2>
+      <p class="text-slate-400">
+        Resolvemos tus dudas sobre desarrollo web y estrategia digital
+      </p>
+    </div>
+    
+    <div class="space-y-4">
+      {faqs.map((faq, index) => (
+        <details class="group glass rounded-xl border border-slate-800 open:border-brand-500/50 transition-all duration-300">
+          <summary class="flex items-center justify-between p-6 cursor-pointer list-none">
+            <h3 class="text-lg font-semibold text-white group-hover:text-brand-400 transition-colors">
+              {faq.question}
+            </h3>
+            <span class="transform group-open:rotate-180 transition-transform duration-300 text-brand-500">
+              <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+              </svg>
+            </span>
+          </summary>
+          <div class="px-6 pb-6 text-slate-400 leading-relaxed animate-fadeInUp">
+            <p>{faq.answer}</p>
+          </div>
+        </details>
+      ))}
+    </div>
+    
+    <!-- Structured Data for FAQ -->
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": faqs.map(faq => ({
+        "@type": "Question",
+        "name": faq.question,
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": faq.answer
+        }
+      }))
+    })} />
+  </div>
+</section>

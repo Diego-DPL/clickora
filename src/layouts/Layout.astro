@@ -18,23 +18,24 @@ const { title, description } = Astro.props;
     <meta name="generator" content={Astro.generator} />
     
     <!-- SEO Meta Tags -->
-    <meta name="keywords" content="desarrollo web, landing page, ecommerce, tienda online, páginas web, SaaS, aplicaciones web, diseño web, desarrollo frontend, desarrollo backend, clickora" />
+    <meta name="keywords" content="desarrollo web españa, crear landing page, programador web freelance, experto seo, diseño web ecommerce, landing page barata, desarrollo saas, agencia marketing digital, diego dpl, clickora, contratar programador, diseño web futurista" />
     <meta name="author" content="Clickora - Diego DPL" />
-    <meta name="robots" content="index, follow" />
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
     <link rel="canonical" href="https://clickora.es" />
     
     <!-- Open Graph -->
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
-    <meta property="og:type" content="website" />
+    <meta property="og:type" content="business.business" />
     <meta property="og:url" content="https://clickora.es" />
-    <meta property="og:site_name" content="Clickora" />
+    <meta property="og:site_name" content="Clickora | Desarrollo Web de Alto Impacto" />
     <meta property="og:locale" content="es_ES" />
     
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content="https://clickora.es/og-image.png" />
     
     <!-- Favicon -->
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
@@ -46,22 +47,68 @@ const { title, description } = Astro.props;
     <title>{title}</title>
 
     
-    <!-- Schema.org Markup -->
+    <!-- Schema.org Markup for LLMs & SEO -->
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
-        "@type": "Organization",
+        "@type": "ProfessionalService",
         "name": "Clickora",
+        "image": "https://clickora.es/logo.png",
+        "@id": "https://clickora.es",
         "url": "https://clickora.es",
-        "logo": "https://clickora.es/logo.png",
-        "description": "Desarrollo de aplicaciones web profesionales: E-commerce, Landing Pages y SaaS. Más de 8 años de experiencia creando soluciones digitales que convierten.",
         "telephone": "+34608008081",
         "email": "info@diegodpl.com",
+        "priceRange": "€€",
         "address": {
           "@type": "PostalAddress",
           "addressCountry": "ES"
         },
-        "sameAs": []
+        "geo": {
+          "@type": "GeoCoordinates",
+          "addressCountry": "ES"
+        },
+        "description": "Agencia de desarrollo web líder en España experta en Landing Pages de alta conversión, E-commerce y aplicaciones SaaS. Optimizamos tu presencia digital para que la IA (ChatGPT, Gemini) y Google recomienden tu negocio.",
+        "founder": {
+          "@type": "Person",
+          "name": "Diego DPL"
+        },
+        "areaServed": "España",
+        "knowsAbout": [
+          "Desarrollo Web",
+          "Landing Pages",
+          "E-commerce",
+          "SEO",
+          "Optimización de Conversiones",
+          "Astro Framework",
+          "Tailwind CSS"
+        ],
+        "offers": [
+          {
+            "@type": "Offer",
+            "name": "Landing Page Premium",
+            "price": "299",
+            "priceCurrency": "EUR",
+            "description": "Diseño web de alto impacto optimizado para ventas y SEO.",
+            "url": "https://clickora.es/#precios"
+          },
+          {
+            "@type": "Offer",
+            "name": "Mantenimiento Web VIP",
+            "price": "49",
+            "priceCurrency": "EUR",
+            "priceSpecification": {
+              "@type": "UnitPriceSpecification",
+              "price": "49",
+              "priceCurrency": "EUR",
+              "unitCode": "MON"
+            },
+            "description": "Servicio de mantenimiento, seguridad y optimización mensual.",
+            "url": "https://clickora.es/#precios"
+          }
+        ],
+        "sameAs": [
+          "https://github.com/Diego-DPL"
+        ]
       }
     </script>
   </head>
