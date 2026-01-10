@@ -1,0 +1,44 @@
+<div id="cookie-banner" class="fixed bottom-0 left-0 right-0 bg-slate-900 border-t border-slate-700 p-4 transform translate-y-full transition-transform duration-300 z-50">
+  <div class="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
+    <p class="text-slate-300 text-sm text-center sm:text-left">
+      Utilizamos cookies propias y de terceros para analizar nuestros servicios y mejorar tu experiencia. 
+      Puedes aceptar todas las cookies pulsando el botón "Aceptar" o configurarlas en nuestra 
+      <a href="/cookies" class="text-brand-400 hover:text-brand-300 underline">Política de Cookies</a>.
+    </p>
+    <div class="flex gap-4">
+      <button id="accept-cookies" class="px-6 py-2 bg-brand-500 hover:bg-brand-600 text-white rounded-lg transition-colors text-sm font-semibold">
+        Aceptar
+      </button>
+      <button id="reject-cookies" class="px-6 py-2 bg-slate-800 hover:bg-slate-700 text-slate-300 border border-slate-600 rounded-lg transition-colors text-sm">
+        Rechazar
+      </button>
+    </div>
+  </div>
+</div>
+
+<script>
+  const banner = document.getElementById('cookie-banner');
+  const acceptBtn = document.getElementById('accept-cookies');
+  const rejectBtn = document.getElementById('reject-cookies');
+
+  // Check if user has already made a choice
+  const cookieChoice = localStorage.getItem('clickora_cookies');
+
+  if (!cookieChoice) {
+    // Show banner after a short delay
+    setTimeout(() => {
+      banner?.classList.remove('translate-y-full');
+    }, 1000);
+  }
+
+  acceptBtn?.addEventListener('click', () => {
+    localStorage.setItem('clickora_cookies', 'accepted');
+    banner?.classList.add('translate-y-full');
+    // Here you would typically initialize analytics
+  });
+
+  rejectBtn?.addEventListener('click', () => {
+    localStorage.setItem('clickora_cookies', 'rejected');
+    banner?.classList.add('translate-y-full');
+  });
+</script>
