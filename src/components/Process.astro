@@ -1,0 +1,71 @@
+---
+const steps = [
+  {
+    number: "01",
+    title: "Diagnóstico Express",
+    desc: "Analizamos tu oferta y tu cliente ideal en una llamada de 15 minutos. Sin compromiso.",
+    icon: "🔍"
+  },
+  {
+    number: "02",
+    title: "Propuesta & Estrategia",
+    desc: "Diseñamos la estructura, el copy y la interfaz pensando únicamente en la conversión.",
+    icon: "📐"
+  },
+  {
+    number: "03",
+    title: "Entrega + Medición",
+    desc: "Te entregamos la web lista con Pixel y Analytics configurados para que lances tus anuncios.",
+    icon: "🚀"
+  }
+];
+---
+
+<section id="proceso" class="relative py-20 bg-slate-950">
+  <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center mb-16 space-y-4">
+      <h2 class="text-3xl sm:text-4xl font-bold text-white">
+        Cómo <span class="gradient-text">Trabajamos</span>
+      </h2>
+      <p class="max-w-2xl mx-auto text-lg text-slate-400">
+        Un proceso simple y transparente para que tengas tu web lista cuanto antes.
+      </p>
+    </div>
+
+    <div class="grid md:grid-cols-3 gap-8 mb-16 relative">
+      <!-- Connecting line for desktop -->
+      <div class="hidden md:block absolute top-[60px] left-0 w-full h-0.5 bg-gradient-to-r from-transparent via-brand-500/30 to-transparent z-0"></div>
+
+      {steps.map((step, index) => (
+        <div class="relative z-10 flex flex-col items-center text-center">
+          <div class="w-20 h-20 rounded-2xl bg-slate-900 border border-brand-500/30 flex items-center justify-center text-3xl shadow-lg shadow-brand-500/10 mb-6 relative group hover:scale-110 transition-transform duration-300">
+            <span class="absolute -top-3 -right-3 w-8 h-8 rounded-full bg-brand-500 text-white text-sm font-bold flex items-center justify-center border-4 border-slate-950">
+              {step.number}
+            </span>
+            {step.icon}
+          </div>
+          <h3 class="text-xl font-bold text-white mb-3">{step.title}</h3>
+          <p class="text-slate-400 text-sm max-w-xs leading-relaxed">
+            {step.desc}
+          </p>
+        </div>
+      ))}
+    </div>
+
+    <!-- Micro-Warranty -->
+    <div class="max-w-3xl mx-auto mt-12">
+      <div class="bg-gradient-to-r from-slate-900 to-slate-800 rounded-2xl p-8 border border-slate-700 flex flex-col sm:flex-row items-center gap-6 text-center sm:text-left">
+        <div class="w-16 h-16 rounded-full bg-green-500/20 flex items-center justify-center flex-shrink-0 text-2xl">
+          🛡️
+        </div>
+        <div>
+          <h4 class="text-lg font-bold text-white mb-2">Garantía de Satisfacción</h4>
+          <p class="text-slate-300 text-sm">
+            Si en la primera revisión del diseño (primeros 7 días) no te encaja nuestra propuesta, hacemos una revisión completa o te devolvemos el dinero. Queremos que estés 100% seguro.
+          </p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>

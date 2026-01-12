@@ -1,45 +1,52 @@
 ---
 const plans = [
   {
-    name: 'Landing Page Premium',
+    name: 'Plan Starter',
     price: '299',
-    originalPrice: '700',
-    description: 'Oferta Especial: Web de alto impacto valorada en 700€',
+    description: 'Ideal para validar tu oferta y empezar a captar leads (WhatsApp/Formulario).',
     features: [
-      'Landing Page',
-      'Diseño UI premium futurista',
-      'Copywriting persuasivo',
-      'Formulario + WhatsApp',
-      'Integración Pixel & Analytics',
-      'Optimización de velocidad extrema',
-      'SEO Técnico avanzado',
-      'Adaptada a móviles (Responsive)',
-      'Entrega prioritaria'
+      'Landing Page One-Page',
+      'Diseño limpio y profesional',
+      'Integración WhatsApp',
+      'Formulario de contacto',
+      'Adaptada a móviles',
+      'Carga rápida',
+      'Entrega en 2 semanas'
     ],
-    cta: 'Aprovechar Oferta',
-    highlighted: true,
-    badge: 'Oferta Irresistible'
+    cta: 'Empezar ahora',
+    highlighted: false
   },
   {
-    name: 'Mantenimiento VIP',
-    price: '49',
-    originalPrice: '150',
-    period: '/mes',
-    description: 'Tu negocio siempre seguro y actualizado',
+    name: 'Plan Growth',
+    price: '499',
+    description: 'Para negocios que buscan escalar y medir resultados con exactitud.',
     features: [
-      'Hosting y Dominio Incluido',
-      'Cambios de contenido ilimitados',
-      'Actualizaciones de seguridad',
-      'Optimización continua',
-      'Reportes mensuales de rendimiento',
-      'Soporte prioritario por WhatsApp',
-      'Copias de seguridad diarias',
-      'Monitoreo 24/7',
-      'Mejoras de velocidad',
-      'Consultoría de crecimiento',
-      'Sin permanencia'
+      'Todo lo del Plan Starter',
+      'Copywriting persuasivo',
+      'Configuración Pixel & Analytics',
+      'SEO Técnico optimizado',
+      'Integración con CRM básico',
+      'Página de "Gracias" (para medir)',
+      'Entrega prioritaria'
     ],
-    cta: 'Asegurar mi Web',
+    cta: 'Elegir Plan Growth',
+    highlighted: true,
+    badge: 'Más Popular'
+  },
+  {
+    name: 'Plan Pro',
+    price: '899',
+    description: 'La solución completa para marcas que compiten en alto nivel.',
+    features: [
+      'Todo lo del Plan Growth',
+      'Estrategia completa de conversión',
+      'Diseño totalmente a medida',
+      'A/B Testing en titulares',
+      'Automatización de emails básica',
+      'Soporte post-lanzamiento (30 días)',
+      'Revisión de campañas Ads'
+    ],
+    cta: 'Hablar con un experto',
     highlighted: false
   }
 ];
@@ -54,21 +61,21 @@ const plans = [
     <!-- Section Header -->
     <div class="text-center mb-16 space-y-4">
       <span class="inline-block px-4 py-2 rounded-full glass border border-brand-500/20 text-sm text-brand-400 font-semibold">
-        Oferta Limitada
+        Planes Claros
       </span>
       <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold text-white">
         Inversión <span class="gradient-text">Inteligente</span>
       </h2>
       <p class="max-w-2xl mx-auto text-lg text-slate-400">
-        Precios diseñados para darte el máximo retorno de inversión (ROI).
+        Elige el plan que mejor se adapte a la etapa actual de tu negocio.
       </p>
     </div>
     
     <!-- Pricing Cards -->
-    <div class="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+    <div class="grid md:grid-cols-3 gap-8 max-w-7xl mx-auto mb-20">
       {plans.map((plan, index) => (
         <div 
-          class={`relative p-8 md:p-10 rounded-3xl border transition-all duration-500 transform hover:-translate-y-2 ${
+          class={`relative p-8 rounded-3xl border transition-all duration-500 transform hover:-translate-y-2 flex flex-col ${
             plan.highlighted 
               ? 'glass border-brand-500 shadow-2xl shadow-brand-500/20' 
               : 'glass border-slate-800 hover:border-slate-700'
@@ -77,54 +84,51 @@ const plans = [
         >
           {plan.badge && (
             <div class="absolute -top-4 left-1/2 transform -translate-x-1/2 z-10 w-max">
-              <span class="px-6 py-2 rounded-full bg-gradient-to-r from-red-500 to-pink-600 text-white text-sm font-bold shadow-lg flex items-center gap-2">
+              <span class="px-6 py-2 rounded-full bg-gradient-to-r from-brand-500 to-brand-600 text-white text-sm font-bold shadow-lg flex items-center gap-2">
                 <span class="animate-pulse">🔥</span> {plan.badge}
               </span>
             </div>
           )}
           
-          <div class="space-y-6">
+          <div class="space-y-6 flex-1">
             <!-- Header -->
             <div class="space-y-2">
               <h3 class="text-2xl font-bold text-white">{plan.name}</h3>
-              <p class="text-slate-400 text-sm">{plan.description}</p>
+              <p class="text-slate-400 text-sm h-10">{plan.description}</p>
             </div>
             
             <!-- Price -->
             <div class="space-y-1">
-              {plan.originalPrice && (
-                <div class="text-slate-500 text-lg line-through font-medium">
-                  Valorado en {plan.originalPrice}€
-                </div>
-              )}
               <div class="flex items-baseline gap-2">
-                {!plan.originalPrice && <span class="text-sm text-slate-400">Desde</span>}
-                <span class="text-5xl font-bold gradient-text">{plan.price}€</span>
-                {plan.period && <span class="text-xl text-slate-400">{plan.period}</span>}
+                <span class="text-4xl font-bold text-white">{plan.price}€</span>
+                <span class="text-slate-500">/pago único</span>
               </div>
+              <p class="text-xs text-slate-500">+ IVA</p>
             </div>
             
             <!-- Features -->
-            <ul class="space-y-4 py-6">
+            <ul class="space-y-4">
               {plan.features.map(feature => (
-                <li class="flex items-start gap-3">
-                  <svg class="w-6 h-6 text-green-500 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
-                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                <li class="flex items-start gap-3 text-sm text-slate-300">
+                  <svg class="w-5 h-5 text-brand-500 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
                   </svg>
-                  <span class="text-slate-300">{feature}</span>
+                  <span>{feature}</span>
                 </li>
               ))}
             </ul>
-            
-            <!-- CTA Button -->
+          </div>
+          
+          <!-- CTA -->
+          <div class="pt-8 mt-auto">
             <a 
-              href="https://wa.me/34608008081?text=Hola,%20quiero%20información%20sobre%20el%20plan%20{plan.name}"
+              href={`https://wa.me/34608008081?text=Hola,%20me%20interesa%20el%20${plan.name}`}
               target="_blank"
               rel="noopener noreferrer"
-              class={`block w-full py-4 rounded-xl text-center font-bold transition-all duration-300 transform hover:scale-105 ${
-                plan.highlighted
-                  ? 'bg-gradient-to-r from-brand-500 to-accent-600 text-white shadow-lg shadow-brand-500/50 hover:shadow-xl hover:shadow-brand-500/70'
-                  : 'glass border border-slate-700 text-white hover:border-brand-500/50 hover:bg-slate-800/50'
+              class={`block w-full py-4 rounded-xl text-center font-bold text-lg transition-all duration-300 ${
+                plan.highlighted 
+                  ? 'bg-brand-500 text-white hover:bg-brand-600 shadow-lg shadow-brand-500/25' 
+                  : 'bg-slate-800 text-white hover:bg-slate-700 border border-slate-700'
               }`}
             >
               {plan.cta}
@@ -133,15 +137,32 @@ const plans = [
         </div>
       ))}
     </div>
-    
-    <!-- Extra Info -->
-    <div class="mt-16 text-center">
-      <div class="inline-flex items-center gap-2 px-6 py-3 rounded-full glass border border-slate-800">
-        <svg class="w-5 h-5 text-brand-500" fill="currentColor" viewBox="0 0 20 20">
-          <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd"></path>
-        </svg>
-        <span class="text-sm text-slate-400">¿Necesitas algo personalizado? <a href="#contacto" class="text-brand-400 hover:text-brand-300 font-semibold">Hablemos</a></span>
-      </div>
+
+    <!-- Maintenance Section -->
+    <div class="max-w-4xl mx-auto rounded-3xl glass border border-slate-800 p-8 md:p-12 relative overflow-hidden">
+        <div class="absolute top-0 right-0 p-12 opacity-5 pointer-events-none">
+            <svg class="w-64 h-64 text-white" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/></svg>
+        </div>
+        
+        <div class="relative z-10 flex flex-col md:flex-row items-center gap-8 md:gap-12">
+            <div class="flex-1 space-y-4 text-center md:text-left">
+                <h3 class="text-2xl font-bold text-white">¿Necesitas Mantenimiento?</h3>
+                <p class="text-slate-400">
+                    El mantenimiento es <span class="text-brand-400 font-semibold">opcional pero muy recomendado</span>. 
+                    Por 49€/mes nos encargamos del hosting, dominio, seguridad y textos, para que tú solo te preocupes de vender.
+                </p>
+                <div class="flex flex-wrap gap-4 justify-center md:justify-start text-sm text-slate-500">
+                    <span class="flex items-center gap-1">✅ Hosting Incluido</span>
+                    <span class="flex items-center gap-1">✅ Copias diarias</span>
+                    <span class="flex items-center gap-1">✅ Sin permanencia</span>
+                </div>
+            </div>
+            <div class="flex-shrink-0">
+                <a href="https://wa.me/34608008081?text=Hola,%20me%20interesa%20el%20mantenimiento" class="inline-block px-8 py-4 rounded-xl border border-slate-600 text-white hover:bg-slate-800 transition-colors">
+                    Saber más
+                </a>
+            </div>
+        </div>
     </div>
   </div>
 </section>

@@ -1,0 +1,93 @@
+---
+const projects = [
+  {
+    title: "Clínica de Fisioterapia",
+    metric: "+120%",
+    metricLabel: "Citas Online",
+    desc: "Web enfocada en reservas automáticas y posicionamiento local para 'fisioterapia' y 'pilates'.",
+    tags: ["Reservas", "SEO Local", "Google Maps"],
+    before: "Gestión manual por teléfono",
+    after: "Agenda llena automatizada"
+  },
+  {
+    title: "Consulta de Psicología",
+    metric: "+7",
+    metricLabel: "Pacientes Nuevos/mes",
+    desc: "Landing page empática y profesional para ayudar a pacientes de terapia online y presencial.",
+    tags: ["Google Ads", "Diseño Limpio", "Confianza"],
+    before: "Web obsoleta y lenta",
+    after: "Costo por lead bajó 50%"
+  },
+  {
+    title: "Organización de Eventos",
+    metric: "x4",
+    metricLabel: "Presupuestos Bodas",
+    desc: "Portafolio visual de alto impacto para captar novios y eventos corporativos.",
+    tags: ["Galería", "Video", "Social Ads"],
+    before: "PDF enviado por email",
+    after: "Web visual que enamora"
+  }
+];
+---
+
+<section id="ejemplos" class="relative py-20 overflow-hidden bg-slate-950">
+  <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center mb-16 space-y-4">
+      <span class="inline-block px-4 py-2 rounded-full glass border border-brand-500/20 text-sm text-brand-400 font-semibold">
+        Portfolio
+      </span>
+      <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold text-white">
+        Resultados <span class="gradient-text">Reales</span>
+      </h2>
+      <p class="max-w-2xl mx-auto text-lg text-slate-400">
+        No solo diseñamos webs bonitas. Creamos herramientas de venta que funcionan.
+      </p>
+    </div>
+
+    <div class="grid md:grid-cols-3 gap-8">
+      {projects.map((project, index) => (
+        <div 
+          class="group relative p-8 rounded-2xl glass border border-slate-800 hover:border-brand-500/50 transition-all duration-300 flex flex-col"
+        >
+          <div class="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity">
+            <svg class="w-24 h-24 text-brand-500" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+            </svg>
+          </div>
+
+          <div class="mb-6 relative z-10">
+            <h3 class="text-2xl font-bold text-white mb-2">{project.title}</h3>
+            <div class="flex flex-wrap gap-2 mb-4">
+              {project.tags.map(tag => (
+                <span class="text-xs px-2 py-1 rounded bg-slate-800 text-slate-300 border border-slate-700">
+                  {tag}
+                </span>
+              ))}
+            </div>
+            <p class="text-slate-400 text-sm leading-relaxed mb-6">
+              {project.desc}
+            </p>
+            
+            <div class="grid grid-cols-2 gap-4 bg-slate-900/50 rounded-lg p-4 mb-6 text-sm border border-slate-800">
+                <div>
+                    <span class="block text-slate-500 text-xs uppercase tracking-wider mb-1">Antes</span>
+                    <span class="text-slate-300">{project.before}</span>
+                </div>
+                <div>
+                    <span class="block text-brand-400 text-xs uppercase tracking-wider mb-1">Después</span>
+                    <span class="text-white font-medium">{project.after}</span>
+                </div>
+            </div>
+
+            <div class="mt-auto pt-4 border-t border-slate-800/50">
+              <div class="text-4xl font-bold text-white bg-clip-text text-transparent bg-gradient-to-r from-brand-400 to-green-400">
+                {project.metric}
+              </div>
+              <div class="text-slate-500 text-sm mt-1">{project.metricLabel}</div>
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
