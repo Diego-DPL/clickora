@@ -17,38 +17,32 @@ const { title, description } = Astro.props;
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content={description} />
     <meta name="generator" content={Astro.generator} />
-    
-    <!-- SEO Meta Tags -->
+
     <meta name="keywords" content="landing page fisioterapia, landing page abogados, web organización eventos, diseño web españa, crear landing page conversión, agencia marketing digital, clickora, web corporativa rápida, desarrollo web seo" />
     <meta name="author" content="Clickora - Diego DPL" />
     <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
     <link rel="canonical" href="https://clickora.es" />
-    
-    <!-- Open Graph -->
+
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:type" content="business.business" />
     <meta property="og:url" content="https://clickora.es" />
     <meta property="og:site_name" content="Clickora | Desarrollo Web de Alto Impacto" />
     <meta property="og:locale" content="es_ES" />
-    
-    <!-- Twitter Card -->
+
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content="https://clickora.es/og-image.png" />
-    
-    <!-- Favicon -->
+
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    
-    <!-- Preconnect -->
+
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    
+    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+
     <title>{title}</title>
 
-    
-    <!-- Schema.org Markup for LLMs & SEO -->
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
@@ -60,61 +54,76 @@ const { title, description } = Astro.props;
         "telephone": "+34608008081",
         "email": "info@diegodpl.com",
         "priceRange": "€€",
-        "address": {
-          "@type": "PostalAddress",
-          "addressCountry": "ES"
-        },
-        "geo": {
-          "@type": "GeoCoordinates",
-          "addressCountry": "ES"
-        },
-        "description": "Agencia de desarrollo web líder en España experta en Landing Pages de alta conversión, E-commerce y aplicaciones SaaS. Optimizamos tu presencia digital para que la IA (ChatGPT, Gemini) y Google recomienden tu negocio.",
-        "founder": {
-          "@type": "Person",
-          "name": "Diego DPL"
-        },
+        "address": { "@type": "PostalAddress", "addressCountry": "ES" },
+        "description": "Agencia de desarrollo web líder en España experta en Landing Pages de alta conversión, E-commerce y aplicaciones SaaS.",
+        "founder": { "@type": "Person", "name": "Diego DPL" },
         "areaServed": "España",
-        "knowsAbout": [
-          "Desarrollo Web",
-          "Landing Pages",
-          "E-commerce",
-          "SEO",
-          "Optimización de Conversiones",
-          "Astro Framework",
-          "Tailwind CSS"
-        ],
         "offers": [
-          {
-            "@type": "Offer",
-            "name": "Landing Page Premium",
-            "price": "299",
-            "priceCurrency": "EUR",
-            "description": "Diseño web de alto impacto optimizado para ventas y SEO.",
-            "url": "https://clickora.es/#precios"
-          },
-          {
-            "@type": "Offer",
-            "name": "Mantenimiento Web VIP",
-            "price": "49",
-            "priceCurrency": "EUR",
-            "priceSpecification": {
-              "@type": "UnitPriceSpecification",
-              "price": "49",
-              "priceCurrency": "EUR",
-              "unitCode": "MON"
-            },
-            "description": "Servicio de mantenimiento, seguridad y optimización mensual.",
-            "url": "https://clickora.es/#precios"
-          }
+          { "@type": "Offer", "name": "Landing Page Premium", "price": "299", "priceCurrency": "EUR", "url": "https://clickora.es/#precios" },
+          { "@type": "Offer", "name": "Mantenimiento Web VIP", "price": "49", "priceCurrency": "EUR", "url": "https://clickora.es/#precios" }
         ],
-        "sameAs": [
-          "https://github.com/Diego-DPL"
-        ]
+        "sameAs": ["https://github.com/Diego-DPL"]
       }
     </script>
   </head>
   <body>
+    <!-- Custom cursor -->
+    <div id="cursor-dot"></div>
+    <div id="cursor-ring"></div>
+
     <slot />
     <CookieBanner />
+
+    <script>
+      // Custom cursor — only on fine pointer devices
+      if (window.matchMedia('(pointer: fine)').matches) {
+        const dot  = document.getElementById('cursor-dot');
+        const ring = document.getElementById('cursor-ring');
+
+        if (dot && ring) {
+          let mouseX = 0, mouseY = 0;
+          let ringX  = 0, ringY  = 0;
+
+          document.addEventListener('mousemove', (e) => {
+            mouseX = e.clientX;
+            mouseY = e.clientY;
+            dot.style.transform = `translate(calc(${mouseX}px - 50%), calc(${mouseY}px - 50%))`;
+          });
+
+          function animateRing() {
+            ringX += (mouseX - ringX) * 0.12;
+            ringY += (mouseY - ringY) * 0.12;
+            ring.style.transform = `translate(calc(${ringX}px - 50%), calc(${ringY}px - 50%))`;
+            requestAnimationFrame(animateRing);
+          }
+          animateRing();
+
+          document.querySelectorAll('a, button, [role="button"], input, textarea, summary').forEach(el => {
+            el.addEventListener('mouseenter', () => {
+              dot.classList.add('hovering');
+              ring.classList.add('hovering');
+            });
+            el.addEventListener('mouseleave', () => {
+              dot.classList.remove('hovering');
+              ring.classList.remove('hovering');
+            });
+          });
+        }
+      }
+
+      // Scroll reveal with IntersectionObserver
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('in-view');
+            }
+          });
+        },
+        { threshold: 0.1, rootMargin: '0px 0px -60px 0px' }
+      );
+
+      document.querySelectorAll('.reveal, .reveal-fast').forEach((el) => observer.observe(el));
+    </script>
   </body>
 </html>
