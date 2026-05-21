@@ -8,17 +8,19 @@ const projects = [
     desc: "Web enfocada en reservas automáticas y posicionamiento local. Agenda llena desde el primer mes.",
     tags: ["Reservas", "SEO Local", "Google Maps"],
     before: "Gestión manual por teléfono",
-    after: "Agenda llena automatizada"
+    after: "Agenda llena automatizada",
+    color: "bg-blue"
   },
   {
     index: "02",
     title: "Consulta de Psicología",
     result: "+7",
     unit: "pacientes nuevos/mes",
-    desc: "Landing page empática y profesional que redujo el costo por lead un 50%.",
-    tags: ["Google Ads", "Diseño Limpio", "Confianza"],
+    desc: "Landing page empática que redujo el costo por lead un 50%. Diseño limpio que transmite confianza.",
+    tags: ["Google Ads", "Confianza", "Diseño limpio"],
     before: "Web obsoleta y lenta",
-    after: "Coste por lead ↓ 50%"
+    after: "Coste por lead ↓ 50%",
+    color: "bg-yellow"
   },
   {
     index: "03",
@@ -28,81 +30,86 @@ const projects = [
     desc: "Portafolio visual de alto impacto que multiplicó por cuatro las solicitudes de presupuesto.",
     tags: ["Galería", "Video", "Social Ads"],
     before: "PDF enviado por email",
-    after: "Web visual que convierte"
+    after: "Web visual que convierte",
+    color: "bg-ink"
   }
 ];
 ---
 
-<section id="ejemplos" class="bg-ink py-24 md:py-36 overflow-hidden">
-  <div class="max-w-[1600px] mx-auto px-6 md:px-10 lg:px-16">
+<section id="ejemplos" class="bg-ivory py-24 md:py-36 overflow-hidden">
+  <div class="max-w-[1600px] mx-auto px-8 md:px-16 lg:px-28">
 
     <!-- Header -->
     <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-16 md:mb-24">
       <div>
         <p class="label text-muted mb-4 reveal-fast">Trabajo reciente</p>
-        <h2 class="heading-display font-serif text-[clamp(2.5rem,_6vw,_5.5rem)] text-parchment reveal" style="transition-delay:0.1s">
+        <h2 class="font-display italic font-black text-[clamp(2.5rem,_6vw,_5.5rem)] text-ink leading-[0.93] reveal" style="transition-delay:0.1s">
           Resultados<br>
-          <em class="text-lime not-italic">reales.</em>
+          <span class="text-blue">reales.</span>
         </h2>
       </div>
       <p class="text-muted text-sm max-w-xs leading-relaxed reveal-fast" style="transition-delay:0.2s">
-        No solo diseñamos webs bonitas. Creamos herramientas de venta que funcionan desde el primer día.
+        No solo diseñamos webs bonitas — creamos herramientas de venta que funcionan desde el primer día.
       </p>
     </div>
 
-    <!-- Projects list -->
-    <div class="divide-subtle">
+    <!-- Projects -->
+    <div class="space-y-6">
       {projects.map((project, i) => (
         <div
-          class={`group grid grid-cols-1 md:grid-cols-12 gap-6 md:gap-0 py-10 md:py-14 border-t border-subtle hover:bg-ink2 transition-colors duration-300 px-4 md:px-8 -mx-4 md:-mx-8 reveal`}
-          style={`transition-delay:${i * 0.12}s`}
+          class={`group grid grid-cols-1 md:grid-cols-12 gap-0 border-2 border-soft hover:border-blue transition-all duration-300 hover:-rotate-[0.3deg] hover:shadow-lg reveal`}
+          style={`transition-delay:${i * 0.1}s`}
         >
-          <!-- Index -->
-          <div class="md:col-span-1 flex items-start">
-            <span class="label text-muted">{project.index}</span>
+          <!-- Color band left -->
+          <div class={`${project.color} md:col-span-1 flex items-center justify-center py-4 md:py-0`}>
+            <span class={`label rotate-0 md:-rotate-90 font-bold ${project.color === 'bg-ink' ? 'text-ivory' : project.color === 'bg-yellow' ? 'text-ink' : 'text-ivory'}`}>
+              {project.index}
+            </span>
           </div>
 
-          <!-- Title + tags -->
-          <div class="md:col-span-4 md:pl-4">
-            <h3 class="font-serif text-2xl md:text-3xl text-parchment mb-4 group-hover:text-lime transition-colors duration-300">
-              {project.title}
-            </h3>
-            <div class="flex flex-wrap gap-2">
-              {project.tags.map(tag => (
-                <span class="label text-muted border border-subtle px-3 py-1">
-                  {tag}
-                </span>
-              ))}
-            </div>
-          </div>
+          <!-- Content -->
+          <div class="md:col-span-11 grid grid-cols-1 md:grid-cols-3 divide-y md:divide-y-0 md:divide-x divide-soft">
 
-          <!-- Description -->
-          <div class="md:col-span-4 md:pl-8">
-            <p class="text-muted text-sm leading-relaxed mb-6">{project.desc}</p>
-            <div class="grid grid-cols-2 gap-4 text-sm">
-              <div>
-                <span class="label text-muted block mb-1">Antes</span>
-                <span class="text-parchment/60">{project.before}</span>
-              </div>
-              <div>
-                <span class="label text-lime block mb-1">Después</span>
-                <span class="text-parchment">{project.after}</span>
+            <!-- Title + tags -->
+            <div class="p-6 md:p-8 flex flex-col gap-4">
+              <h3 class="font-sans font-bold text-xl md:text-2xl text-ink group-hover:text-blue transition-colors duration-300">
+                {project.title}
+              </h3>
+              <div class="flex flex-wrap gap-2">
+                {project.tags.map(tag => (
+                  <span class="label text-muted border border-soft px-3 py-1">{tag}</span>
+                ))}
               </div>
             </div>
-          </div>
 
-          <!-- Result -->
-          <div class="md:col-span-3 flex items-center justify-start md:justify-end">
-            <div class="text-right">
-              <div class="font-serif text-[clamp(3rem,_6vw,_5rem)] text-lime leading-none group-hover:scale-105 transition-transform duration-300 origin-right">
-                {project.result}
+            <!-- Description + before/after -->
+            <div class="p-6 md:p-8">
+              <p class="text-muted text-sm leading-relaxed mb-6">{project.desc}</p>
+              <div class="grid grid-cols-2 gap-4 text-sm">
+                <div>
+                  <span class="label text-muted block mb-1">Antes</span>
+                  <span class="text-ink/50 text-sm">{project.before}</span>
+                </div>
+                <div>
+                  <span class="label text-blue block mb-1">Después</span>
+                  <span class="text-ink text-sm font-semibold">{project.after}</span>
+                </div>
               </div>
-              <div class="label text-muted mt-1">{project.unit}</div>
             </div>
+
+            <!-- Result -->
+            <div class="p-6 md:p-8 flex items-center justify-start md:justify-end">
+              <div class="text-right">
+                <p class="font-display italic font-black text-[clamp(3rem,_6vw,_5rem)] text-blue leading-none group-hover:scale-105 transition-transform duration-300 origin-right">
+                  {project.result}
+                </p>
+                <p class="label text-muted mt-1">{project.unit}</p>
+              </div>
+            </div>
+
           </div>
         </div>
       ))}
-      <div class="border-t border-subtle"></div>
     </div>
 
   </div>

@@ -39,7 +39,7 @@ const { title, description } = Astro.props;
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,700;0,9..144,900;1,9..144,300;1,9..144,400;1,9..144,700;1,9..144,900&family=Syne:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
 
     <title>{title}</title>
 
@@ -55,7 +55,7 @@ const { title, description } = Astro.props;
         "email": "info@diegodpl.com",
         "priceRange": "€€",
         "address": { "@type": "PostalAddress", "addressCountry": "ES" },
-        "description": "Agencia de desarrollo web líder en España experta en Landing Pages de alta conversión, E-commerce y aplicaciones SaaS.",
+        "description": "Agencia de desarrollo web en España experta en Landing Pages de alta conversión, E-commerce y aplicaciones SaaS.",
         "founder": { "@type": "Person", "name": "Diego DPL" },
         "areaServed": "España",
         "offers": [
@@ -67,7 +67,6 @@ const { title, description } = Astro.props;
     </script>
   </head>
   <body>
-    <!-- Custom cursor -->
     <div id="cursor-dot"></div>
     <div id="cursor-ring"></div>
 
@@ -75,14 +74,13 @@ const { title, description } = Astro.props;
     <CookieBanner />
 
     <script>
-      // Custom cursor — only on fine pointer devices
+      // Custom cursor
       if (window.matchMedia('(pointer: fine)').matches) {
         const dot  = document.getElementById('cursor-dot');
         const ring = document.getElementById('cursor-ring');
 
         if (dot && ring) {
-          let mouseX = 0, mouseY = 0;
-          let ringX  = 0, ringY  = 0;
+          let mouseX = 0, mouseY = 0, ringX = 0, ringY = 0;
 
           document.addEventListener('mousemove', (e) => {
             mouseX = e.clientX;
@@ -91,39 +89,26 @@ const { title, description } = Astro.props;
           });
 
           function animateRing() {
-            ringX += (mouseX - ringX) * 0.12;
-            ringY += (mouseY - ringY) * 0.12;
+            ringX += (mouseX - ringX) * 0.1;
+            ringY += (mouseY - ringY) * 0.1;
             ring.style.transform = `translate(calc(${ringX}px - 50%), calc(${ringY}px - 50%))`;
             requestAnimationFrame(animateRing);
           }
           animateRing();
 
           document.querySelectorAll('a, button, [role="button"], input, textarea, summary').forEach(el => {
-            el.addEventListener('mouseenter', () => {
-              dot.classList.add('hovering');
-              ring.classList.add('hovering');
-            });
-            el.addEventListener('mouseleave', () => {
-              dot.classList.remove('hovering');
-              ring.classList.remove('hovering');
-            });
+            el.addEventListener('mouseenter', () => { dot.classList.add('hovering'); ring.classList.add('hovering'); });
+            el.addEventListener('mouseleave', () => { dot.classList.remove('hovering'); ring.classList.remove('hovering'); });
           });
         }
       }
 
-      // Scroll reveal with IntersectionObserver
+      // Scroll reveal
       const observer = new IntersectionObserver(
-        (entries) => {
-          entries.forEach((entry) => {
-            if (entry.isIntersecting) {
-              entry.target.classList.add('in-view');
-            }
-          });
-        },
-        { threshold: 0.1, rootMargin: '0px 0px -60px 0px' }
+        (entries) => entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('in-view'); }),
+        { threshold: 0.08, rootMargin: '0px 0px -50px 0px' }
       );
-
-      document.querySelectorAll('.reveal, .reveal-fast').forEach((el) => observer.observe(el));
+      document.querySelectorAll('.reveal, .reveal-fast').forEach(el => observer.observe(el));
     </script>
   </body>
 </html>

@@ -18,11 +18,11 @@ const plans = [
   {
     name: "Growth",
     price: "499",
-    description: "Para negocios que quieren escalar y medir resultados.",
+    description: "Para negocios que quieren escalar y medir resultados con exactitud.",
     features: [
       "Todo lo del Starter",
       "Copywriting persuasivo",
-      "Pixel & Analytics configurados",
+      "Pixel & Analytics listos",
       "SEO técnico optimizado",
       "Integración CRM básico",
       "Página de Gracias",
@@ -37,11 +37,11 @@ const plans = [
     description: "La solución completa para marcas que compiten en alto nivel.",
     features: [
       "Todo lo del Growth",
-      "Estrategia completa de conversión",
+      "Estrategia de conversión",
       "Diseño totalmente a medida",
       "A/B Testing en titulares",
       "Automatización de emails",
-      "Soporte 30 días post-lanzamiento",
+      "Soporte 30 días",
       "Revisión de campañas Ads"
     ],
     highlighted: false
@@ -49,95 +49,96 @@ const plans = [
 ];
 ---
 
-<section id="precios" class="bg-ink py-24 md:py-36 overflow-hidden">
-  <div class="max-w-[1600px] mx-auto px-6 md:px-10 lg:px-16">
+<section id="precios" class="bg-ivory py-24 md:py-36 overflow-hidden">
+  <div class="max-w-[1600px] mx-auto px-8 md:px-16 lg:px-28">
 
     <!-- Header -->
     <div class="mb-16 md:mb-20">
       <p class="label text-muted mb-4 reveal-fast">Inversión</p>
-      <h2 class="heading-display font-serif text-[clamp(2.5rem,_6vw,_5.5rem)] text-parchment reveal" style="transition-delay:0.1s">
-        Planes <em class="text-lime not-italic">claros.</em>
+      <h2 class="font-display italic font-black text-[clamp(2.5rem,_6vw,_5.5rem)] text-ink leading-[0.93] reveal" style="transition-delay:0.1s">
+        Planes <span class="text-blue">claros.</span>
       </h2>
     </div>
 
-    <!-- Pricing grid -->
-    <div class="grid md:grid-cols-3 gap-px bg-subtle">
+    <!-- Plans grid -->
+    <div class="grid md:grid-cols-3 gap-4">
       {plans.map((plan, i) => (
         <div
-          class={`relative flex flex-col p-8 md:p-10 reveal ${plan.highlighted ? 'bg-lime' : 'bg-ink2 hover:bg-ink3 transition-colors duration-300'}`}
-          style={`transition-delay:${i * 0.12}s`}
+          class={`relative flex flex-col reveal ${plan.highlighted ? 'bg-blue' : 'bg-ivory2 border-2 border-soft hover:border-blue transition-colors duration-300'}`}
+          style={`transition-delay:${i * 0.1}s`}
         >
           {plan.badge && (
-            <div class="mb-6">
-              <span class="label text-ink bg-ink/10 px-3 py-1">
-                {plan.badge}
-              </span>
+            <div class="absolute -top-4 left-6">
+              <span class="bg-yellow text-ink label px-4 py-1.5">{plan.badge}</span>
             </div>
           )}
 
-          {!plan.badge && <div class="mb-6 h-6"></div>}
+          <div class="p-8 md:p-10 flex flex-col gap-8 flex-1">
 
-          <!-- Plan name & price -->
-          <div class="mb-8">
-            <h3 class={`font-serif text-2xl mb-2 ${plan.highlighted ? 'text-ink' : 'text-parchment'}`}>
-              {plan.name}
-            </h3>
-            <p class={`text-sm mb-6 leading-relaxed ${plan.highlighted ? 'text-ink/70' : 'text-muted'}`}>
-              {plan.description}
-            </p>
-            <div class="flex items-baseline gap-1">
-              <span class={`font-serif text-[clamp(3rem,_6vw,_4.5rem)] leading-none ${plan.highlighted ? 'text-ink' : 'text-parchment'}`}>
-                {plan.price}€
-              </span>
-              <span class={`text-xs ${plan.highlighted ? 'text-ink/60' : 'text-muted'}`}>+ IVA</span>
+            <!-- Name + price -->
+            <div>
+              {plan.badge && <div class="h-4"></div>}
+              <h3 class={`font-sans font-extrabold text-2xl mb-2 ${plan.highlighted ? 'text-ivory' : 'text-ink'}`}>
+                {plan.name}
+              </h3>
+              <p class={`text-sm mb-6 leading-relaxed ${plan.highlighted ? 'text-ivory/60' : 'text-muted'}`}>
+                {plan.description}
+              </p>
+              <div class="flex items-baseline gap-1">
+                <span class={`font-display italic font-black text-[clamp(3rem,_5vw,_4rem)] leading-none ${plan.highlighted ? 'text-yellow' : 'text-blue'}`}>
+                  {plan.price}€
+                </span>
+                <span class={`text-xs ${plan.highlighted ? 'text-ivory/50' : 'text-muted'}`}>+ IVA · pago único</span>
+              </div>
             </div>
+
+            <!-- Divider -->
+            <div class={`h-px ${plan.highlighted ? 'bg-ivory/15' : 'bg-soft'}`}></div>
+
+            <!-- Features -->
+            <ul class="flex-1 space-y-3">
+              {plan.features.map(f => (
+                <li class={`flex items-start gap-3 text-sm ${plan.highlighted ? 'text-ivory/75' : 'text-ink/70'}`}>
+                  <span class={`w-1.5 h-1.5 rounded-full flex-shrink-0 mt-1.5 ${plan.highlighted ? 'bg-yellow' : 'bg-blue'}`}></span>
+                  {f}
+                </li>
+              ))}
+            </ul>
+
+            <!-- CTA -->
+            <a
+              href={`https://wa.me/34608008081?text=Hola,%20me%20interesa%20el%20Plan%20${plan.name}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              class={plan.highlighted ? 'btn-outline-white justify-center' : 'btn-outline justify-center'}
+            >
+              {plan.name === 'Starter' ? 'Empezar →' : plan.name === 'Growth' ? 'Elegir Growth →' : 'Hablar con Diego →'}
+            </a>
           </div>
-
-          <!-- Features -->
-          <ul class="flex-1 mb-10 space-y-3">
-            {plan.features.map(f => (
-              <li class={`flex items-start gap-3 text-sm ${plan.highlighted ? 'text-ink/80' : 'text-muted'}`}>
-                <span class={`w-1.5 h-1.5 rounded-full flex-shrink-0 mt-1.5 ${plan.highlighted ? 'bg-ink' : 'bg-lime'}`}></span>
-                {f}
-              </li>
-            ))}
-          </ul>
-
-          <!-- CTA -->
-          <a
-            href={`https://wa.me/34608008081?text=Hola,%20me%20interesa%20el%20Plan%20${plan.name}`}
-            target="_blank"
-            rel="noopener noreferrer"
-            class={plan.highlighted
-              ? 'btn-lime bg-ink text-parchment hover:bg-ink3 flex items-center justify-center w-full'
-              : 'btn-ghost flex items-center justify-center w-full'}
-          >
-            {plan.highlighted ? 'Elegir Growth →' : (plan.name === 'Starter' ? 'Empezar →' : 'Hablar con Diego →')}
-          </a>
         </div>
       ))}
     </div>
 
-    <!-- Maintenance add-on -->
-    <div class="mt-px bg-ink2 hover:bg-ink3 transition-colors duration-300 reveal" style="transition-delay:0.4s">
-      <div class="flex flex-col md:flex-row items-start md:items-center justify-between gap-8 p-8 md:p-10">
-        <div class="flex-1">
-          <p class="label text-lime mb-3">Complemento opcional</p>
-          <h3 class="font-serif text-2xl text-parchment mb-2">Mantenimiento VIP</h3>
-          <p class="text-muted text-sm leading-relaxed max-w-xl">
-            Por <strong class="text-parchment">49€/mes</strong> nos encargamos del hosting, dominio, seguridad y actualizaciones de texto. Sin permanencia.
+    <!-- Maintenance -->
+    <div class="mt-4 bg-ink p-8 md:p-10 reveal" style="transition-delay:0.35s">
+      <div class="flex flex-col md:flex-row items-start md:items-center justify-between gap-8">
+        <div>
+          <p class="label text-yellow mb-3">Complemento opcional</p>
+          <h3 class="font-sans font-extrabold text-2xl text-ivory mb-2">Mantenimiento VIP</h3>
+          <p class="text-ivory/60 text-sm leading-relaxed max-w-xl">
+            Por <strong class="text-ivory">49€/mes</strong> nos encargamos del hosting, dominio, seguridad y actualizaciones de texto. Sin permanencia.
           </p>
-          <div class="flex flex-wrap gap-6 mt-4 text-xs text-muted">
-            <span class="flex items-center gap-1.5"><span class="w-1.5 h-1.5 rounded-full bg-lime"></span>Hosting incluido</span>
-            <span class="flex items-center gap-1.5"><span class="w-1.5 h-1.5 rounded-full bg-lime"></span>Copias diarias</span>
-            <span class="flex items-center gap-1.5"><span class="w-1.5 h-1.5 rounded-full bg-lime"></span>Sin permanencia</span>
+          <div class="flex flex-wrap gap-6 mt-4 text-xs text-ivory/40">
+            <span class="flex items-center gap-1.5"><span class="w-1.5 h-1.5 bg-yellow"></span>Hosting incluido</span>
+            <span class="flex items-center gap-1.5"><span class="w-1.5 h-1.5 bg-yellow"></span>Copias diarias</span>
+            <span class="flex items-center gap-1.5"><span class="w-1.5 h-1.5 bg-yellow"></span>Sin permanencia</span>
           </div>
         </div>
         <a
           href="https://wa.me/34608008081?text=Hola,%20me%20interesa%20el%20mantenimiento"
           target="_blank"
           rel="noopener noreferrer"
-          class="btn-ghost flex-shrink-0"
+          class="btn-outline-white flex-shrink-0"
         >
           Saber más
         </a>

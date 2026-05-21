@@ -7,46 +7,61 @@ const steps = [
   },
   {
     number: "02",
-    title: "Propuesta & Estrategia",
+    title: "Diseño & Estrategia",
     desc: "Diseñamos la estructura, el copy y la interfaz pensando únicamente en la conversión."
   },
   {
     number: "03",
     title: "Entrega + Medición",
-    desc: "Tu web lista con Pixel y Analytics configurados. Lanzas tus anuncios desde el día 1."
+    desc: "Tu web lista con Pixel y Analytics configurados. Lanzas campañas desde el día 1."
   }
 ];
 ---
 
-<section id="proceso" class="bg-ink2 py-24 md:py-36 overflow-hidden">
-  <div class="max-w-[1600px] mx-auto px-6 md:px-10 lg:px-16">
+<!-- Blue block section -->
+<section id="proceso" class="bg-blue py-24 md:py-36 overflow-hidden">
+  <div class="max-w-[1600px] mx-auto px-8 md:px-16 lg:px-28">
 
     <!-- Header -->
-    <div class="mb-16 md:mb-24">
-      <p class="label text-muted mb-4 reveal-fast">Proceso</p>
-      <h2 class="heading-display font-serif text-[clamp(2.5rem,_6vw,_5.5rem)] text-parchment reveal" style="transition-delay:0.1s">
-        Cómo <em class="text-lime not-italic">trabajamos.</em>
-      </h2>
+    <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-16 md:mb-24">
+      <div>
+        <p class="label mb-4 reveal-fast" style="color: rgba(250,250,245,0.5)">Proceso</p>
+        <h2 class="font-display italic font-black text-[clamp(2.5rem,_6vw,_5.5rem)] text-ivory leading-[0.93] reveal" style="transition-delay:0.1s">
+          Cómo<br>
+          <span class="text-yellow">trabajamos.</span>
+        </h2>
+      </div>
+      <p class="text-sm leading-relaxed max-w-xs reveal-fast" style="color: rgba(250,250,245,0.6); transition-delay:0.2s">
+        Un proceso claro y simple para que tengas tu web lista cuanto antes.
+      </p>
     </div>
 
-    <!-- Steps -->
-    <div class="grid md:grid-cols-3 gap-0 divide-subtle md:divide-y-0 md:divide-x-0">
+    <!-- Steps grid -->
+    <div class="grid md:grid-cols-3 gap-px" style="background: rgba(250,250,245,0.1)">
       {steps.map((step, i) => (
         <div
-          class={`group relative p-8 md:p-10 border border-subtle hover:bg-ink3 transition-colors duration-300 reveal`}
-          style={`transition-delay:${i * 0.15}s`}
+          class={`group relative bg-blue hover:bg-ink transition-colors duration-500 p-8 md:p-10 flex flex-col gap-6 overflow-hidden reveal`}
+          style={`transition-delay:${i * 0.12}s`}
         >
-          <!-- Big number -->
-          <div class="font-serif text-[clamp(4rem,_10vw,_8rem)] text-lime/15 leading-none select-none absolute top-6 right-6 group-hover:text-lime/25 transition-colors duration-300">
+          <!-- Big number watermark -->
+          <span
+            class="font-display italic font-black text-[8rem] leading-none absolute -right-4 -bottom-6 select-none transition-colors duration-500"
+            style="color: rgba(250,250,245,0.05)"
+            aria-hidden="true"
+          >
             {step.number}
-          </div>
+          </span>
+
+          <!-- Number pill -->
+          <span class="w-10 h-10 bg-yellow flex items-center justify-center flex-shrink-0">
+            <span class="label text-ink">{step.number}</span>
+          </span>
 
           <div class="relative z-10">
-            <p class="label text-lime mb-6">{step.number}</p>
-            <h3 class="font-serif text-2xl md:text-3xl text-parchment mb-4 leading-tight">
+            <h3 class="font-sans font-bold text-xl md:text-2xl text-ivory mb-3">
               {step.title}
             </h3>
-            <p class="text-muted text-sm leading-relaxed">
+            <p class="text-sm leading-relaxed" style="color: rgba(250,250,245,0.65)">
               {step.desc}
             </p>
           </div>
@@ -55,17 +70,19 @@ const steps = [
     </div>
 
     <!-- Guarantee -->
-    <div class="mt-12 md:mt-16 flex flex-col md:flex-row items-start md:items-center gap-6 p-8 border border-subtle reveal" style="transition-delay:0.4s">
-      <div class="w-12 h-12 border border-lime flex items-center justify-center flex-shrink-0">
-        <svg class="w-5 h-5 text-lime" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path>
-        </svg>
-      </div>
-      <div>
-        <h4 class="text-parchment font-semibold mb-1">Garantía de satisfacción</h4>
-        <p class="text-muted text-sm leading-relaxed max-w-2xl">
-          Si en los primeros 7 días no te convence nuestra propuesta de diseño, hacemos una revisión completa o te devolvemos el dinero. Queremos que estés 100% seguro.
-        </p>
+    <div class="mt-8 reveal" style="transition-delay:0.4s; border: 1.5px solid rgba(250,250,245,0.15)">
+      <div class="flex flex-col md:flex-row items-start md:items-center gap-6 p-8 md:p-10">
+        <div class="w-12 h-12 border-2 border-yellow flex items-center justify-center flex-shrink-0">
+          <svg class="w-5 h-5 text-yellow" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path>
+          </svg>
+        </div>
+        <div>
+          <h4 class="text-ivory font-bold mb-1">Garantía de satisfacción</h4>
+          <p class="text-sm leading-relaxed max-w-2xl" style="color: rgba(250,250,245,0.6)">
+            Si en los primeros 7 días no te convence nuestra propuesta de diseño, hacemos una revisión completa o te devolvemos el dinero.
+          </p>
+        </div>
       </div>
     </div>
 

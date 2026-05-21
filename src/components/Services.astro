@@ -4,33 +4,39 @@ const services = [
     number: "01",
     title: "Landing Pages",
     description: "Páginas diseñadas para convertir visitantes en clientes. Rápidas, persuasivas y optimizadas para SEO y campañas de pago.",
-    features: ["Diseño persuasivo", "Carga ultrarrápida", "SEO técnico", "Pixel + Analytics"]
+    features: ["Diseño persuasivo", "Carga ultrarrápida", "SEO técnico", "Pixel + Analytics"],
+    bg: "bg-ivory2",
+    accent: "text-blue"
   },
   {
     number: "02",
     title: "E-commerce",
     description: "Tiendas online que venden. Gestión de productos, pagos seguros y una experiencia de compra que elimina fricción.",
-    features: ["Carrito inteligente", "Pagos integrados", "Panel de admin", "Optimizado para móvil"]
+    features: ["Carrito inteligente", "Pagos integrados", "Panel de admin", "Optimizado móvil"],
+    bg: "bg-yellow",
+    accent: "text-ink"
   },
   {
     number: "03",
     title: "SaaS & Apps Web",
     description: "Aplicaciones web escalables y seguras. Desde MVP hasta plataformas complejas con autenticación y dashboards.",
-    features: ["Arquitectura escalable", "API REST", "Autenticación", "Dashboard personalizado"]
+    features: ["Arquitectura escalable", "API REST", "Autenticación", "Dashboard"],
+    bg: "bg-ink",
+    accent: "text-yellow"
   }
 ];
 ---
 
-<section id="servicios" class="bg-ink2 py-24 md:py-36 overflow-hidden">
-  <div class="max-w-[1600px] mx-auto px-6 md:px-10 lg:px-16">
+<section id="servicios" class="bg-ivory2 py-24 md:py-36 overflow-hidden">
+  <div class="max-w-[1600px] mx-auto px-8 md:px-16 lg:px-28">
 
     <!-- Header -->
     <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-16 md:mb-20">
       <div>
         <p class="label text-muted mb-4 reveal-fast">Servicios</p>
-        <h2 class="heading-display font-serif text-[clamp(2.5rem,_6vw,_5.5rem)] text-parchment reveal" style="transition-delay:0.1s">
+        <h2 class="font-display italic font-black text-[clamp(2.5rem,_6vw,_5.5rem)] text-ink leading-[0.93] reveal" style="transition-delay:0.1s">
           Más allá de las<br>
-          <em class="text-lime not-italic">landing pages.</em>
+          <span class="text-blue">landing pages.</span>
         </h2>
       </div>
       <p class="text-muted text-sm max-w-xs leading-relaxed reveal-fast" style="transition-delay:0.2s">
@@ -38,34 +44,34 @@ const services = [
       </p>
     </div>
 
-    <!-- Service cards -->
-    <div class="grid md:grid-cols-3 gap-px bg-subtle">
+    <!-- Service blocks -->
+    <div class="grid md:grid-cols-3 gap-4">
       {services.map((service, i) => (
         <div
-          class={`group bg-ink2 p-8 md:p-10 hover:bg-ink3 transition-colors duration-300 flex flex-col gap-8 reveal`}
+          class={`group ${service.bg} p-8 md:p-10 flex flex-col gap-8 hover:-rotate-[0.5deg] hover:shadow-xl transition-all duration-300 reveal`}
           style={`transition-delay:${i * 0.12}s`}
         >
           <!-- Number + title -->
           <div>
-            <p class="label text-lime mb-4">{service.number}</p>
-            <h3 class="font-serif text-2xl md:text-3xl text-parchment leading-tight">
+            <p class={`label mb-4 ${service.accent}`}>{service.number}</p>
+            <h3 class={`font-sans font-extrabold text-2xl md:text-3xl leading-tight ${service.bg === 'bg-ink' ? 'text-ivory' : 'text-ink'}`}>
               {service.title}
             </h3>
           </div>
 
-          <!-- Divider line -->
-          <div class="w-full h-px bg-parchment/10 group-hover:bg-lime/30 transition-colors duration-300"></div>
+          <!-- Divider -->
+          <div class={`w-full h-0.5 ${service.bg === 'bg-yellow' ? 'bg-ink/15' : service.bg === 'bg-ink' ? 'bg-ivory/10' : 'bg-soft'} group-hover:w-1/2 transition-all duration-500`}></div>
 
           <!-- Description -->
-          <p class="text-muted text-sm leading-relaxed flex-1">
+          <p class={`text-sm leading-relaxed flex-1 ${service.bg === 'bg-ink' ? 'text-ivory/60' : 'text-muted'}`}>
             {service.description}
           </p>
 
           <!-- Features -->
           <ul class="grid grid-cols-2 gap-2">
             {service.features.map(f => (
-              <li class="flex items-center gap-2 text-xs text-parchment/60">
-                <span class="w-1 h-1 rounded-full bg-lime flex-shrink-0"></span>
+              <li class={`flex items-center gap-2 text-xs ${service.bg === 'bg-ink' ? 'text-ivory/50' : 'text-ink/50'}`}>
+                <span class={`w-1.5 h-1.5 flex-shrink-0 ${service.accent.replace('text-', 'bg-')}`}></span>
                 {f}
               </li>
             ))}
