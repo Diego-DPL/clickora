@@ -86,6 +86,12 @@ const { title, description } = Astro.props;
             mouseX = e.clientX;
             mouseY = e.clientY;
             dot.style.transform = `translate(calc(${mouseX}px - 50%), calc(${mouseY}px - 50%))`;
+
+            // Detecta si el cursor está sobre una sección azul
+            const els = document.elementsFromPoint(mouseX, mouseY);
+            const onBlue = els.some(el => el.classList.contains('bg-blue'));
+            dot.classList.toggle('on-blue', onBlue);
+            ring.classList.toggle('on-blue', onBlue);
           });
 
           function animateRing() {

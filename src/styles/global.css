@@ -72,6 +72,13 @@ body::after {
 
   #cursor-dot.hovering  { width: 16px; height: 16px; background: #FFE500; }
   #cursor-ring.hovering { width: 60px; height: 60px; border-color: rgba(255, 229, 0, 0.4); }
+
+  /* Cursor sobre sección azul → amarillo */
+  #cursor-dot.on-blue  { background: #FFE500; }
+  #cursor-ring.on-blue { border-color: rgba(255, 229, 0, 0.45); }
+
+  #cursor-dot.on-blue.hovering  { background: #FFE500; }
+  #cursor-ring.on-blue.hovering { border-color: rgba(255, 229, 0, 0.5); }
 }
 
 /* === SCROLL REVEAL === */
