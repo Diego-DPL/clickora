@@ -1,44 +1,83 @@
-<div id="cookie-banner" class="fixed bottom-0 left-0 right-0 bg-slate-900 border-t border-slate-700 p-4 transform translate-y-full transition-transform duration-300 z-50">
-  <div class="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
-    <p class="text-slate-300 text-sm text-center sm:text-left">
-      Utilizamos cookies propias y de terceros para analizar nuestros servicios y mejorar tu experiencia. 
-      Puedes aceptar todas las cookies pulsando el botón "Aceptar" o configurarlas en nuestra 
-      <a href="/cookies" class="text-brand-400 hover:text-brand-300 underline">Política de Cookies</a>.
+---
+---
+
+<div
+  id="cookie-banner"
+  class="fixed bottom-0 left-0 right-0 z-[9990] translate-y-full transition-transform duration-500"
+  style="background:#0F0F0F; border-top: 1px solid rgba(255,255,255,0.1);"
+  role="dialog"
+  aria-label="Aviso de cookies"
+  aria-live="polite"
+>
+  <div class="max-w-[1600px] mx-auto px-6 md:px-10 py-5 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-5">
+    <p class="text-sm leading-relaxed max-w-2xl" style="color: rgba(250,250,245,0.65)">
+      Usamos cookies propias y de terceros (Google Analytics) para analizar el tráfico y mejorar la web.
+      Puedes aceptarlas o rechazarlas. Más info en nuestra
+      <a href="/cookies" class="underline" style="color:#FFE500">Política de Cookies</a>.
     </p>
-    <div class="flex gap-4">
-      <button id="accept-cookies" class="px-6 py-2 bg-brand-500 hover:bg-brand-600 text-white rounded-lg transition-colors text-sm font-semibold">
-        Aceptar
-      </button>
-      <button id="reject-cookies" class="px-6 py-2 bg-slate-800 hover:bg-slate-700 text-slate-300 border border-slate-600 rounded-lg transition-colors text-sm">
+    <div class="flex gap-3 flex-shrink-0">
+      <button
+        id="reject-cookies"
+        class="px-5 py-2.5 text-xs font-bold uppercase tracking-widest transition-colors duration-200"
+        style="border: 1.5px solid rgba(250,250,245,0.2); color: rgba(250,250,245,0.6);"
+      >
         Rechazar
+      </button>
+      <button
+        id="accept-cookies"
+        class="px-5 py-2.5 text-xs font-bold uppercase tracking-widest transition-colors duration-200"
+        style="background:#FFE500; color:#0F0F0F;"
+      >
+        Aceptar
       </button>
     </div>
   </div>
 </div>
 
 <script>
-  const banner = document.getElementById('cookie-banner');
+  const banner    = document.getElementById('cookie-banner');
   const acceptBtn = document.getElementById('accept-cookies');
   const rejectBtn = document.getElementById('reject-cookies');
 
-  // Check if user has already made a choice
-  const cookieChoice = localStorage.getItem('clickora_cookies');
+  // Helper para llamar a gtag de forma segura
+  function grantConsent() {
+    if (typeof window.gtag === 'function') {
+      window.gtag('consent', 'update', {
+        analytics_storage:  'granted',
+        ad_storage:         'granted',
+        ad_user_data:       'granted',
+        ad_personalization: 'granted'
+      });
+      window.gtag('event', 'page_view');
+    }
+  }
 
-  if (!cookieChoice) {
-    // Show banner after a short delay
-    setTimeout(() => {
-      banner?.classList.remove('translate-y-full');
-    }, 1000);
+  function denyConsent() {
+    if (typeof window.gtag === 'function') {
+      window.gtag('consent', 'update', {
+        analytics_storage:  'denied',
+        ad_storage:         'denied',
+        ad_user_data:       'denied',
+        ad_personalization: 'denied'
+      });
+    }
+  }
+
+  // Mostrar el banner si el usuario aún no ha decidido
+  const choice = localStorage.getItem('clickora_cookies');
+  if (!choice) {
+    setTimeout(() => banner?.classList.remove('translate-y-full'), 1200);
   }
 
   acceptBtn?.addEventListener('click', () => {
     localStorage.setItem('clickora_cookies', 'accepted');
     banner?.classList.add('translate-y-full');
-    // Here you would typically initialize analytics
+    grantConsent();
   });
 
   rejectBtn?.addEventListener('click', () => {
     localStorage.setItem('clickora_cookies', 'rejected');
     banner?.classList.add('translate-y-full');
+    denyConsent();
   });
 </script>

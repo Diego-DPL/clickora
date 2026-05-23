@@ -8,6 +8,10 @@ interface Props {
 }
 
 const { title, description } = Astro.props;
+
+const GA_ID = 'G-2RNKJVV3SK';
+// GSC: cuando tengas el código de Search Console, descomenta la línea de abajo
+// const GSC_VERIFICATION = 'PEGA_AQUI_EL_CONTENIDO_DEL_META_TAG';
 ---
 
 <!doctype html>
@@ -17,6 +21,9 @@ const { title, description } = Astro.props;
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content={description} />
     <meta name="generator" content={Astro.generator} />
+
+    <!-- GSC: descomenta cuando tengas el código de verificación -->
+    <!-- <meta name="google-site-verification" content={GSC_VERIFICATION} /> -->
 
     <meta name="keywords" content="landing page fisioterapia, landing page abogados, web organización eventos, diseño web españa, crear landing page conversión, agencia marketing digital, clickora, web corporativa rápida, desarrollo web seo" />
     <meta name="author" content="Clickora - Diego DPL" />
@@ -42,6 +49,49 @@ const { title, description } = Astro.props;
     <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,700;0,9..144,900;1,9..144,300;1,9..144,400;1,9..144,700;1,9..144,900&family=Syne:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
 
     <title>{title}</title>
+
+    <!-- ═══════════════════════════════════════════════
+         GOOGLE ANALYTICS 4 — Consent Mode v2 (GDPR)
+         ══════════════════════════════════════════════ -->
+
+    <!-- 1. Carga el script de gtag lo antes posible -->
+    <script async src={`https://www.googletagmanager.com/gtag/js?id=${GA_ID}`}></script>
+
+    <!-- 2. Inicializa con consent DENEGADO por defecto.
+         Solo se activa cuando el usuario acepta las cookies. -->
+    <script define:vars={{ GA_ID }}>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() { dataLayer.push(arguments); }
+
+      // Consent Mode v2: todo denegado hasta que el usuario decida
+      gtag('consent', 'default', {
+        analytics_storage:   'denied',
+        ad_storage:          'denied',
+        ad_user_data:        'denied',
+        ad_personalization:  'denied',
+        wait_for_update:     500
+      });
+
+      gtag('js', new Date());
+      gtag('config', GA_ID, {
+        send_page_view: false,        // Lo enviamos solo tras consentimiento
+        anonymize_ip:   true,
+        cookie_flags:   'SameSite=None;Secure'
+      });
+
+      // Si el usuario ya aceptó en una visita anterior, activa inmediatamente
+      if (localStorage.getItem('clickora_cookies') === 'accepted') {
+        gtag('consent', 'update', {
+          analytics_storage:  'granted',
+          ad_storage:         'granted',
+          ad_user_data:       'granted',
+          ad_personalization: 'granted'
+        });
+        gtag('event', 'page_view');
+      }
+    </script>
+
+    <!-- ═══════════════════════════════════════════════ -->
 
     <script type="application/ld+json">
       {
@@ -87,12 +137,11 @@ const { title, description } = Astro.props;
             mouseY = e.clientY;
             dot.style.transform = `translate(calc(${mouseX}px - 50%), calc(${mouseY}px - 50%))`;
 
-            // Detecta fondo bajo el cursor y ajusta color
             const els      = document.elementsFromPoint(mouseX, mouseY);
             const onBlue   = els.some(el => el.classList.contains('bg-blue'));
             const onYellow = !onBlue && els.some(el => el.classList.contains('bg-yellow'));
-            dot.classList.toggle('on-blue',   onBlue);
-            ring.classList.toggle('on-blue',  onBlue);
+            dot.classList.toggle('on-blue',    onBlue);
+            ring.classList.toggle('on-blue',   onBlue);
             dot.classList.toggle('on-yellow',  onYellow);
             ring.classList.toggle('on-yellow', onYellow);
           });
