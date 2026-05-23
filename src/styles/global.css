@@ -79,6 +79,13 @@ body::after {
 
   #cursor-dot.on-blue.hovering  { background: #FFE500; }
   #cursor-ring.on-blue.hovering { border-color: rgba(255, 229, 0, 0.5); }
+
+  /* Cursor sobre fondo amarillo → tinta oscura */
+  #cursor-dot.on-yellow  { background: #0F0F0F; }
+  #cursor-ring.on-yellow { border-color: rgba(15, 15, 15, 0.35); }
+
+  #cursor-dot.on-yellow.hovering  { background: #0032FF; }
+  #cursor-ring.on-yellow.hovering { border-color: rgba(0, 50, 255, 0.4); }
 }
 
 /* === SCROLL REVEAL === */
