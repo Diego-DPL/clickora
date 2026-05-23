@@ -1,42 +1,40 @@
 ---
-const THUM = "https://image.thum.io/get/width/1400/crop/900/noanimate/allowJar/";
-
 const projects = [
   {
     index: "01",
     title: "Zypace",
     category: "App web · IA · Running",
     url: "https://zypace.com",
-    screenshot: `${THUM}https://zypace.com`,
+    image: "/images/portfolio/render_zypace.webp",
     tags: ["React", "Strava API", "OpenAI"],
     desc: "Entrenador personal de running con IA que analiza tus rutas de Strava y genera planes de entrenamiento adaptados a tu nivel.",
     overlayBg: "bg-blue",
     overlayText: "text-ivory",
-    featured: true
+    offset: "md:mt-0"
   },
   {
     index: "02",
     title: "Raíz",
     category: "Diseño web · Identidad · Memoria",
     url: "https://raiz-b7d0a.web.app",
-    screenshot: `${THUM}https://raiz-b7d0a.web.app`,
+    image: "/images/portfolio/render_raiz.webp",
     tags: ["Firebase", "Diseño sensible", "Identidad visual"],
-    desc: "Espacio digital de memoria y dignidad para testimonios sobre duelo perinatal. Diseño muy cuidado y emocionalmente consciente.",
+    desc: "Espacio digital de memoria y dignidad para testimonios sobre duelo perinatal. Diseño emocionalmente consciente y muy cuidado.",
     overlayBg: "bg-ink",
     overlayText: "text-ivory",
-    featured: false
+    offset: "md:mt-16"
   },
   {
     index: "03",
     title: "FisioClinic Murcia",
     category: "Landing Page · SEO · Salud",
     url: "https://fisioclinicmurcia.com",
-    screenshot: `${THUM}https://fisioclinicmurcia.com`,
+    image: "/images/portfolio/render_fisioclinic.webp",
     tags: ["Astro", "SEO Local", "Conversión"],
     desc: "Landing page de alta conversión para clínica de fisioterapia en Murcia. Reservas online y posicionamiento local.",
     overlayBg: "bg-yellow",
     overlayText: "text-ink",
-    featured: false
+    offset: "md:mt-8"
   }
 ];
 ---
@@ -45,7 +43,7 @@ const projects = [
   <div class="max-w-[1600px] mx-auto px-8 md:px-16 lg:px-28">
 
     <!-- Header -->
-    <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-14 md:mb-20">
+    <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-16 md:mb-24">
       <div>
         <p class="label text-muted mb-4 reveal-fast">Proyectos reales</p>
         <h2 class="font-display italic font-black text-[clamp(2.5rem,_6vw,_5.5rem)] text-ink leading-[0.93] reveal" style="transition-delay:0.1s">
@@ -58,115 +56,58 @@ const projects = [
       </p>
     </div>
 
-    <!-- Project grid: featured full-width + two halves -->
-    <div class="flex flex-col gap-4">
+    <!-- Three-column vertical gallery with staggered offsets -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 items-start">
+      {projects.map((p, i) => (
+        <a
+          href={p.url}
+          target="_blank"
+          rel="noopener noreferrer"
+          class={`group relative flex flex-col gap-5 ${p.offset} reveal`}
+          style={`transition-delay:${i * 0.13}s`}
+        >
+          <!-- Image card -->
+          <div class="relative overflow-hidden aspect-[3/4]">
+            <img
+              src={p.image}
+              alt={`Render del proyecto ${p.title}`}
+              loading="lazy"
+              decoding="async"
+              width="1792"
+              height="2400"
+              class="w-full h-full object-cover object-top transition-transform duration-700 ease-out group-hover:scale-[1.04]"
+            />
 
-      <!-- Project 01 — Featured, full width -->
-      {(() => {
-        const p = projects[0];
-        return (
-          <a
-            href={p.url}
-            target="_blank"
-            rel="noopener noreferrer"
-            class="group relative block overflow-hidden reveal"
-            style="transition-delay:0.1s"
-          >
-            <!-- Screenshot -->
-            <div class="overflow-hidden aspect-[16/8] md:aspect-[16/7] bg-ivory2">
-              <img
-                src={p.screenshot}
-                alt={`Captura de ${p.title}`}
-                loading="lazy"
-                decoding="async"
-                class="w-full h-full object-cover object-top transition-transform duration-700 ease-out group-hover:scale-[1.03]"
-              />
+            <!-- Hover overlay slides up from bottom -->
+            <div class={`absolute inset-0 ${p.overlayBg} flex flex-col justify-end p-6 md:p-8 translate-y-full group-hover:translate-y-0 transition-transform duration-500 ease-out`}>
+              <p class={`label mb-3 ${p.overlayText} opacity-60`}>{p.category}</p>
+              <p class={`text-sm leading-relaxed mb-5 ${p.overlayText} opacity-85`}>{p.desc}</p>
+              <span class={`inline-flex items-center gap-2 font-bold text-xs uppercase tracking-widest ${p.overlayText}`}>
+                Ver proyecto
+                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/>
+                </svg>
+              </span>
             </div>
+          </div>
 
-            <!-- Overlay on hover -->
-            <div class={`absolute inset-0 ${p.overlayBg} opacity-0 group-hover:opacity-90 transition-opacity duration-400 flex items-end`}>
-              <div class="p-8 md:p-12 w-full flex items-end justify-between gap-6">
-                <div>
-                  <p class={`label mb-3 ${p.overlayText} opacity-60`}>{p.category}</p>
-                  <p class={`text-sm leading-relaxed max-w-md ${p.overlayText} opacity-80`}>{p.desc}</p>
-                </div>
-                <span class={`hidden md:flex items-center gap-2 font-bold text-sm uppercase tracking-widest flex-shrink-0 ${p.overlayText}`}>
-                  Ver proyecto
-                  <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/>
-                  </svg>
-                </span>
-              </div>
+          <!-- Info below image -->
+          <div>
+            <div class="flex items-baseline gap-3 mb-2">
+              <span class="label text-muted">{p.index}</span>
+              <h3 class="font-sans font-extrabold text-lg text-ink group-hover:text-blue transition-colors duration-300">
+                {p.title}
+              </h3>
             </div>
-
-            <!-- Always-visible project info bar -->
-            <div class="flex items-center justify-between gap-6 pt-5 pb-1">
-              <div class="flex items-baseline gap-4">
-                <span class="label text-muted">{p.index}</span>
-                <h3 class="font-sans font-extrabold text-xl md:text-2xl text-ink group-hover:text-blue transition-colors duration-300">{p.title}</h3>
-                <span class="hidden sm:inline label text-muted">{p.category}</span>
-              </div>
-              <div class="hidden md:flex flex-wrap gap-2">
-                {p.tags.map(tag => (
-                  <span class="label text-muted border border-soft px-3 py-1">{tag}</span>
-                ))}
-              </div>
+            <div class="flex flex-wrap gap-1.5">
+              {p.tags.map(tag => (
+                <span class="label text-muted border border-soft px-2.5 py-1">{tag}</span>
+              ))}
             </div>
-          </a>
-        );
-      })()}
-
-      <!-- Projects 02 + 03 — Side by side -->
-      <div class="grid md:grid-cols-2 gap-4">
-        {projects.slice(1).map((p, i) => (
-          <a
-            href={p.url}
-            target="_blank"
-            rel="noopener noreferrer"
-            class="group relative block overflow-hidden reveal"
-            style={`transition-delay:${0.2 + i * 0.12}s`}
-          >
-            <!-- Screenshot -->
-            <div class="overflow-hidden aspect-[4/3] bg-ivory2">
-              <img
-                src={p.screenshot}
-                alt={`Captura de ${p.title}`}
-                loading="lazy"
-                decoding="async"
-                class="w-full h-full object-cover object-top transition-transform duration-700 ease-out group-hover:scale-[1.04]"
-              />
-            </div>
-
-            <!-- Overlay on hover -->
-            <div class={`absolute inset-0 ${p.overlayBg} opacity-0 group-hover:opacity-90 transition-opacity duration-400 flex items-end`}>
-              <div class="p-6 md:p-8 w-full">
-                <p class={`label mb-2 ${p.overlayText} opacity-60`}>{p.category}</p>
-                <p class={`text-sm leading-relaxed ${p.overlayText} opacity-80`}>{p.desc}</p>
-                <span class={`inline-flex items-center gap-2 font-bold text-xs uppercase tracking-widest mt-4 ${p.overlayText}`}>
-                  Ver proyecto
-                  <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/>
-                  </svg>
-                </span>
-              </div>
-            </div>
-
-            <!-- Info bar -->
-            <div class="flex items-center justify-between gap-4 pt-4 pb-1">
-              <div class="flex items-baseline gap-3">
-                <span class="label text-muted">{p.index}</span>
-                <h3 class="font-sans font-extrabold text-lg md:text-xl text-ink group-hover:text-blue transition-colors duration-300">{p.title}</h3>
-              </div>
-              <div class="hidden sm:flex flex-wrap gap-1.5">
-                {p.tags.slice(0, 2).map(tag => (
-                  <span class="label text-muted border border-soft px-2 py-0.5">{tag}</span>
-                ))}
-              </div>
-            </div>
-          </a>
-        ))}
-      </div>
-
+          </div>
+        </a>
+      ))}
     </div>
+
   </div>
 </section>
