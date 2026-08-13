@@ -1,72 +1,145 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import Navbar from '../components/Navbar.astro';
+import Footer from '../components/Footer.astro';
+
+const sections = [
+  {
+    number: "01",
+    title: "Responsable del Tratamiento",
+    list: [
+      ["Identidad", "Diego (Clickora)"],
+      ["Dirección", "España"],
+      ["Email", "info@clickora.es"],
+    ],
+  },
+  {
+    number: "02",
+    title: "Finalidad del Tratamiento",
+    body: "Tratamos la información que nos facilitan las personas interesadas con el fin de:",
+    items: [
+      "Gestionar el envío de la información que nos soliciten.",
+      "Prestar los servicios contratados (desarrollo web, mantenimiento, etc.).",
+      "Enviar comunicaciones comerciales sobre nuestros servicios, siempre que el usuario haya dado su consentimiento expreso.",
+    ],
+  },
+  {
+    number: "03",
+    title: "Legitimación",
+    body: "La base legal para el tratamiento de los datos del usuario es:",
+    items: [
+      "La ejecución de un contrato o precontrato para la prestación de servicios.",
+      "El consentimiento del interesado para el envío de comunicaciones o respuesta a consultas.",
+    ],
+  },
+  {
+    number: "04",
+    title: "Destinatarios",
+    body: "Los datos no se cederán a terceros, salvo obligación legal o proveedores de servicios necesarios para la actividad (por ejemplo, servicios de hosting o email marketing), que actúan como encargados del tratamiento.",
+  },
+  {
+    number: "05",
+    title: "Derechos",
+    body: "Cualquier persona tiene derecho a obtener confirmación sobre si en Clickora estamos tratando datos personales que les conciernan o no. Las personas interesadas tienen derecho a:",
+    items: [
+      "Acceder a sus datos personales.",
+      "Solicitar la rectificación de los datos inexactos.",
+      "Solicitar su supresión cuando, entre otros motivos, los datos ya no sean necesarios para los fines que fueron recogidos.",
+      "Solicitar la limitación del tratamiento de sus datos.",
+      "Oponerse al tratamiento de sus datos.",
+      "Solicitar la portabilidad de los datos.",
+    ],
+    footer: "Puede ejercer estos derechos enviando un correo electrónico a info@clickora.es.",
+  },
+];
 ---
 
-<Layout title="Política de Privacidad - Clickora" description="Política de Privacidad de Clickora">
-  <main class="pt-32 pb-20 px-4 sm:px-6 lg:px-8 max-w-4xl mx-auto text-slate-300">
-    <h1 class="text-3xl md:text-4xl font-bold text-white mb-8">Política de Privacidad</h1>
-    
-    <div class="prose prose-invert max-w-none space-y-6">
-      <p class="text-lg">
-        En Clickora, nos tomamos muy en serio la privacidad de nuestros usuarios. Esta Política de Privacidad describe cómo recopilamos, usamos y protegemos tu información personal.
+<Layout
+  title="Política de Privacidad | Clickora"
+  description="Política de Privacidad de Clickora. Cómo recopilamos, usamos y protegemos tu información personal conforme al RGPD y la LOPDGDD."
+>
+  <Navbar />
+
+  <main class="bg-ivory pt-32 md:pt-40 pb-24 md:pb-32">
+
+    <!-- Editorial header -->
+    <header class="max-w-[1400px] mx-auto px-8 md:px-16 lg:px-28 mb-20 md:mb-28">
+      <p class="label text-muted mb-6">Documento legal · Última actualización 8 de junio de 2026</p>
+      <h1 class="font-display italic font-black text-[clamp(3rem,_9vw,_7.5rem)] text-ink leading-[0.9]">
+        Política de<br>
+        <span class="text-blue">Privacidad.</span>
+      </h1>
+      <p class="text-ink/70 text-base leading-relaxed max-w-xl mt-8">
+        En Clickora nos tomamos muy en serio la privacidad de nuestros usuarios. Este documento describe cómo recopilamos, usamos y protegemos tu información personal.
       </p>
+    </header>
 
-      <section>
-        <h2 class="text-xl font-semibold text-white mb-4">1. Responsable del Tratamiento</h2>
-        <ul class="list-disc pl-5 mt-2 space-y-2">
-          <li><strong>Identidad:</strong> Diego (Clickora)</li>
-          <li><strong>Dirección:</strong> España</li>
-          <li><strong>Email:</strong> info@clickora.es</li>
-        </ul>
-      </section>
+    <!-- Sections -->
+    <div class="max-w-[1400px] mx-auto px-8 md:px-16 lg:px-28">
+      <div class="grid md:grid-cols-12 gap-x-12 gap-y-20">
 
-      <section>
-        <h2 class="text-xl font-semibold text-white mb-4">2. Finalidad del Tratamiento</h2>
-        <p>
-          Tratamos la información que nos facilitan las personas interesadas con el fin de:
-        </p>
-        <ul class="list-disc pl-5 mt-2 space-y-2">
-          <li>Gestionar el envío de la información que nos soliciten.</li>
-          <li>Prestar los servicios contratados (desarrollo web, mantenimiento, etc.).</li>
-          <li>Enviar comunicaciones comerciales sobre nuestros servicios (si ha dado su consentimiento).</li>
-        </ul>
-      </section>
+        {sections.map(section => (
+          <article class="md:col-start-3 md:col-span-9 grid grid-cols-12 gap-x-6 border-t border-soft pt-10">
 
-      <section>
-        <h2 class="text-xl font-semibold text-white mb-4">3. Legitimación</h2>
-        <p>
-          La base legal para el tratamiento de sus datos es:
-        </p>
-        <ul class="list-disc pl-5 mt-2 space-y-2">
-          <li>La ejecución de un contrato o precontrato para la prestación de servicios.</li>
-          <li>El consentimiento del interesado para el envío de comunicaciones o respuesta a consultas.</li>
-        </ul>
-      </section>
+            <!-- Number -->
+            <div class="col-span-12 md:col-span-2 mb-4 md:mb-0">
+              <span class="font-display italic font-black text-3xl text-blue leading-none">
+                {section.number}
+              </span>
+            </div>
 
-      <section>
-        <h2 class="text-xl font-semibold text-white mb-4">4. Destinatarios</h2>
-        <p>
-          Los datos no se cederán a terceros, salvo obligación legal o proveedores de servicios necesarios para la actividad (ej. servicios de hosting, email marketing) que actúan como encargados del tratamiento.
-        </p>
-      </section>
+            <!-- Content -->
+            <div class="col-span-12 md:col-span-10">
+              <h2 class="font-sans font-extrabold text-xl md:text-2xl text-ink mb-5 leading-tight">
+                {section.title}
+              </h2>
 
-      <section>
-        <h2 class="text-xl font-semibold text-white mb-4">5. Derechos</h2>
-        <p>
-          Cualquier persona tiene derecho a obtener confirmación sobre si en Clickora estamos tratando datos personales que les conciernan, o no. Las personas interesadas tienen derecho a:
-        </p>
-        <ul class="list-disc pl-5 mt-2 space-y-2">
-          <li>Acceder a sus datos personales.</li>
-          <li>Solicitar la rectificación de los datos inexactos.</li>
-          <li>Solicitar su supresión cuando, entre otros motivos, los datos ya no sean necesarios para los fines que fueron recogidos.</li>
-          <li>Solicitar la limitación del tratamiento de sus datos.</li>
-          <li>Oponerse al tratamiento de sus datos.</li>
-          <li>Solicitar la portabilidad de los datos.</li>
-        </ul>
-        <p class="mt-4">
-          Puede ejercer estos derechos enviando un correo electrónico a info@clickora.es.
-        </p>
-      </section>
+              {section.body && (
+                <p class="text-ink/70 text-base leading-relaxed max-w-2xl">
+                  {section.body}
+                </p>
+              )}
+
+              {section.list && (
+                <dl class="mt-6 border border-soft divide-y divide-[#E5E1D8] max-w-2xl">
+                  {section.list.map(([key, value]) => (
+                    <div class="flex flex-col sm:flex-row sm:items-baseline gap-1 sm:gap-6 px-5 py-4">
+                      <dt class="label text-muted sm:w-40 flex-shrink-0">{key}</dt>
+                      <dd class="text-ink text-sm font-semibold">{value}</dd>
+                    </div>
+                  ))}
+                </dl>
+              )}
+
+              {section.items && (
+                <ul class="mt-6 space-y-3 max-w-2xl">
+                  {section.items.map(item => (
+                    <li class="flex items-start gap-3 text-ink/70 text-base leading-relaxed">
+                      <span class="w-1.5 h-1.5 bg-blue flex-shrink-0 mt-2.5"></span>
+                      <span>{item}</span>
+                    </li>
+                  ))}
+                </ul>
+              )}
+
+              {section.footer && (
+                <p class="text-ink/70 text-base leading-relaxed mt-6 max-w-2xl">
+                  {section.footer}
+                </p>
+              )}
+            </div>
+          </article>
+        ))}
+
+        <!-- Back to home -->
+        <div class="md:col-start-3 md:col-span-9 mt-12 pt-10 border-t border-soft">
+          <a href="/" class="btn-outline">← Volver al inicio</a>
+        </div>
+
+      </div>
     </div>
+
   </main>
+
+  <Footer />
 </Layout>
