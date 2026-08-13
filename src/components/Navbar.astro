@@ -1,19 +1,27 @@
 ---
+// Rutas absolutas a propósito: con anclas relativas (#servicios) el menú se
+// quedaba muerto en cualquier página que no fuera la home.
+const links = [
+  { href: '/#servicios', label: 'Servicios' },
+  { href: '/casos/', label: 'Casos' },
+  { href: '/diseno-web-murcia/', label: 'Murcia' },
+  { href: '/#precios', label: 'Precios' },
+];
 ---
 
 <header id="navbar" class="fixed top-0 left-0 right-0 z-50 transition-all duration-500">
   <div class="flex items-center justify-between px-6 md:px-10 h-16 md:h-20">
 
     <!-- Logo -->
-    <a href="#hero" class="font-sans font-bold text-xl md:text-2xl text-ink hover:text-blue transition-colors duration-300 tracking-tight">
+    <a href="/" class="font-sans font-bold text-xl md:text-2xl text-ink hover:text-blue transition-colors duration-300 tracking-tight">
       Clickora<span class="text-blue">™</span>
     </a>
 
     <!-- Desktop nav -->
     <nav class="hidden md:flex items-center gap-10">
-      <a href="#servicios" class="label text-muted hover:text-ink transition-colors duration-200">Servicios</a>
-      <a href="#ventajas"  class="label text-muted hover:text-ink transition-colors duration-200">Ventajas</a>
-      <a href="#precios"   class="label text-muted hover:text-ink transition-colors duration-200">Precios</a>
+      {links.map(link => (
+        <a href={link.href} class="label text-muted hover:text-ink transition-colors duration-200">{link.label}</a>
+      ))}
       <a
         href="https://wa.me/34608008081?text=Hola,%20quiero%20una%20propuesta%20para%20mi%20web"
         target="_blank"
@@ -35,9 +43,9 @@
   <!-- Mobile menu -->
   <div id="nav-mobile" class="hidden md:hidden bg-ivory border-t border-soft">
     <nav class="flex flex-col px-6 py-6 gap-5">
-      <a href="#servicios" class="label text-muted hover:text-blue transition-colors" data-mobile-link>Servicios</a>
-      <a href="#ventajas"  class="label text-muted hover:text-blue transition-colors" data-mobile-link>Ventajas</a>
-      <a href="#precios"   class="label text-muted hover:text-blue transition-colors" data-mobile-link>Precios</a>
+      {links.map(link => (
+        <a href={link.href} class="label text-muted hover:text-blue transition-colors" data-mobile-link>{link.label}</a>
+      ))}
       <a
         href="https://wa.me/34608008081?text=Hola,%20quiero%20una%20propuesta%20para%20mi%20web"
         target="_blank"

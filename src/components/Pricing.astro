@@ -1,52 +1,8 @@
 ---
-const plans = [
-  {
-    name: "Starter",
-    price: "299",
-    description: "Para validar tu oferta y empezar a captar leads.",
-    features: [
-      "Landing Page One-Page",
-      "Diseño profesional",
-      "Integración WhatsApp",
-      "Formulario de contacto",
-      "Adaptada a móviles",
-      "Carga ultrarrápida",
-      "Entrega en 2 semanas"
-    ],
-    highlighted: false
-  },
-  {
-    name: "Growth",
-    price: "499",
-    description: "Para negocios que quieren escalar y medir resultados con exactitud.",
-    features: [
-      "Todo lo del Starter",
-      "Copywriting persuasivo",
-      "Pixel & Analytics listos",
-      "SEO técnico optimizado",
-      "Integración CRM básico",
-      "Página de Gracias",
-      "Entrega prioritaria"
-    ],
-    highlighted: true,
-    badge: "Más popular"
-  },
-  {
-    name: "Pro",
-    price: "899",
-    description: "La solución completa para marcas que compiten en alto nivel.",
-    features: [
-      "Todo lo del Growth",
-      "Estrategia de conversión",
-      "Diseño totalmente a medida",
-      "A/B Testing en titulares",
-      "Automatización de emails",
-      "Soporte 30 días",
-      "Revisión de campañas Ads"
-    ],
-    highlighted: false
-  }
-];
+// Los planes viven en src/data/business.ts: el mismo dato alimenta esta sección
+// y el JSON-LD del Layout, para que precio visible y precio estructurado no
+// puedan divergir.
+import { PLANS as plans, MAINTENANCE } from '../data/business';
 ---
 
 <section id="precios" class="bg-ivory py-24 md:py-36 overflow-hidden">
@@ -124,9 +80,9 @@ const plans = [
       <div class="flex flex-col md:flex-row items-start md:items-center justify-between gap-8">
         <div>
           <p class="label text-yellow mb-3">Complemento opcional</p>
-          <h3 class="font-sans font-extrabold text-2xl text-ivory mb-2">Mantenimiento VIP</h3>
+          <h3 class="font-sans font-extrabold text-2xl text-ivory mb-2">{MAINTENANCE.name}</h3>
           <p class="text-ivory/60 text-sm leading-relaxed max-w-xl">
-            Por <strong class="text-ivory">49€/mes</strong> nos encargamos del hosting, dominio, seguridad y actualizaciones de texto. Sin permanencia.
+            Por <strong class="text-ivory">{MAINTENANCE.price}€/mes</strong> nos encargamos del hosting, dominio, seguridad y actualizaciones de texto. Sin permanencia.
           </p>
           <div class="flex flex-wrap gap-6 mt-4 text-xs text-ivory/40">
             <span class="flex items-center gap-1.5"><span class="w-1.5 h-1.5 bg-yellow"></span>Hosting incluido</span>

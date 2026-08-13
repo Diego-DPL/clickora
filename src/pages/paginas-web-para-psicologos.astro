@@ -1,0 +1,210 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Navbar from '../components/Navbar.astro';
+import Footer from '../components/Footer.astro';
+import PageHero from '../components/PageHero.astro';
+import CTASection from '../components/CTASection.astro';
+import FaqBlock from '../components/FaqBlock.astro';
+import { SITE_URL } from '../data/business';
+
+const breadcrumbs = [{ name: 'Webs para psicólogos', path: '/paginas-web-para-psicologos/' }];
+
+const principios = [
+  {
+    n: '01',
+    title: 'Bajar el miedo a dar el primer paso',
+    text: 'Pedir cita con un psicólogo cuesta mucho más que pedirla con un fisio. La web tiene que reducir esa fricción: explicar cómo es una primera sesión, cuánto dura, qué se hace y qué no se hace.',
+  },
+  {
+    n: '02',
+    title: 'Contacto discreto',
+    text: 'Mucha gente consulta desde el móvil sin querer dejar rastro. Un formulario sobrio y una vía directa valen más que un botón enorme de "¡Reserva ya!" que asusta.',
+  },
+  {
+    n: '03',
+    title: 'Tu cara y tu forma de trabajar',
+    text: 'La decisión se toma por afinidad con la persona, no por el listado de terapias. Una foto real y un texto en primera persona hacen más que tres párrafos sobre corrientes teóricas.',
+  },
+  {
+    n: '04',
+    title: 'Una página por motivo de consulta',
+    text: 'Ansiedad, duelo, terapia de pareja, adolescentes. Cada motivo es una búsqueda distinta y merece su propia página: es lo que hace que te encuentren personas que aún no te conocen.',
+  },
+];
+
+const incluye = [
+  'Página por motivo de consulta, que es como busca la gente',
+  'Explicación clara de la primera sesión: duración, precio y formato',
+  'Consulta online y presencial diferenciadas',
+  'Formulario discreto con consentimiento explícito',
+  'Textos en tu voz, en primera persona, sin jerga clínica',
+  'Aviso legal y privacidad preparados para datos de salud mental',
+  'Número de colegiado visible, que es un factor de confianza real',
+  'Diseño sobrio y accesible, legible también en pantallas pequeñas',
+];
+
+const faqs = [
+  {
+    question: '¿Cuánto cuesta la web de un psicólogo o de un gabinete?',
+    answer:
+      'Para una consulta individual que empieza, la web de una página de 299 € suele bastar. Si quieres una página por cada motivo de consulta —que es lo que de verdad trae pacientes nuevos desde Google— lo lógico es el plan de 499 € o el de 899 €. El mantenimiento son 49 € al mes y es opcional.',
+  },
+  {
+    question: '¿Puedo ofrecer terapia online desde la web?',
+    answer:
+      'Sí, y conviene separarlo bien de la presencial: son dos decisiones distintas para el paciente. Se puede integrar el sistema de videollamada y de pago que uses, o dejar la vía de contacto directa para que la primera toma de contacto sea contigo y no con un formulario automático.',
+  },
+  {
+    question: '¿Cómo se trata la confidencialidad en la web?',
+    answer:
+      'Los formularios recogen consentimiento explícito y se avisa de que no deben usarse para contar información clínica. Se entrega la política de privacidad contemplando que tratas datos de categoría especial. Si compartes casos o testimonios, hay que anonimizarlos siempre: es una obligación deontológica, no una recomendación.',
+  },
+  {
+    question: '¿Merece la pena tener blog?',
+    answer:
+      'En psicología, más que en casi cualquier otro sector, sí. La gente busca información sobre lo que le pasa mucho antes de buscar un profesional, y un artículo que explique bien qué es un ataque de ansiedad puede traerte pacientes durante años. Ahora bien, exige constancia: si no vas a poder escribir con regularidad, es mejor invertir ese esfuerzo en las páginas por motivo de consulta.',
+  },
+  {
+    question: '¿Puedo ver algún ejemplo del sector?',
+    answer:
+      'Sí. Además de webs, se ha desarrollado una aplicación de agenda clínica para una consulta de psicología, con gestión de sesiones y datos de pacientes. Es un buen indicador de que se entienden las particularidades del sector: confidencialidad, historiales y la forma real en que funciona una consulta.',
+  },
+];
+
+const serviceSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Service',
+  name: 'Diseño de páginas web para psicólogos y gabinetes de psicología',
+  serviceType: 'Diseño web para el sector salud',
+  provider: { '@id': `${SITE_URL}/#business` },
+  areaServed: [
+    { '@type': 'City', name: 'Murcia' },
+    { '@type': 'Country', name: 'España' },
+  ],
+  audience: { '@type': 'Audience', audienceType: 'Psicólogos y gabinetes de psicología' },
+  description:
+    'Webs para consultas de psicología: páginas por motivo de consulta, contacto discreto, terapia online y textos que reducen el miedo a pedir la primera cita.',
+  url: `${SITE_URL}/paginas-web-para-psicologos/`,
+};
+---
+
+<Layout
+  title="Páginas web para psicólogos y gabinetes | Clickora"
+  description="Diseño web para consultas de psicología: una página por motivo de consulta, contacto discreto, terapia online y textos que ayudan a dar el primer paso. Desde 299 €."
+  breadcrumbs={breadcrumbs}
+>
+  <Navbar />
+
+  <main>
+    <PageHero
+      label="Sector salud · Psicología"
+      titleLines={['Páginas web para', 'psicólogos.']}
+      intro="En psicología la web no vende un servicio: acompaña una decisión difícil. Se diseña para que quien lleva meses dándole vueltas se atreva por fin a escribir."
+      breadcrumbs={breadcrumbs}
+    />
+
+    <section class="bg-ivory2 py-20 md:py-28 overflow-hidden">
+      <div class="max-w-[1600px] mx-auto px-8 md:px-16 lg:px-28">
+        <div class="grid lg:grid-cols-2 gap-12 lg:gap-24 items-start">
+          <h2 class="font-display italic font-black text-[clamp(2rem,_4.5vw,_3.8rem)] text-ink leading-[0.95] reveal">
+            El paciente no duda<br>
+            <span class="text-blue">de ti. Duda de ir.</span>
+          </h2>
+          <div class="flex flex-col gap-5 text-muted text-base leading-relaxed reveal" style="transition-delay:0.15s">
+            <p>
+              Quien entra en la web de un psicólogo suele llevar semanas o meses
+              pensándolo. No está comparando precios: está intentando reunir el valor
+              para escribir un mensaje.
+            </p>
+            <p>
+              Por eso una web de psicología que funciona no grita ni presiona. Explica
+              con calma cómo es la primera sesión, quita de en medio lo que la persona
+              se está imaginando, y deja una vía de contacto que no exija exponerse
+              más de lo necesario.
+            </p>
+            <p>
+              Es un trabajo de tono, no de efectos visuales. Y es exactamente donde
+              fallan las plantillas genéricas del sector salud.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="bg-ivory py-20 md:py-28 overflow-hidden">
+      <div class="max-w-[1600px] mx-auto px-8 md:px-16 lg:px-28">
+        <p class="label text-muted mb-4 reveal-fast">Cómo se plantea</p>
+        <h2 class="font-display italic font-black text-[clamp(2rem,_5vw,_4.2rem)] text-ink leading-[0.95] mb-14 md:mb-20 reveal">
+          Cuatro decisiones<br>
+          <span class="text-blue">que lo cambian todo.</span>
+        </h2>
+
+        <div class="grid md:grid-cols-2 gap-px bg-soft">
+          {principios.map((p, i) => (
+            <div class="bg-ivory p-8 md:p-10 reveal" style={`transition-delay:${i * 0.08}s`}>
+              <p class="label text-blue mb-4">{p.n}</p>
+              <h3 class="font-sans font-extrabold text-lg md:text-xl text-ink mb-4 leading-snug">{p.title}</h3>
+              <p class="text-muted text-sm leading-relaxed">{p.text}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section class="bg-ink py-20 md:py-28 overflow-hidden">
+      <div class="max-w-[1600px] mx-auto px-8 md:px-16 lg:px-28">
+        <div class="grid lg:grid-cols-2 gap-14 lg:gap-24">
+          <div>
+            <p class="label text-yellow mb-4 reveal-fast">Qué incluye</p>
+            <h2 class="font-display italic font-black text-[clamp(2rem,_4.5vw,_3.6rem)] text-ivory leading-[0.95] mb-10 reveal">
+              Pensada para<br>
+              <span class="text-yellow">una consulta.</span>
+            </h2>
+            <ul class="flex flex-col gap-4 reveal" style="transition-delay:0.1s">
+              {incluye.map((item) => (
+                <li class="flex items-start gap-3 text-ivory/70 text-sm leading-relaxed">
+                  <span class="w-1.5 h-1.5 bg-yellow flex-shrink-0 mt-2"></span>
+                  {item}
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <div class="reveal flex flex-col justify-center" style="transition-delay:0.2s">
+            <div class="border-l-2 border-yellow pl-8">
+              <p class="label text-yellow mb-4">Experiencia en el sector</p>
+              <p class="text-ivory/70 text-base leading-relaxed mb-6">
+                Además de webs, se ha desarrollado una aplicación móvil de agenda clínica
+                para una consulta de psicología: gestión de sesiones, fichas de paciente y
+                calendario, funcionando en iOS y Android.
+              </p>
+              <p class="text-ivory/50 text-sm leading-relaxed">
+                Conocer por dentro cómo funciona una consulta cambia las decisiones que se
+                toman al diseñar su web: qué se enseña, qué se protege y por dónde entra
+                de verdad un paciente nuevo.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <FaqBlock
+      faqs={faqs}
+      titleTop="Dudas típicas de"
+      titleBottom="una consulta."
+      bg="bg-ivory2"
+    />
+
+    <CTASection
+      title="¿Hacemos que den"
+      highlight="el primer paso?"
+      text="Cuéntame cómo llegan ahora tus pacientes y te digo qué cambiaría. Primera consulta gratuita y sin compromiso."
+      whatsappMessage="Hola, soy psicólogo/a y quiero información sobre una web para mi consulta"
+    />
+  </main>
+
+  <Footer />
+
+  <script type="application/ld+json" set:html={JSON.stringify(serviceSchema)} />
+</Layout>

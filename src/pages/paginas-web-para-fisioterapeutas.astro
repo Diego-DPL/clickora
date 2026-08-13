@@ -1,0 +1,219 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Navbar from '../components/Navbar.astro';
+import Footer from '../components/Footer.astro';
+import PageHero from '../components/PageHero.astro';
+import CTASection from '../components/CTASection.astro';
+import FaqBlock from '../components/FaqBlock.astro';
+import { SITE_URL } from '../data/business';
+
+const breadcrumbs = [{ name: 'Webs para fisioterapeutas', path: '/paginas-web-para-fisioterapeutas/' }];
+
+const errores = [
+  {
+    n: '01',
+    title: 'La web habla de técnicas, no de dolores',
+    text: 'Nadie busca "terapia manual ortopédica". Buscan "me duele la espalda al levantarme". La web tiene que hablar el idioma del paciente, y luego demostrar la técnica.',
+  },
+  {
+    n: '02',
+    title: 'Pedir cita cuesta tres clics de más',
+    text: 'Si reservar implica buscar el teléfono, apuntarlo y llamar en horario de consulta, la mitad de la gente lo deja para luego. Y luego no vuelve.',
+  },
+  {
+    n: '03',
+    title: 'No se ve quién eres',
+    text: 'La fisioterapia es contacto físico. La gente quiere ver la cara del profesional, la camilla y la sala antes de reservar. Las fotos de banco de imágenes generan justo lo contrario.',
+  },
+  {
+    n: '04',
+    title: 'La web no existe para Google',
+    text: 'Sin ficha de Google actualizada, sin datos de la clínica en el código y sin páginas por servicio, el buscador no tiene forma de saber que existes cuando alguien de tu barrio busca un fisio.',
+  },
+];
+
+const incluye = [
+  'Página por servicio: suelo pélvico, deportiva, punción seca, rehabilitación…',
+  'Reserva de cita visible en todo momento, también desde el móvil',
+  'Contacto por WhatsApp con un toque, sin formularios interminables',
+  'Datos de la clínica marcados para Google: horarios, dirección y teléfono',
+  'Espacio para tus reseñas reales de Google',
+  'Textos que explican qué siente el paciente y cómo se lo resuelves',
+  'Aviso legal, privacidad y cookies adaptados a datos de salud',
+  'Velocidad alta: la mayoría de tus visitas llegan con datos móviles',
+];
+
+const faqs = [
+  {
+    question: '¿Cuánto cuesta la web de una clínica de fisioterapia?',
+    answer:
+      'Una web de una sola página para empezar a captar pacientes parte de 299 €. Lo habitual en una clínica con varios servicios es el plan de 499 €, que incluye copywriting, analítica y SEO técnico, o el de 899 € si se quieren páginas separadas por servicio y estrategia de conversión. El mantenimiento es opcional: 49 € al mes, sin permanencia.',
+  },
+  {
+    question: '¿Puedo tener reserva de cita online integrada?',
+    answer:
+      'Sí. Se puede integrar el sistema de reservas que ya uses, o dejar la vía directa que mejor funciona en clínicas pequeñas: WhatsApp con un mensaje ya escrito. Muchas clínicas descubren que la reserva por WhatsApp les convierte mejor que un calendario complejo, sobre todo en pacientes de más de cincuenta años.',
+  },
+  {
+    question: '¿Qué pasa con la protección de datos de los pacientes?',
+    answer:
+      'La web se entrega con aviso legal, política de privacidad y política de cookies redactados teniendo en cuenta que tratas datos de salud, que el RGPD considera de categoría especial. Los formularios recogen el consentimiento explícito. Aun así, si gestionas historiales clínicos conviene que un asesor especializado revise tu protocolo interno: la web es solo una parte.',
+  },
+  {
+    question: '¿Me ayuda a salir en Google cuando alguien busca un fisio en mi zona?',
+    answer:
+      'Es justo el objetivo. Se estructura la web por servicio y zona, se marcan los datos de la clínica con Schema.org y se prepara la conexión con tu ficha de Google Business, que es de donde sale la mayor parte de las llamadas de una clínica. Lo que ningún profesional serio puede prometerte es un puesto concreto: eso depende también de tus reseñas y de la competencia de tu zona.',
+  },
+  {
+    question: '¿Tengo que escribir yo los textos?',
+    answer:
+      'No. A partir de una conversación contigo se redactan los textos completos: es más rápido para ti y el resultado convierte mejor que un texto escrito a ratos entre pacientes. Tú revisas y corriges lo que no encaje con tu forma de trabajar.',
+  },
+];
+
+const serviceSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Service',
+  name: 'Diseño de páginas web para fisioterapeutas y clínicas de fisioterapia',
+  serviceType: 'Diseño web para el sector salud',
+  provider: { '@id': `${SITE_URL}/#business` },
+  areaServed: [
+    { '@type': 'City', name: 'Murcia' },
+    { '@type': 'Country', name: 'España' },
+  ],
+  audience: { '@type': 'Audience', audienceType: 'Fisioterapeutas y clínicas de fisioterapia' },
+  description:
+    'Webs y landing pages para clínicas de fisioterapia: páginas por servicio, reserva de cita, SEO local y textos orientados al paciente.',
+  url: `${SITE_URL}/paginas-web-para-fisioterapeutas/`,
+};
+---
+
+<Layout
+  title="Páginas web para fisioterapeutas y clínicas | Clickora"
+  description="Diseño web para clínicas de fisioterapia: páginas por servicio, reserva de cita fácil, SEO local y textos que hablan del dolor del paciente. Desde 299 €."
+  breadcrumbs={breadcrumbs}
+>
+  <Navbar />
+
+  <main>
+    <PageHero
+      label="Sector salud · Fisioterapia"
+      titleLines={['Páginas web para', 'fisioterapeutas.']}
+      intro="Una web de clínica no se mide en visitas: se mide en primeras citas. Esta es la estructura que hace que quien llega con dolor acabe reservando en lugar de seguir mirando."
+      breadcrumbs={breadcrumbs}
+    />
+
+    <!-- Contexto -->
+    <section class="bg-ivory2 py-20 md:py-28 overflow-hidden">
+      <div class="max-w-[1600px] mx-auto px-8 md:px-16 lg:px-28">
+        <div class="grid lg:grid-cols-2 gap-12 lg:gap-24 items-start">
+          <h2 class="font-display italic font-black text-[clamp(2rem,_4.5vw,_3.8rem)] text-ink leading-[0.95] reveal">
+            Tu paciente no compara<br>
+            <span class="text-blue">clínicas. Compara alivio.</span>
+          </h2>
+          <div class="flex flex-col gap-5 text-muted text-base leading-relaxed reveal" style="transition-delay:0.15s">
+            <p>
+              Cuando alguien busca un fisioterapeuta no está evaluando titulaciones:
+              lleva días durmiendo mal y quiere que alguien le diga que eso tiene
+              solución y cuándo puede ir.
+            </p>
+            <p>
+              La web que funciona en fisioterapia hace tres cosas en este orden:
+              reconoce el problema con las mismas palabras que usa el paciente,
+              demuestra que sabes tratarlo, y pone la reserva de cita donde no haya
+              que buscarla.
+            </p>
+            <p>
+              El resto —el diseño bonito, la galería de la sala, tu formación— sostiene
+              la confianza, pero no es lo que dispara la llamada.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Errores -->
+    <section class="bg-ivory py-20 md:py-28 overflow-hidden">
+      <div class="max-w-[1600px] mx-auto px-8 md:px-16 lg:px-28">
+        <p class="label text-muted mb-4 reveal-fast">Lo que suele fallar</p>
+        <h2 class="font-display italic font-black text-[clamp(2rem,_5vw,_4.2rem)] text-ink leading-[0.95] mb-14 md:mb-20 reveal">
+          Cuatro errores que<br>
+          <span class="text-blue">cuestan pacientes.</span>
+        </h2>
+
+        <div class="grid md:grid-cols-2 gap-px bg-soft">
+          {errores.map((e, i) => (
+            <div class="bg-ivory p-8 md:p-10 reveal" style={`transition-delay:${i * 0.08}s`}>
+              <p class="label text-blue mb-4">{e.n}</p>
+              <h3 class="font-sans font-extrabold text-lg md:text-xl text-ink mb-4 leading-snug">{e.title}</h3>
+              <p class="text-muted text-sm leading-relaxed">{e.text}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Qué incluye + caso -->
+    <section class="bg-ink py-20 md:py-28 overflow-hidden">
+      <div class="max-w-[1600px] mx-auto px-8 md:px-16 lg:px-28">
+        <div class="grid lg:grid-cols-2 gap-14 lg:gap-24">
+          <div>
+            <p class="label text-yellow mb-4 reveal-fast">Qué incluye</p>
+            <h2 class="font-display italic font-black text-[clamp(2rem,_4.5vw,_3.6rem)] text-ivory leading-[0.95] mb-10 reveal">
+              Pensada para<br>
+              <span class="text-yellow">una clínica.</span>
+            </h2>
+            <ul class="flex flex-col gap-4 reveal" style="transition-delay:0.1s">
+              {incluye.map((item) => (
+                <li class="flex items-start gap-3 text-ivory/70 text-sm leading-relaxed">
+                  <span class="w-1.5 h-1.5 bg-yellow flex-shrink-0 mt-2"></span>
+                  {item}
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <div class="reveal" style="transition-delay:0.2s">
+            <a href="/casos/fisioclinic/" class="block group overflow-hidden mb-8">
+              <img
+                src="/images/portfolio/render_fisioclinic.webp"
+                alt="Web de FisioClinic Murcia, clínica de fisioterapia, diseñada por Clickora"
+                loading="lazy"
+                decoding="async"
+                width="1792"
+                height="2400"
+                class="w-full aspect-[4/3] object-cover object-top transition-transform duration-700 group-hover:scale-[1.04]"
+              />
+            </a>
+            <p class="label text-yellow mb-3">Caso real</p>
+            <h3 class="font-sans font-extrabold text-2xl text-ivory mb-4">FisioClinic Murcia</h3>
+            <p class="text-ivory/60 text-sm leading-relaxed mb-6">
+              Clínica de fisioterapia en Murcia. Web rehecha con Astro e islas de React,
+              con carrusel de portada, animaciones al scroll y una estructura orientada
+              a que la primera visita reserve.
+            </p>
+            <a href="/casos/fisioclinic/" class="btn-outline-white">Ver el caso →</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <FaqBlock
+      faqs={faqs}
+      titleTop="Dudas típicas de"
+      titleBottom="una clínica."
+      bg="bg-ivory2"
+    />
+
+    <CTASection
+      title="¿Llenamos tu"
+      highlight="agenda de citas?"
+      text="Cuéntame cómo captas pacientes ahora y te digo qué cambiaría en tu web. Primera consulta gratuita y sin compromiso."
+      whatsappMessage="Hola, tengo una clínica de fisioterapia y quiero información sobre la web"
+    />
+  </main>
+
+  <Footer />
+
+  <script type="application/ld+json" set:html={JSON.stringify(serviceSchema)} />
+</Layout>

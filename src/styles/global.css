@@ -1,8 +1,14 @@
 @import "tailwindcss";
 
+/* Fuentes autohospedadas: antes venían de Google Fonts por CDN, lo que añadía
+   dos conexiones externas bloqueantes al render y penalizaba el LCP. */
+@import "@fontsource-variable/fraunces/wght.css";
+@import "@fontsource-variable/fraunces/wght-italic.css";
+@import "@fontsource-variable/syne/wght.css";
+
 @theme {
-  --font-display: 'Fraunces', Georgia, serif;
-  --font-sans: 'Syne', ui-sans-serif, system-ui, sans-serif;
+  --font-display: 'Fraunces Variable', Georgia, serif;
+  --font-sans: 'Syne Variable', ui-sans-serif, system-ui, sans-serif;
 
   --color-ivory: #FAFAF5;
   --color-ivory2: #F2EFE6;
@@ -20,7 +26,7 @@
   body {
     background-color: #FAFAF5;
     color: #0F0F0F;
-    font-family: 'Syne', ui-sans-serif, system-ui, sans-serif;
+    font-family: 'Syne Variable', ui-sans-serif, system-ui, sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
@@ -122,10 +128,10 @@ body::after {
 .badge-spin { animation: spin-slow 10s linear infinite; }
 
 /* === TYPOGRAPHY === */
-.font-display { font-family: 'Fraunces', Georgia, serif; }
+.font-display { font-family: 'Fraunces Variable', Georgia, serif; }
 
 .heading-xl {
-  font-family: 'Fraunces', Georgia, serif;
+  font-family: 'Fraunces Variable', Georgia, serif;
   line-height: 0.93;
   letter-spacing: -0.02em;
 }
@@ -155,7 +161,7 @@ body::after {
   padding: 0.9rem 2rem;
   background: #0032FF;
   color: #FAFAF5;
-  font-family: 'Syne', sans-serif;
+  font-family: 'Syne Variable', sans-serif;
   font-weight: 700;
   font-size: 0.85rem;
   letter-spacing: 0.04em;
@@ -177,7 +183,7 @@ body::after {
   padding: 0.9rem 2rem;
   background: transparent;
   color: #0F0F0F;
-  font-family: 'Syne', sans-serif;
+  font-family: 'Syne Variable', sans-serif;
   font-weight: 700;
   font-size: 0.85rem;
   letter-spacing: 0.04em;
@@ -200,7 +206,7 @@ body::after {
   padding: 0.9rem 2rem;
   background: transparent;
   color: #FAFAF5;
-  font-family: 'Syne', sans-serif;
+  font-family: 'Syne Variable', sans-serif;
   font-weight: 700;
   font-size: 0.85rem;
   letter-spacing: 0.04em;
@@ -220,7 +226,7 @@ body::after {
   letter-spacing: 0.2em;
   text-transform: uppercase;
   font-weight: 700;
-  font-family: 'Syne', sans-serif;
+  font-family: 'Syne Variable', sans-serif;
 }
 
 /* === BORDER === */
@@ -251,7 +257,7 @@ details[open] .faq-icon { transform: rotate(45deg); }
   border: 1.5px solid #E5E1D8;
   color: #0F0F0F;
   font-size: 0.9rem;
-  font-family: 'Syne', sans-serif;
+  font-family: 'Syne Variable', sans-serif;
   outline: none;
   transition: border-color 0.25s ease;
 }
@@ -265,7 +271,7 @@ details[open] .faq-icon { transform: rotate(45deg); }
   border: 1.5px solid rgba(250, 250, 245, 0.2);
   color: #FAFAF5;
   font-size: 0.9rem;
-  font-family: 'Syne', sans-serif;
+  font-family: 'Syne Variable', sans-serif;
   outline: none;
   transition: border-color 0.25s ease;
 }

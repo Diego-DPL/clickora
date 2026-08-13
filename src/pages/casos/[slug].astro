@@ -1,0 +1,183 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Navbar from '../../components/Navbar.astro';
+import Footer from '../../components/Footer.astro';
+import PageHero from '../../components/PageHero.astro';
+import CTASection from '../../components/CTASection.astro';
+import { CASOS } from '../../data/casos';
+import { SITE_URL } from '../../data/business';
+
+export function getStaticPaths() {
+  return CASOS.map((caso) => ({ params: { slug: caso.slug }, props: { caso } }));
+}
+
+const { caso } = Astro.props;
+
+const breadcrumbs = [
+  { name: 'Casos', path: '/casos/' },
+  { name: caso.title, path: `/casos/${caso.slug}/` },
+];
+
+const otros = CASOS.filter((c) => c.slug !== caso.slug);
+
+const caseSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Article',
+  headline: `${caso.title} — caso de estudio`,
+  description: caso.metaDescription,
+  image: `${SITE_URL}${caso.image}`,
+  author: { '@id': `${SITE_URL}/#business` },
+  publisher: { '@id': `${SITE_URL}/#business` },
+  mainEntityOfPage: `${SITE_URL}/casos/${caso.slug}/`,
+  inLanguage: 'es-ES',
+};
+---
+
+<Layout title={caso.metaTitle} description={caso.metaDescription} breadcrumbs={breadcrumbs}>
+  <Navbar />
+
+  <main>
+    <PageHero
+      label={caso.label}
+      titleLines={[caso.title]}
+      intro={caso.intro}
+      breadcrumbs={breadcrumbs}
+    />
+
+    <!-- Imagen + ficha -->
+    <section class="bg-ivory pb-20 md:pb-28 overflow-hidden">
+      <div class="max-w-[1600px] mx-auto px-8 md:px-16 lg:px-28">
+        <div class="grid lg:grid-cols-[1.4fr_1fr] gap-12 lg:gap-20 items-start">
+          <img
+            src={caso.image}
+            alt={`Diseño de la web del proyecto ${caso.title}`}
+            loading="eager"
+            decoding="async"
+            width="1792"
+            height="2400"
+            class="w-full aspect-[4/3] object-cover object-top reveal"
+          />
+
+          <div class="reveal" style="transition-delay:0.12s">
+            <dl class="border-t border-soft">
+              {caso.ficha.map((row) => (
+                <div class="flex justify-between gap-6 py-4 border-b border-soft">
+                  <dt class="label text-muted flex-shrink-0">{row.key}</dt>
+                  <dd class="text-ink text-sm font-semibold text-right">{row.value}</dd>
+                </div>
+              ))}
+            </dl>
+
+            <a
+              href={caso.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="btn-primary mt-8 w-full justify-center"
+            >
+              Visitar {caso.urlLabel}
+            </a>
+
+            {caso.metricas && (
+              <div class="grid grid-cols-2 gap-px bg-soft mt-8">
+                {caso.metricas.map((m) => (
+                  <div class="bg-ivory p-6">
+                    <p class="font-display italic font-black text-3xl text-blue mb-1">{m.value}</p>
+                    <p class="label text-muted">{m.label}</p>
+                  </div>
+                ))}
+              </div>
+            )}
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- El reto -->
+    <section class="bg-ivory2 py-20 md:py-28 overflow-hidden">
+      <div class="max-w-[1600px] mx-auto px-8 md:px-16 lg:px-28">
+        <div class="grid lg:grid-cols-[1fr_1.4fr] gap-12 lg:gap-20 items-start">
+          <h2 class="font-display italic font-black text-[clamp(2rem,_4.5vw,_3.6rem)] text-ink leading-[0.95] reveal">
+            El <span class="text-blue">reto.</span>
+          </h2>
+          <div class="flex flex-col gap-5 reveal" style="transition-delay:0.12s">
+            {caso.reto.map((p) => (
+              <p class="text-muted text-base leading-relaxed">{p}</p>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- La solución -->
+    <section class="bg-ivory py-20 md:py-28 overflow-hidden">
+      <div class="max-w-[1600px] mx-auto px-8 md:px-16 lg:px-28">
+        <p class="label text-muted mb-4 reveal-fast">Cómo se resolvió</p>
+        <h2 class="font-display italic font-black text-[clamp(2rem,_5vw,_4.2rem)] text-ink leading-[0.95] mb-14 md:mb-20 reveal">
+          La <span class="text-blue">solución.</span>
+        </h2>
+
+        <div class="grid md:grid-cols-2 gap-px bg-soft">
+          {caso.solucion.map((s, i) => (
+            <div class="bg-ivory p-8 md:p-10 reveal" style={`transition-delay:${i * 0.08}s`}>
+              <p class="label text-blue mb-4">{String(i + 1).padStart(2, '0')}</p>
+              <h3 class="font-sans font-extrabold text-lg md:text-xl text-ink mb-4 leading-snug">{s.title}</h3>
+              <p class="text-muted text-sm leading-relaxed">{s.text}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Cierre -->
+    <section class="bg-ink py-20 md:py-28 overflow-hidden">
+      <div class="max-w-[1600px] mx-auto px-8 md:px-16 lg:px-28">
+        <div class="max-w-3xl flex flex-col gap-6 reveal">
+          {caso.cierre.map((p) => (
+            <p class="text-ivory/70 text-base md:text-lg leading-relaxed">{p}</p>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Otros casos -->
+    <section class="bg-ivory py-20 md:py-28 overflow-hidden">
+      <div class="max-w-[1600px] mx-auto px-8 md:px-16 lg:px-28">
+        <p class="label text-muted mb-10 reveal-fast">Otros proyectos</p>
+        <div class="grid md:grid-cols-2 gap-8">
+          {otros.map((c, i) => (
+            <a href={`/casos/${c.slug}/`} class="group flex flex-col gap-5 reveal" style={`transition-delay:${i * 0.1}s`}>
+              <div class="overflow-hidden aspect-[16/10]">
+                <img
+                  src={c.image}
+                  alt={`Web del proyecto ${c.title}`}
+                  loading="lazy"
+                  decoding="async"
+                  width="1792"
+                  height="2400"
+                  class="w-full h-full object-cover object-top transition-transform duration-700 group-hover:scale-[1.04]"
+                />
+              </div>
+              <div>
+                <h3 class="font-sans font-extrabold text-xl text-ink group-hover:text-blue transition-colors mb-1">
+                  {c.title}
+                </h3>
+                <p class="label text-muted">{c.label}</p>
+              </div>
+            </a>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <CTASection
+      title="¿Y si el siguiente"
+      highlight="caso es el tuyo?"
+      text="Cuéntame qué tienes en mente. Primera consulta gratuita, y si creo que no te compensa, te lo diré."
+      whatsappMessage={`Hola, he visto el caso de ${caso.title} y quiero comentarte un proyecto`}
+    />
+  </main>
+
+  <Footer />
+
+  <script type="application/ld+json" set:html={JSON.stringify(caseSchema)} />
+</Layout>

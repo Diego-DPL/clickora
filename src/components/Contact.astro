@@ -94,10 +94,24 @@
   const form = document.getElementById('contact-form') as HTMLFormElement;
   const msg  = document.getElementById('form-message');
 
+  /**
+   * Envía el evento de lead a GA4. Antes no se medía ninguna conversión: se veía
+   * el tráfico pero no cuántos contactos generaba, que es el único número que
+   * importa. Con Consent Mode, si el visitante no ha aceptado cookies el evento
+   * simplemente no sale, que es lo correcto.
+   */
+  function trackLead(method: string) {
+    const gtag = (window as any).gtag;
+    if (typeof gtag === 'function') {
+      gtag('event', 'generate_lead', { method, currency: 'EUR', value: 1 });
+    }
+  }
+
   form?.addEventListener('submit', (e) => {
     e.preventDefault();
     const data = new FormData(form);
     const wa = `*Nuevo contacto desde clickora.es*\n\n*Nombre:* ${data.get('name')}\n*Email:* ${data.get('email')}\n*Mensaje:* ${data.get('message')}`;
+    trackLead('formulario_web');
     window.open(`https://wa.me/34608008081?text=${encodeURIComponent(wa)}`, '_blank');
     if (msg) {
       msg.textContent = '¡Perfecto! Te redirigimos a WhatsApp para completar el envío.';

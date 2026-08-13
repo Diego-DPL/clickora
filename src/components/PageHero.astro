@@ -1,0 +1,64 @@
+---
+/**
+ * Cabecera de páginas interiores. Mantiene el lenguaje editorial de la home
+ * (Fraunces italic + Syne, acento azul, subrayado amarillo) y renderiza las
+ * migas de pan visibles, que además de orientar al usuario dan a Google el
+ * contexto de dónde encaja la página dentro del sitio.
+ */
+interface Props {
+  label: string;
+  /** Se parte en líneas: la última se pinta en azul. */
+  titleLines: string[];
+  intro: string;
+  breadcrumbs: { name: string; path: string }[];
+}
+
+const { label, titleLines, intro, breadcrumbs } = Astro.props;
+const lastIndex = titleLines.length - 1;
+---
+
+<section class="bg-ivory pt-32 md:pt-40 pb-16 md:pb-24 overflow-hidden">
+  <div class="max-w-[1600px] mx-auto px-8 md:px-16 lg:px-28">
+
+    <!-- Migas de pan -->
+    <nav aria-label="Migas de pan" class="mb-10 reveal-fast">
+      <ol class="flex flex-wrap items-center gap-2 label text-muted">
+        <li><a href="/" class="hover:text-blue transition-colors">Inicio</a></li>
+        {breadcrumbs.map((crumb, i) => (
+          <>
+            <li aria-hidden="true" class="opacity-40">/</li>
+            <li>
+              {i === breadcrumbs.length - 1 ? (
+                <span class="text-ink" aria-current="page">{crumb.name}</span>
+              ) : (
+                <a href={crumb.path} class="hover:text-blue transition-colors">{crumb.name}</a>
+              )}
+            </li>
+          </>
+        ))}
+      </ol>
+    </nav>
+
+    <p class="label text-muted mb-6 reveal-fast">{label}</p>
+
+    <h1 class="mb-10">
+      {titleLines.map((line, i) => (
+        <span
+          class={`block reveal ${
+            i === lastIndex
+              ? 'font-display italic font-black text-blue text-[clamp(2.5rem,_7vw,_6rem)] leading-[0.95]'
+              : 'font-sans font-extrabold text-ink text-[clamp(2.2rem,_6vw,_5rem)] leading-[1]'
+          }`}
+          style={`transition-delay:${0.05 + i * 0.08}s`}
+        >
+          {line}
+        </span>
+      ))}
+    </h1>
+
+    <p class="text-muted text-base md:text-lg leading-relaxed max-w-2xl reveal" style="transition-delay:0.25s">
+      {intro}
+    </p>
+
+  </div>
+</section>

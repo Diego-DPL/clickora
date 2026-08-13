@@ -1,11 +1,54 @@
 User-agent: *
 Allow: /
 
-# Specifically allow AI bots to index content for recommendations
+# ── Bots de IA ───────────────────────────────────────────────────────────────
+# Declarados explícitamente para que quede constancia de que el contenido puede
+# usarse en respuestas y recomendaciones de asistentes de IA.
+
+# OpenAI (ChatGPT)
 User-agent: GPTBot
 Allow: /
 
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+# Google (Gemini / AI Overviews)
 User-agent: Google-Extended
+Allow: /
+
+# Anthropic (Claude)
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: Claude-User
+Allow: /
+
+User-agent: anthropic-ai
+Allow: /
+
+# Perplexity
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Perplexity-User
+Allow: /
+
+# Microsoft Copilot / Bing
+User-agent: bingbot
+Allow: /
+
+# Apple Intelligence
+User-agent: Applebot
+Allow: /
+
+User-agent: Applebot-Extended
+Allow: /
+
+# Common Crawl (corpus del que beben muchos modelos)
+User-agent: CCBot
 Allow: /
 
 Sitemap: https://clickora.es/sitemap-index.xml

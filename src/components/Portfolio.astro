@@ -1,10 +1,13 @@
 ---
+// Cada tarjeta lleva ahora a su caso de estudio interno en vez de salir del
+// sitio: mantiene al visitante dentro, le da la historia completa del proyecto
+// y reparte autoridad hacia las páginas nuevas.
 const projects = [
   {
     index: "01",
     title: "Zypace",
     category: "App web · IA · Running",
-    url: "https://zypace.com",
+    url: "/casos/zypace/",
     image: "/images/portfolio/render_zypace.webp",
     tags: ["React", "Strava API", "OpenAI"],
     desc: "Entrenador personal de running con IA que analiza tus rutas de Strava y genera planes de entrenamiento adaptados a tu nivel.",
@@ -16,7 +19,7 @@ const projects = [
     index: "02",
     title: "Raíz",
     category: "Diseño web · Identidad · Memoria",
-    url: "https://raiz-b7d0a.web.app",
+    url: "/casos/raiz/",
     image: "/images/portfolio/render_raiz.webp",
     tags: ["Firebase", "Diseño sensible", "Identidad visual"],
     desc: "Espacio digital de memoria y dignidad para testimonios sobre duelo perinatal. Diseño emocionalmente consciente y muy cuidado.",
@@ -28,7 +31,7 @@ const projects = [
     index: "03",
     title: "FisioClinic Murcia",
     category: "Landing Page · SEO · Salud",
-    url: "https://fisioclinicmurcia.com",
+    url: "/casos/fisioclinic/",
     image: "/images/portfolio/render_fisioclinic.webp",
     tags: ["Astro", "SEO Local", "Conversión"],
     desc: "Landing page de alta conversión para clínica de fisioterapia en Murcia. Reservas online y posicionamiento local.",
@@ -61,8 +64,6 @@ const projects = [
       {projects.map((p, i) => (
         <a
           href={p.url}
-          target="_blank"
-          rel="noopener noreferrer"
           class={`group relative flex flex-col gap-5 ${p.offset} reveal`}
           style={`transition-delay:${i * 0.13}s`}
         >
@@ -83,9 +84,9 @@ const projects = [
               <p class={`label mb-3 ${p.overlayText} opacity-60`}>{p.category}</p>
               <p class={`text-sm leading-relaxed mb-5 ${p.overlayText} opacity-85`}>{p.desc}</p>
               <span class={`inline-flex items-center gap-2 font-bold text-xs uppercase tracking-widest ${p.overlayText}`}>
-                Ver proyecto
+                Ver el caso
                 <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/>
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
                 </svg>
               </span>
             </div>

@@ -1,0 +1,75 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Navbar from '../../components/Navbar.astro';
+import Footer from '../../components/Footer.astro';
+import PageHero from '../../components/PageHero.astro';
+import CTASection from '../../components/CTASection.astro';
+import { CASOS } from '../../data/casos';
+
+const breadcrumbs = [{ name: 'Casos', path: '/casos/' }];
+---
+
+<Layout
+  title="Casos de estudio | Proyectos reales de Clickora"
+  description="Cómo se han planteado y resuelto proyectos reales: la web de una clínica de fisioterapia en Murcia, una app de running con IA y un espacio digital de memoria."
+  breadcrumbs={breadcrumbs}
+>
+  <Navbar />
+
+  <main>
+    <PageHero
+      label="Trabajo"
+      titleLines={['Casos de', 'estudio.']}
+      intro="No una galería de capturas bonitas: qué problema había, qué se decidió y por qué. Que es lo único que sirve para saber si encajo con tu proyecto."
+      breadcrumbs={breadcrumbs}
+    />
+
+    <section class="bg-ivory pb-20 md:pb-28 overflow-hidden">
+      <div class="max-w-[1600px] mx-auto px-8 md:px-16 lg:px-28">
+        <div class="flex flex-col gap-px bg-soft border-y border-soft">
+          {CASOS.map((caso, i) => (
+            <a
+              href={`/casos/${caso.slug}/`}
+              class="group bg-ivory grid md:grid-cols-[1fr_1.5fr] gap-8 md:gap-14 items-center p-8 md:p-10 hover:bg-ivory2 transition-colors duration-300 reveal"
+              style={`transition-delay:${i * 0.1}s`}
+            >
+              <div class="overflow-hidden aspect-[16/10]">
+                <img
+                  src={caso.image}
+                  alt={`Web del proyecto ${caso.title}`}
+                  loading={i === 0 ? 'eager' : 'lazy'}
+                  decoding="async"
+                  width="1792"
+                  height="2400"
+                  class="w-full h-full object-cover object-top transition-transform duration-700 group-hover:scale-[1.04]"
+                />
+              </div>
+
+              <div>
+                <p class="label text-muted mb-4">{caso.label}</p>
+                <h2 class="font-display italic font-black text-[clamp(1.9rem,_4vw,_3.2rem)] text-ink leading-[0.95] mb-5 group-hover:text-blue transition-colors">
+                  {caso.title}
+                </h2>
+                <p class="text-muted text-sm md:text-base leading-relaxed max-w-2xl mb-6">{caso.intro}</p>
+                <span class="inline-flex items-center gap-2 font-bold text-xs uppercase tracking-widest text-blue">
+                  Ver el caso
+                  <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                  </svg>
+                </span>
+              </div>
+            </a>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <CTASection
+      title="¿Empezamos"
+      highlight="el tuyo?"
+      text="Primera consulta gratuita y sin compromiso. Me cuentas qué necesitas y te digo con franqueza cómo lo plantearía."
+    />
+  </main>
+
+  <Footer />
+</Layout>

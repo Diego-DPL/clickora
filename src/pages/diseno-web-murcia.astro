@@ -1,0 +1,235 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Navbar from '../components/Navbar.astro';
+import Footer from '../components/Footer.astro';
+import PageHero from '../components/PageHero.astro';
+import CTASection from '../components/CTASection.astro';
+import FaqBlock from '../components/FaqBlock.astro';
+import { BUSINESS, SITE_URL } from '../data/business';
+
+const breadcrumbs = [{ name: 'Diseño web en Murcia', path: '/diseno-web-murcia/' }];
+
+const incluye = [
+  {
+    title: 'Diseño a medida, no plantilla',
+    text: 'Nada de temas comprados y adaptados a la fuerza. Cada web parte de tu negocio, tus servicios y la forma en que tu cliente decide.',
+  },
+  {
+    title: 'Ficha de Google preparada',
+    text: 'La web se conecta con tu perfil de Google Business, que es de donde sale la mayoría de las llamadas de un negocio local en Murcia.',
+  },
+  {
+    title: 'Datos estructurados locales',
+    text: 'Dirección, horarios, teléfono y servicios marcados en el código con Schema.org, para que Google y los asistentes de IA entiendan dónde estás y qué haces.',
+  },
+  {
+    title: 'Velocidad real medida',
+    text: 'Webs estáticas con Astro, sin el lastre de decenas de plugins. La velocidad no es un capricho técnico: es lo que evita que la gente se vaya antes de ver tu oferta.',
+  },
+  {
+    title: 'Textos que venden',
+    text: 'La redacción se trabaja como parte del diseño, no se rellena después. Qué problema resuelves, para quién y por qué tú.',
+  },
+  {
+    title: 'Medición configurada',
+    text: 'Analítica y eventos listos desde el primer día, para saber cuántas llamadas y formularios trae la web de verdad.',
+  },
+];
+
+const sectores = [
+  { name: 'Clínicas y fisioterapia', text: 'Captación de primeras visitas y reserva de cita.' },
+  { name: 'Psicología y terapia', text: 'Webs con el tono adecuado y contacto discreto.' },
+  { name: 'Abogados y asesorías', text: 'Autoridad, casos y una vía de consulta clara.' },
+  { name: 'Entrenadores y nutrición', text: 'Venta de planes y captación por redes.' },
+  { name: 'Reformas y servicios', text: 'Presupuestos por WhatsApp sin fricción.' },
+  { name: 'Hostelería y eventos', text: 'Carta, reservas y ubicación siempre a mano.' },
+];
+
+const faqs = [
+  {
+    question: '¿Cuánto cuesta una página web en Murcia?',
+    answer:
+      'En Clickora una landing page profesional parte de 299 € y una web más completa, con copywriting, analítica y SEO técnico, de 499 €. El proyecto a medida con estrategia de conversión está en 899 €. No hay cuotas ocultas: el mantenimiento es opcional, 49 € al mes y sin permanencia.',
+  },
+  {
+    question: '¿Trabajáis solo con negocios de Murcia?',
+    answer:
+      'La base está en Murcia y ahí se puede quedar con el cliente en persona, que para muchos negocios locales marca la diferencia. Pero se trabaja en remoto para toda España sin ningún problema: el proceso está pensado para funcionar por videollamada y WhatsApp.',
+  },
+  {
+    question: '¿Cuánto tarda en estar lista la web?',
+    answer:
+      'Entre 2 y 4 semanas desde que empezamos, según la complejidad. El plazo depende sobre todo de la rapidez con la que llegue tu material: textos de referencia, fotos y logotipo. Si no tienes fotos profesionales, se plantea una solución antes de empezar.',
+  },
+  {
+    question: '¿Aparecerá mi negocio en Google al buscar mi servicio en Murcia?',
+    answer:
+      'La web se entrega optimizada técnicamente para ello: estructura, velocidad, datos estructurados locales y contenido orientado a las búsquedas de tu sector. Ahora bien, el posicionamiento local depende también de tu ficha de Google Business y de tus reseñas, y eso se trabaja aparte. Nadie serio puede garantizarte un puesto concreto en Google.',
+  },
+  {
+    question: '¿Qué pasa con el dominio y el hosting?',
+    answer:
+      'Se puede gestionar todo o dejarlo a tu nombre, como prefieras. Si contratas el mantenimiento, el hosting va incluido. Si no, se te entrega el proyecto completo y lo llevas tú o quien tú decidas: no hay secuestro de proyectos.',
+  },
+];
+
+const serviceSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Service',
+  name: 'Diseño y desarrollo web en Murcia',
+  serviceType: 'Diseño web',
+  provider: { '@id': `${SITE_URL}/#business` },
+  areaServed: [
+    { '@type': 'City', name: 'Murcia' },
+    { '@type': 'AdministrativeArea', name: 'Región de Murcia' },
+  ],
+  description:
+    'Diseño y desarrollo de páginas web y landing pages para negocios de servicios en Murcia: clínicas, despachos, entrenadores y pymes locales.',
+  url: `${SITE_URL}/diseno-web-murcia/`,
+};
+
+---
+
+<Layout
+  title="Diseño web en Murcia | Páginas web que captan clientes | Clickora"
+  description="Diseño y desarrollo de páginas web en Murcia para clínicas, despachos y negocios de servicios. Webs rápidas, con SEO local y pensadas para que te llamen. Desde 299 €."
+  breadcrumbs={breadcrumbs}
+>
+  <Navbar />
+
+  <main>
+    <PageHero
+      label="Murcia · Región de Murcia"
+      titleLines={['Diseño web en', 'Murcia.']}
+      intro="Webs para negocios de servicios de Murcia que necesitan que les encuentren y que les llamen. Sin plantillas genéricas, sin cuotas eternas y con la medición puesta desde el primer día."
+      breadcrumbs={breadcrumbs}
+    />
+
+    <!-- Contexto local -->
+    <section class="bg-ivory2 py-20 md:py-28 overflow-hidden">
+      <div class="max-w-[1600px] mx-auto px-8 md:px-16 lg:px-28">
+        <div class="grid lg:grid-cols-2 gap-12 lg:gap-24 items-start">
+          <div class="reveal">
+            <h2 class="font-display italic font-black text-[clamp(2rem,_4.5vw,_3.8rem)] text-ink leading-[0.95] mb-8">
+              La mayoría de negocios de Murcia<br>
+              <span class="text-blue">no pierden clientes por precio.</span>
+            </h2>
+          </div>
+          <div class="flex flex-col gap-5 text-muted text-base leading-relaxed reveal" style="transition-delay:0.15s">
+            <p>
+              Los pierden porque cuando alguien busca su servicio en el móvil, aparece
+              otro. O porque aparecen, la persona entra en la web y no entiende en diez
+              segundos qué le ofreces ni cómo contactarte.
+            </p>
+            <p>
+              Una web local no compite por ser bonita. Compite por salir cuando alguien
+              a dos kilómetros de ti tiene un problema que tú resuelves, y por convertir
+              esa visita en una llamada o un mensaje de WhatsApp.
+            </p>
+            <p>
+              Eso es exactamente lo que se diseña aquí: la estructura, los textos y la
+              velocidad trabajando para que el teléfono suene. Todo lo demás es
+              decoración.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Qué incluye -->
+    <section class="bg-ivory py-20 md:py-28 overflow-hidden">
+      <div class="max-w-[1600px] mx-auto px-8 md:px-16 lg:px-28">
+        <p class="label text-muted mb-4 reveal-fast">Qué incluye</p>
+        <h2 class="font-display italic font-black text-[clamp(2rem,_5vw,_4.2rem)] text-ink leading-[0.95] mb-14 md:mb-20 reveal">
+          Todo lo que necesita una web<br>
+          <span class="text-blue">para funcionar en local.</span>
+        </h2>
+
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-px bg-soft">
+          {incluye.map((item, i) => (
+            <div class="bg-ivory p-8 md:p-10 reveal" style={`transition-delay:${i * 0.07}s`}>
+              <h3 class="font-sans font-extrabold text-lg text-ink mb-4 leading-snug">{item.title}</h3>
+              <p class="text-muted text-sm leading-relaxed">{item.text}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Sectores -->
+    <section class="bg-ink py-20 md:py-28 overflow-hidden">
+      <div class="max-w-[1600px] mx-auto px-8 md:px-16 lg:px-28">
+        <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-14">
+          <div>
+            <p class="label text-yellow mb-4 reveal-fast">Sectores</p>
+            <h2 class="font-display italic font-black text-[clamp(2rem,_5vw,_4.2rem)] text-ivory leading-[0.95] reveal">
+              Con quién se trabaja<br>
+              <span class="text-yellow">en Murcia.</span>
+            </h2>
+          </div>
+          <p class="text-ivory/50 text-sm max-w-xs leading-relaxed reveal-fast" style="transition-delay:0.15s">
+            Negocios de servicios donde una sola llamada ya compensa la inversión en la web.
+          </p>
+        </div>
+
+        <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-px bg-ivory/10">
+          {sectores.map((s, i) => (
+            <div class="bg-ink p-7 md:p-8 reveal" style={`transition-delay:${i * 0.06}s`}>
+              <h3 class="font-sans font-bold text-base text-ivory mb-2">{s.name}</h3>
+              <p class="text-ivory/50 text-sm leading-relaxed">{s.text}</p>
+            </div>
+          ))}
+        </div>
+
+        <div class="mt-10 flex flex-wrap gap-4 reveal">
+          <a href="/paginas-web-para-fisioterapeutas/" class="btn-outline-white">Webs para fisioterapeutas</a>
+          <a href="/paginas-web-para-psicologos/" class="btn-outline-white">Webs para psicólogos</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Caso local -->
+    <section class="bg-ivory2 py-20 md:py-28 overflow-hidden">
+      <div class="max-w-[1600px] mx-auto px-8 md:px-16 lg:px-28">
+        <div class="grid lg:grid-cols-[1fr_1.2fr] gap-12 lg:gap-20 items-center">
+          <a href="/casos/fisioclinic/" class="block group overflow-hidden reveal">
+            <img
+              src="/images/portfolio/render_fisioclinic.webp"
+              alt="Web de FisioClinic Murcia, clínica de fisioterapia en Murcia diseñada por Clickora"
+              loading="lazy"
+              decoding="async"
+              width="1792"
+              height="2400"
+              class="w-full aspect-[4/3] object-cover object-top transition-transform duration-700 group-hover:scale-[1.04]"
+            />
+          </a>
+          <div class="reveal" style="transition-delay:0.12s">
+            <p class="label text-muted mb-4">Caso real · Murcia</p>
+            <h2 class="font-display italic font-black text-[clamp(1.9rem,_4vw,_3.4rem)] text-ink leading-[0.95] mb-6">
+              FisioClinic Murcia
+            </h2>
+            <p class="text-muted text-base leading-relaxed mb-8">
+              Clínica de fisioterapia en Murcia. Se rehízo la web completa con Astro e
+              islas de React: carrusel de portada, animaciones al hacer scroll y una
+              estructura pensada para que la primera visita reserve cita sin dar vueltas.
+            </p>
+            <a href="/casos/fisioclinic/" class="btn-outline">Ver el caso completo →</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <FaqBlock faqs={faqs} titleTop="Diseño web en Murcia," titleBottom="sin letra pequeña." />
+
+    <CTASection
+      title="¿Hablamos de tu"
+      highlight="negocio en Murcia?"
+      text={`Primera consulta gratuita y sin compromiso. Escríbeme y te digo con franqueza si te compensa una web nueva o no. Teléfono directo: ${BUSINESS.phoneDisplay}.`}
+      whatsappMessage="Hola, tengo un negocio en Murcia y quiero información sobre una web"
+    />
+  </main>
+
+  <Footer />
+
+  <script type="application/ld+json" set:html={JSON.stringify(serviceSchema)} />
+</Layout>
