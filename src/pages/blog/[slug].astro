@@ -1,0 +1,99 @@
+---
+import { getCollection, render } from 'astro:content';
+import Layout from '../../layouts/Layout.astro';
+import Navbar from '../../components/Navbar.astro';
+import Footer from '../../components/Footer.astro';
+import PageHero from '../../components/PageHero.astro';
+import CTASection from '../../components/CTASection.astro';
+import { SITE_URL } from '../../data/business';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('blog', ({ data }) => !data.draft);
+  return posts.map((post) => ({ params: { slug: post.id }, props: { post } }));
+}
+
+const { post } = Astro.props;
+const { Content } = await render(post);
+
+const breadcrumbs = [
+  { name: 'Blog', path: '/blog/' },
+  { name: post.data.title, path: `/blog/${post.id}/` },
+];
+
+const fecha = new Intl.DateTimeFormat('es-ES', { dateStyle: 'long' }).format(post.data.date);
+
+const articleSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'BlogPosting',
+  headline: post.data.title,
+  description: post.data.description,
+  image: `${SITE_URL}/og-image.png`,
+  datePublished: post.data.date.toISOString(),
+  dateModified: (post.data.updated ?? post.data.date).toISOString(),
+  author: { '@id': `${SITE_URL}/#business` },
+  publisher: { '@id': `${SITE_URL}/#business` },
+  mainEntityOfPage: `${SITE_URL}/blog/${post.id}/`,
+  inLanguage: 'es-ES',
+};
+
+const otros = (await getCollection('blog', ({ data }) => !data.draft))
+  .filter((p) => p.id !== post.id)
+  .slice(0, 2);
+---
+
+<Layout
+  title={`${post.data.metaTitle ?? post.data.title} | Clickora`}
+  description={post.data.description}
+  breadcrumbs={breadcrumbs}
+>
+  <Navbar />
+
+  <main>
+    <PageHero
+      label={post.data.label}
+      titleLines={[post.data.title]}
+      intro={post.data.excerpt}
+      breadcrumbs={breadcrumbs}
+    />
+
+    <article class="bg-ivory pb-20 md:pb-28 overflow-hidden">
+      <div class="max-w-[1600px] mx-auto px-8 md:px-16 lg:px-28">
+        <p class="label text-muted border-t border-soft pt-6 mb-12">
+          Publicado el {fecha}
+        </p>
+        <div class="prose-clickora">
+          <Content />
+        </div>
+      </div>
+    </article>
+
+    {otros.length > 0 && (
+      <section class="bg-ivory2 py-20 md:py-28 overflow-hidden">
+        <div class="max-w-[1600px] mx-auto px-8 md:px-16 lg:px-28">
+          <p class="label text-muted mb-10 reveal-fast">Seguir leyendo</p>
+          <div class="grid md:grid-cols-2 gap-px bg-soft border-y border-soft">
+            {otros.map((p) => (
+              <a href={`/blog/${p.id}/`} class="group bg-ivory2 p-8 md:p-10 hover:bg-ivory transition-colors">
+                <p class="label text-muted mb-3">{p.data.label}</p>
+                <h3 class="font-sans font-extrabold text-lg text-ink group-hover:text-blue transition-colors mb-3 leading-snug">
+                  {p.data.title}
+                </h3>
+                <p class="text-muted text-sm leading-relaxed">{p.data.excerpt}</p>
+              </a>
+            ))}
+          </div>
+        </div>
+      </section>
+    )}
+
+    <CTASection
+      title="¿Hablamos de tu"
+      highlight="proyecto?"
+      text="Primera consulta gratuita y sin compromiso. Te decimos con franqueza qué necesitas y qué no."
+    />
+  </main>
+
+  <Footer />
+
+  <script type="application/ld+json" set:html={JSON.stringify(articleSchema)} />
+</Layout>

@@ -1,0 +1,69 @@
+---
+import { getCollection } from 'astro:content';
+import Layout from '../../layouts/Layout.astro';
+import Navbar from '../../components/Navbar.astro';
+import Footer from '../../components/Footer.astro';
+import PageHero from '../../components/PageHero.astro';
+import CTASection from '../../components/CTASection.astro';
+
+const posts = (await getCollection('blog', ({ data }) => !data.draft)).sort(
+  (a, b) => b.data.date.valueOf() - a.data.date.valueOf()
+);
+
+const breadcrumbs = [{ name: 'Blog', path: '/blog/' }];
+const fmt = new Intl.DateTimeFormat('es-ES', { dateStyle: 'long' });
+---
+
+<Layout
+  title="Blog | Clickora"
+  description="Artículos sobre diseño web, precios reales y posicionamiento para negocios de servicios y clínicas. Sin humo y con cifras concretas."
+  breadcrumbs={breadcrumbs}
+>
+  <Navbar />
+
+  <main>
+    <PageHero
+      label="Escribimos"
+      titleLines={['Sin humo y con', 'cifras.']}
+      intro="Lo que nos preguntan los clientes, respondido en abierto: cuánto cuesta cada cosa, qué merece la pena y qué no."
+      breadcrumbs={breadcrumbs}
+    />
+
+    <section class="bg-ivory pb-20 md:pb-28 overflow-hidden">
+      <div class="max-w-[1600px] mx-auto px-8 md:px-16 lg:px-28">
+        <div class="flex flex-col gap-px bg-soft border-y border-soft">
+          {posts.map((post, i) => (
+            <a
+              href={`/blog/${post.id}/`}
+              class="group bg-ivory p-8 md:p-10 hover:bg-ivory2 transition-colors duration-300 reveal"
+              style={`transition-delay:${i * 0.08}s`}
+            >
+              <div class="flex flex-wrap items-center gap-4 mb-5">
+                <span class="label text-blue">{post.data.label}</span>
+                <span class="label text-muted">{fmt.format(post.data.date)}</span>
+              </div>
+              <h2 class="font-display italic font-black text-[clamp(1.7rem,_3.6vw,_2.8rem)] text-ink leading-[1] mb-5 group-hover:text-blue transition-colors max-w-4xl">
+                {post.data.title}
+              </h2>
+              <p class="text-muted text-sm md:text-base leading-relaxed max-w-2xl mb-6">{post.data.excerpt}</p>
+              <span class="inline-flex items-center gap-2 font-bold text-xs uppercase tracking-widest text-blue">
+                Leer
+                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                </svg>
+              </span>
+            </a>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <CTASection
+      title="¿Tienes una duda"
+      highlight="que no está aquí?"
+      text="Escríbenos y te la respondemos. Si da para artículo, la escribimos."
+    />
+  </main>
+
+  <Footer />
+</Layout>
