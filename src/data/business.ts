@@ -10,6 +10,18 @@
 
 export const SITE_URL = 'https://clickora.es';
 
+/**
+ * Interruptor de los datos fiscales (NIF y domicilio completo).
+ *
+ * En `false` mientras Diego no esté dado de alta como autónomo: publicar el DNI
+ * y el domicilio particular no aporta nada hasta que la ficha de Google esté
+ * verificada, y a cambio expone un identificador personal.
+ *
+ * Ponlo en `true` el día del alta y se publican solos en el aviso legal, en la
+ * política de privacidad y en el JSON-LD. No hay que tocar nada más.
+ */
+export const PUBLISH_FISCAL_IDENTITY = false;
+
 export const BUSINESS = {
   name: 'Clickora',
   founder: 'Diego DPL',
@@ -18,13 +30,29 @@ export const BUSINESS = {
   phoneDisplay: '608 00 80 81',
   whatsapp: 'https://wa.me/34608008081',
   priceRange: '€€',
-  /** Negocio de zona de servicio: se trabaja desde Murcia para toda España. */
+  /**
+   * Negocio de zona de servicio: se trabaja desde Murcia para toda España.
+   * La dirección completa se publica porque el artículo 10 de la LSSI obliga a
+   * ello en el aviso legal; al estar ya publicada, incluirla también aquí no
+   * expone nada nuevo y mantiene el NAP (nombre, dirección, teléfono) idéntico
+   * en web, schema y ficha de Google, que es lo que consolida la señal local.
+   */
+  street: 'Calle Portillo San Antonio, 4',
+  postalCode: '30005',
   city: 'Murcia',
   region: 'Región de Murcia',
   country: 'ES',
-  /** Coordenadas del centro de Murcia. Ajusta si das dirección exacta. */
+  /** Coordenadas del centro de Murcia. */
   geo: { lat: 37.9922, lng: -1.1307 },
   areaServed: ['Murcia', 'Región de Murcia', 'España'],
+  /** Horario de atención. Ajusta los días si atiendes también en fin de semana. */
+  hours: {
+    days: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'],
+    opens: '09:00',
+    closes: '20:00',
+  },
+  /** Solo para el aviso legal (obligatorio por LSSI). No va en el JSON-LD. */
+  nif: '48658090A',
   description:
     'Estudio de diseño y desarrollo web en Murcia especializado en landing pages de alta conversión para negocios de servicios. Diseño, desarrollo ultrarrápido y medición configurada.',
   /**

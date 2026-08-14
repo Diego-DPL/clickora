@@ -1,7 +1,7 @@
 ---
 import '../styles/global.css';
 import CookieBanner from '../components/CookieBanner.astro';
-import { BUSINESS, PLANS, MAINTENANCE, SITE_URL } from '../data/business';
+import { BUSINESS, PLANS, MAINTENANCE, SITE_URL, PUBLISH_FISCAL_IDENTITY } from '../data/business';
 
 interface Props {
   title: string;
@@ -43,10 +43,22 @@ const businessSchema = {
   description: BUSINESS.description,
   address: {
     '@type': 'PostalAddress',
+    // La calle y el CP solo salen cuando haya alta e identidad fiscal publicable.
+    ...(PUBLISH_FISCAL_IDENTITY
+      ? { streetAddress: BUSINESS.street, postalCode: BUSINESS.postalCode }
+      : {}),
     addressLocality: BUSINESS.city,
     addressRegion: BUSINESS.region,
     addressCountry: BUSINESS.country,
   },
+  openingHoursSpecification: [
+    {
+      '@type': 'OpeningHoursSpecification',
+      dayOfWeek: [...BUSINESS.hours.days],
+      opens: BUSINESS.hours.opens,
+      closes: BUSINESS.hours.closes,
+    },
+  ],
   geo: {
     '@type': 'GeoCoordinates',
     latitude: BUSINESS.geo.lat,

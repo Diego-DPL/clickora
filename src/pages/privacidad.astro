@@ -2,6 +2,14 @@
 import Layout from '../layouts/Layout.astro';
 import Navbar from '../components/Navbar.astro';
 import Footer from '../components/Footer.astro';
+import { BUSINESS, PUBLISH_FISCAL_IDENTITY } from '../data/business';
+
+const identidad = PUBLISH_FISCAL_IDENTITY
+  ? [
+      ["NIF", BUSINESS.nif],
+      ["Dirección", `${BUSINESS.street}, ${BUSINESS.postalCode} ${BUSINESS.city}, España`],
+    ]
+  : [["Dirección", `${BUSINESS.city}, España`]];
 
 const sections = [
   {
@@ -9,8 +17,8 @@ const sections = [
     title: "Responsable del Tratamiento",
     list: [
       ["Identidad", "Diego (Clickora)"],
-      ["Dirección", "España"],
-      ["Email", "info@clickora.es"],
+      ...identidad,
+      ["Email", BUSINESS.email],
     ],
   },
   {
