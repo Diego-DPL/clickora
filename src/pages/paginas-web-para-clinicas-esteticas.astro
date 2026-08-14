@@ -1,0 +1,211 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Navbar from '../components/Navbar.astro';
+import Footer from '../components/Footer.astro';
+import PageHero from '../components/PageHero.astro';
+import CTASection from '../components/CTASection.astro';
+import FaqBlock from '../components/FaqBlock.astro';
+import { SITE_URL } from '../data/business';
+
+const breadcrumbs = [{ name: 'Webs para clínicas estéticas', path: '/paginas-web-para-clinicas-esteticas/' }];
+
+const claves = [
+  {
+    n: '01',
+    title: 'Una página por tratamiento',
+    text: 'Nadie busca «clínica estética». Buscan «depilación láser diodo», «ácido hialurónico labios» o «criolipólisis precio». Cada tratamiento es una búsqueda con intención propia y necesita su propia página para captarla.',
+  },
+  {
+    n: '02',
+    title: 'El precio no se esconde',
+    text: 'En estética la primera pregunta es siempre cuánto cuesta. Ocultarlo no aumenta las consultas: hace que la persona se vaya a la web que sí lo dice. Mejor una horquilla honesta y una explicación de qué la hace variar.',
+  },
+  {
+    n: '03',
+    title: 'Antes y después bien tratados',
+    text: 'Es tu argumento más potente y el más delicado. Fotos reales, con consentimiento firmado, mismas condiciones de luz y encuadre, y sin retoque. Una galería creíble vende más que veinte adjetivos.',
+  },
+  {
+    n: '04',
+    title: 'Publicidad sanitaria con cabeza',
+    text: 'Los tratamientos médico-estéticos están sujetos a normativa de publicidad sanitaria: nada de prometer resultados garantizados ni usar reclamos que induzcan a error. Se redacta desde el principio con ese criterio, no se corrige después.',
+  },
+];
+
+const incluye = [
+  'Página independiente por cada tratamiento, con su precio y su duración',
+  'Galería de antes y después preparada para consentimientos',
+  'Reserva de cita o consulta valorativa gratuita siempre a mano',
+  'Ficha del equipo médico con titulación y número de colegiado',
+  'Aparatología y marcas concretas: es lo que compara la clienta informada',
+  'Textos que cumplen la normativa de publicidad sanitaria',
+  'Datos de la clínica marcados para el resultado local de Google',
+  'Carga rápida: la mayoría de estas búsquedas llegan desde el móvil',
+];
+
+const faqs = [
+  {
+    question: '¿Cuánto cuesta la web de una clínica estética?',
+    answer:
+      'Para una clínica con varios tratamientos, el plan de 499 € es el punto de partida razonable, porque incluye copywriting y SEO técnico. Si quieres una página por cada tratamiento con estrategia de conversión y diseño a medida, el plan de 899 €. El de 299 € tiene sentido si vas a promocionar un solo tratamiento concreto con campañas de pago. El mantenimiento son 49 € al mes, opcional y sin permanencia.',
+  },
+  {
+    question: '¿Debo poner los precios de los tratamientos en la web?',
+    answer:
+      'Salvo excepciones, sí. En estética la clienta compara, y la web que no da precio se descarta antes de llamar. Si el precio depende de la zona a tratar o del número de sesiones, se muestra una horquilla y se explica qué la determina. Eso filtra consultas que no iban a convertir y te ahorra tiempo de teléfono.',
+  },
+  {
+    question: '¿Puedo publicar fotos de antes y después?',
+    answer:
+      'Sí, con condiciones. Necesitas consentimiento informado por escrito y específico para su uso publicitario, las imágenes deben ser reales y comparables entre sí, y no puedes presentarlas como resultado garantizado o típico si no lo es. La web se prepara para alojarlas bien; el consentimiento y la veracidad son responsabilidad de la clínica, y conviene que un asesor especializado revise vuestro protocolo.',
+  },
+  {
+    question: '¿Qué normativa afecta a la publicidad de tratamientos estéticos?',
+    answer:
+      'Los tratamientos médico-estéticos entran dentro de la publicidad sanitaria, regulada a nivel estatal y con normativa autonómica propia en la Región de Murcia. En la práctica significa no prometer resultados, no usar testimonios que induzcan a error, identificar al responsable sanitario y no hacer publicidad engañosa sobre riesgos. Los textos se escriben con ese marco en mente, pero la validación final debe hacerla vuestro asesor.',
+  },
+  {
+    question: '¿Sirve la web si ya capto clientas por Instagram?',
+    answer:
+      'Sirve, y son cosas distintas. Instagram capta a quien te descubre; la web capta a quien ya está buscando el tratamiento y quiere decidir. Además, todo lo que hay en Instagram desaparece del feed en horas, mientras que una página de tratamiento bien posicionada te trae consultas durante años sin volver a tocarla.',
+  },
+];
+
+const serviceSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Service',
+  name: 'Diseño de páginas web para clínicas estéticas y medicina estética',
+  serviceType: 'Diseño web para el sector salud y estética',
+  provider: { '@id': `${SITE_URL}/#business` },
+  areaServed: [
+    { '@type': 'City', name: 'Murcia' },
+    { '@type': 'Country', name: 'España' },
+  ],
+  audience: { '@type': 'Audience', audienceType: 'Clínicas estéticas y de medicina estética' },
+  description:
+    'Webs para clínicas estéticas: una página por tratamiento, precios claros, galerías de antes y después y textos que cumplen la normativa de publicidad sanitaria.',
+  url: `${SITE_URL}/paginas-web-para-clinicas-esteticas/`,
+};
+---
+
+<Layout
+  title="Páginas web para clínicas estéticas | Clickora"
+  description="Diseño web para clínicas estéticas y de medicina estética: una página por tratamiento, precios claros, antes y después, y textos conformes a la publicidad sanitaria."
+  breadcrumbs={breadcrumbs}
+>
+  <Navbar />
+
+  <main>
+    <PageHero
+      label="Sector salud · Estética"
+      titleLines={['Páginas web para', 'clínicas estéticas.']}
+      intro="En estética no compites por ser la clínica más bonita: compites por salir cuando alguien busca un tratamiento concreto con un precio en la cabeza. Esta es la estructura que captura esa búsqueda."
+      breadcrumbs={breadcrumbs}
+    />
+
+    <section class="bg-ivory2 py-20 md:py-28 overflow-hidden">
+      <div class="max-w-[1600px] mx-auto px-8 md:px-16 lg:px-28">
+        <div class="grid lg:grid-cols-2 gap-12 lg:gap-24 items-start">
+          <h2 class="font-display italic font-black text-[clamp(2rem,_4.5vw,_3.8rem)] text-ink leading-[0.95] reveal">
+            Tu clienta no busca<br>
+            <span class="text-blue">clínica. Busca precio.</span>
+          </h2>
+          <div class="flex flex-col gap-5 text-muted text-base leading-relaxed reveal" style="transition-delay:0.15s">
+            <p>
+              La estética es de los sectores donde la clienta llega más informada. Ha
+              visto el tratamiento en redes, ha leído sobre él y lo que quiere saber es
+              cuánto cuesta, cuántas sesiones necesita y si la clínica es de fiar.
+            </p>
+            <p>
+              Una web con una sola página de «Tratamientos» y un listado no responde a
+              ninguna de esas tres preguntas, y además no puede posicionar: compite con
+              una sola página contra clínicas que tienen una por cada tratamiento.
+            </p>
+            <p>
+              La arquitectura correcta es una página por tratamiento, con su precio, su
+              duración y sus resultados reales. Es más trabajo al principio y es
+              exactamente lo que marca la diferencia después.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="bg-ivory py-20 md:py-28 overflow-hidden">
+      <div class="max-w-[1600px] mx-auto px-8 md:px-16 lg:px-28">
+        <p class="label text-muted mb-4 reveal-fast">Las cuatro claves</p>
+        <h2 class="font-display italic font-black text-[clamp(2rem,_5vw,_4.2rem)] text-ink leading-[0.95] mb-14 md:mb-20 reveal">
+          Lo que separa una web<br>
+          <span class="text-blue">que llena la agenda.</span>
+        </h2>
+
+        <div class="grid md:grid-cols-2 gap-px bg-soft">
+          {claves.map((c, i) => (
+            <div class="bg-ivory p-8 md:p-10 reveal" style={`transition-delay:${i * 0.08}s`}>
+              <p class="label text-blue mb-4">{c.n}</p>
+              <h3 class="font-sans font-extrabold text-lg md:text-xl text-ink mb-4 leading-snug">{c.title}</h3>
+              <p class="text-muted text-sm leading-relaxed">{c.text}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section class="bg-ink py-20 md:py-28 overflow-hidden">
+      <div class="max-w-[1600px] mx-auto px-8 md:px-16 lg:px-28">
+        <div class="grid lg:grid-cols-2 gap-14 lg:gap-24">
+          <div>
+            <p class="label text-yellow mb-4 reveal-fast">Qué incluye</p>
+            <h2 class="font-display italic font-black text-[clamp(2rem,_4.5vw,_3.6rem)] text-ivory leading-[0.95] mb-10 reveal">
+              Pensada para<br>
+              <span class="text-yellow">una clínica estética.</span>
+            </h2>
+            <ul class="flex flex-col gap-4 reveal" style="transition-delay:0.1s">
+              {incluye.map((item) => (
+                <li class="flex items-start gap-3 text-ivory/70 text-sm leading-relaxed">
+                  <span class="w-1.5 h-1.5 bg-yellow flex-shrink-0 mt-2"></span>
+                  {item}
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <div class="reveal flex flex-col justify-center" style="transition-delay:0.2s">
+            <div class="border-l-2 border-yellow pl-8">
+              <p class="label text-yellow mb-4">Experiencia en salud</p>
+              <p class="text-ivory/70 text-base leading-relaxed mb-6">
+                El sector sanitario es donde más se ha trabajado: la web de una clínica
+                de fisioterapia en Murcia y una aplicación de agenda clínica para una
+                consulta de psicología, con gestión de pacientes y sesiones.
+              </p>
+              <p class="text-ivory/50 text-sm leading-relaxed mb-8">
+                Eso significa entender lo que un diseñador genérico pasa por alto:
+                consentimientos, datos de categoría especial, límites de la publicidad
+                sanitaria y cómo funciona de verdad una agenda de citas.
+              </p>
+              <a href="/casos/fisioclinic/" class="btn-outline-white">Ver el caso de FisioClinic →</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <FaqBlock
+      faqs={faqs}
+      titleTop="Dudas típicas de"
+      titleBottom="una clínica estética."
+      bg="bg-ivory2"
+    />
+
+    <CTASection
+      title="¿Llenamos tu"
+      highlight="agenda de tratamientos?"
+      text="Cuéntame qué tratamientos ofreces y cómo llegan hoy tus clientas. Primera consulta gratuita y sin compromiso."
+      whatsappMessage="Hola, tengo una clínica estética y quiero información sobre la web"
+    />
+  </main>
+
+  <Footer />
+
+  <script type="application/ld+json" set:html={JSON.stringify(serviceSchema)} />
+</Layout>
