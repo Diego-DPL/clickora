@@ -65,7 +65,10 @@ export const BUSINESS = {
 
 export interface Plan {
   name: string;
-  price: string;
+  /** `null` = precio a consultar. Se pinta `priceLabel` y sale del JSON-LD sin importe. */
+  price: string | null;
+  /** Texto que sustituye a la cifra cuando no hay precio cerrado. */
+  priceLabel?: string;
   description: string;
   features: string[];
   highlighted: boolean;
@@ -75,7 +78,7 @@ export interface Plan {
 export const PLANS: Plan[] = [
   {
     name: 'Starter',
-    price: '299',
+    price: '400',
     description: 'Para validar tu oferta y empezar a captar leads.',
     features: [
       'Landing Page One-Page',
@@ -90,7 +93,7 @@ export const PLANS: Plan[] = [
   },
   {
     name: 'Growth',
-    price: '499',
+    price: '800',
     description: 'Para negocios que quieren escalar y medir resultados con exactitud.',
     features: [
       'Todo lo del Starter',
@@ -106,8 +109,9 @@ export const PLANS: Plan[] = [
   },
   {
     name: 'Pro',
-    price: '899',
-    description: 'La solución completa para marcas que compiten en alto nivel.',
+    price: null,
+    priceLabel: 'A medida',
+    description: 'Para proyectos que se salen de lo estándar. Presupuesto cerrado tras una primera conversación.',
     features: [
       'Todo lo del Growth',
       'Estrategia de conversión',

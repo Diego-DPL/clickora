@@ -28,9 +28,9 @@ directo de posicionamiento y de rendimiento de las campañas de anuncios.
 
 | Plan | Precio | Para quién |
 |------|--------|-----------|
-| Starter | 299 € | Validar una oferta y empezar a captar leads. Landing de una página, diseño profesional, WhatsApp y formulario, entrega en 2 semanas. |
-| Growth | 499 € | Negocios que quieren medir. Añade copywriting, analítica y píxel configurados, SEO técnico, CRM básico y página de gracias. |
-| Pro | 899 € | Proyectos que compiten en alto nivel. Añade estrategia de conversión, diseño a medida, test A/B de titulares, automatización de emails y 30 días de soporte. |
+| Starter | 400 € | Validar una oferta y empezar a captar leads. Landing de una página, diseño profesional, WhatsApp y formulario, entrega en 2 semanas. |
+| Growth | 800 € | Negocios que quieren medir. Añade copywriting, analítica y píxel configurados, SEO técnico, CRM básico y página de gracias. |
+| Pro | A medida | Proyectos que se salen de lo estándar. Añade estrategia de conversión, diseño a medida, test A/B de titulares, automatización de emails y 30 días de soporte. Se presupuesta tras una primera conversación. |
 | Mantenimiento VIP | 49 €/mes | Opcional y sin permanencia. Hosting, dominio, seguridad, copias diarias y cambios de texto. |
 
 ## Plazos y forma de trabajar

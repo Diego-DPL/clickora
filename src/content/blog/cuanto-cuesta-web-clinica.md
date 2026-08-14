@@ -104,12 +104,12 @@ mapa, la web convence. Una sin la otra rinde a medias.
 
 Por coherencia con todo lo anterior, nuestros precios están publicados:
 
-- **299 €** — una página, diseño profesional, WhatsApp y formulario. Para empezar a
+- **400 €** — una página, diseño profesional, WhatsApp y formulario. Para empezar a
   captar sin invertir de más.
-- **499 €** — lo anterior más copywriting, analítica configurada y SEO técnico. Es el
+- **800 €** — lo anterior más copywriting, analítica configurada y SEO técnico. Es el
   punto de partida razonable para una clínica con varios servicios.
-- **899 €** — página por servicio, estrategia de conversión y diseño totalmente a
-  medida.
+- **A medida** — página por servicio, estrategia de conversión y diseño totalmente
+  propio. Presupuesto cerrado tras una primera conversación, sin sorpresas después.
 - **49 €/mes** — mantenimiento opcional, sin permanencia, con hosting incluido.
 
 Todo con el dominio a tu nombre y el proyecto entregado completo si algún día decides

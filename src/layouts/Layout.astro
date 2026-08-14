@@ -72,12 +72,13 @@ const businessSchema = {
     '@type': 'OfferCatalog',
     name: 'Servicios de diseño y desarrollo web',
     itemListElement: [
+      // El plan sin precio cerrado se declara como oferta sin importe: marcar un
+      // precio inventado para un presupuesto a medida sería contradecir la web.
       ...PLANS.map((plan) => ({
         '@type': 'Offer',
         name: `Landing Page ${plan.name}`,
         description: plan.description,
-        price: plan.price,
-        priceCurrency: 'EUR',
+        ...(plan.price ? { price: plan.price, priceCurrency: 'EUR' } : {}),
         url: `${SITE_URL}/#precios`,
         availability: 'https://schema.org/InStock',
       })),

@@ -40,11 +40,17 @@ import { PLANS as plans, MAINTENANCE } from '../data/business';
               <p class={`text-sm mb-6 leading-relaxed ${plan.highlighted ? 'text-ivory/60' : 'text-muted'}`}>
                 {plan.description}
               </p>
-              <div class="flex items-baseline gap-1">
-                <span class={`font-display italic font-black text-[clamp(3rem,_5vw,_4rem)] leading-none ${plan.highlighted ? 'text-yellow' : 'text-blue'}`}>
-                  {plan.price}€
+              <div class="flex items-baseline gap-1 flex-wrap">
+                <span
+                  class={`font-display italic font-black leading-none ${
+                    plan.price ? 'text-[clamp(3rem,_5vw,_4rem)]' : 'text-[clamp(2rem,_3.4vw,_2.8rem)]'
+                  } ${plan.highlighted ? 'text-yellow' : 'text-blue'}`}
+                >
+                  {plan.price ? `${plan.price}€` : plan.priceLabel}
                 </span>
-                <span class={`text-xs ${plan.highlighted ? 'text-ivory/50' : 'text-muted'}`}>+ IVA · pago único</span>
+                <span class={`text-xs ${plan.highlighted ? 'text-ivory/50' : 'text-muted'}`}>
+                  {plan.price ? '+ IVA · pago único' : 'según alcance'}
+                </span>
               </div>
             </div>
 
