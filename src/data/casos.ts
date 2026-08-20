@@ -8,6 +8,11 @@
  * que cualquier texto, y es de lo que más citan los buscadores y los LLMs.
  */
 
+import type { ImageMetadata } from 'astro';
+import renderFisioclinic from '../assets/portfolio/render_fisioclinic.webp';
+import renderZypace from '../assets/portfolio/render_zypace.webp';
+import renderRaiz from '../assets/portfolio/render_raiz.webp';
+
 export interface Caso {
   slug: string;
   title: string;
@@ -17,7 +22,8 @@ export interface Caso {
   /** Para el <title> y la meta description. */
   metaTitle: string;
   metaDescription: string;
-  image: string;
+  /** Importada desde src/assets para que Astro genere los tamaños y el srcset. */
+  image: ImageMetadata;
   url: string;
   urlLabel: string;
   ficha: { key: string; value: string }[];
@@ -38,7 +44,7 @@ export const CASOS: Caso[] = [
     metaTitle: 'Caso: FisioClinic Murcia — web para clínica de fisioterapia | Clickora',
     metaDescription:
       'Cómo se rehízo la web de FisioClinic Murcia con Astro e islas de React: carrusel de portada, SEO local y una estructura orientada a la reserva de cita.',
-    image: '/images/portfolio/render_fisioclinic.webp',
+    image: renderFisioclinic,
     url: 'https://fisioclinicmurcia.com',
     urlLabel: 'fisioclinicmurcia.com',
     ficha: [
@@ -84,7 +90,7 @@ export const CASOS: Caso[] = [
     metaTitle: 'Caso: Zypace — app de entrenamiento con IA y Strava | Clickora',
     metaDescription:
       'Desarrollo de Zypace, una aplicación web que analiza tus entrenamientos de Strava con IA y genera planes de running personalizados. React, Supabase y OpenAI.',
-    image: '/images/portfolio/render_zypace.webp',
+    image: renderZypace,
     url: 'https://zypace.com',
     urlLabel: 'zypace.com',
     ficha: [
@@ -130,7 +136,7 @@ export const CASOS: Caso[] = [
     metaTitle: 'Caso: Raíz — espacio digital de memoria y duelo perinatal | Clickora',
     metaDescription:
       'Diseño y desarrollo de Raíz, un espacio de testimonios sobre duelo perinatal. Un caso donde la contención visual y el tono importaban más que cualquier efecto.',
-    image: '/images/portfolio/render_raiz.webp',
+    image: renderRaiz,
     url: 'https://raiz-b7d0a.web.app',
     urlLabel: 'raiz-b7d0a.web.app',
     ficha: [

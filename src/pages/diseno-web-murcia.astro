@@ -2,6 +2,8 @@
 import Layout from '../layouts/Layout.astro';
 import Navbar from '../components/Navbar.astro';
 import Footer from '../components/Footer.astro';
+import { Image } from 'astro:assets';
+import renderFisioclinic from '../assets/portfolio/render_fisioclinic.webp';
 import PageHero from '../components/PageHero.astro';
 import CTASection from '../components/CTASection.astro';
 import FaqBlock from '../components/FaqBlock.astro';
@@ -195,13 +197,13 @@ const serviceSchema = {
       <div class="max-w-[1600px] mx-auto px-8 md:px-16 lg:px-28">
         <div class="grid lg:grid-cols-[1fr_1.2fr] gap-12 lg:gap-20 items-center">
           <a href="/casos/fisioclinic/" class="block group overflow-hidden reveal">
-            <img
-              src="/images/portfolio/render_fisioclinic.webp"
+            <Image
+              src={renderFisioclinic}
               alt="Web de FisioClinic Murcia, clínica de fisioterapia en Murcia diseñada por Clickora"
               loading="lazy"
               decoding="async"
-              width="1792"
-              height="2400"
+              widths={[500, 800]}
+              sizes="(min-width: 1024px) 42vw, 100vw"
               class="w-full aspect-[4/3] object-cover object-top transition-transform duration-700 group-hover:scale-[1.04]"
             />
           </a>

@@ -170,16 +170,16 @@ const websiteSchema = {
          GOOGLE ANALYTICS 4 — Consent Mode v2 (GDPR)
          ══════════════════════════════════════════════ -->
 
-    <!-- 1. Carga el script de gtag lo antes posible -->
-    <script async src={`https://www.googletagmanager.com/gtag/js?id=${GA_ID}`}></script>
-
-    <!-- 2. Inicializa con consent DENEGADO por defecto.
-         Solo se activa cuando el usuario acepta las cookies. -->
+    <!-- El script de gtag (unos 73 KB) NO se descarga de entrada: antes se
+         cargaba siempre, incluso para quien iba a rechazar las cookies. Los
+         comandos de gtag se encolan en dataLayer y el script los procesa cuando
+         se inyecta, así que Consent Mode sigue funcionando igual. -->
     <script define:vars={{ GA_ID }}>
       window.dataLayer = window.dataLayer || [];
       function gtag() { dataLayer.push(arguments); }
+      window.gtag = gtag;
 
-      // Consent Mode v2: todo denegado hasta que el usuario decida
+      // Consent Mode v2: todo denegado hasta que el usuario decida.
       gtag('consent', 'default', {
         analytics_storage:   'denied',
         ad_storage:          'denied',
@@ -195,8 +195,20 @@ const websiteSchema = {
         cookie_flags:   'SameSite=None;Secure'
       });
 
-      // Si el usuario ya aceptó en una visita anterior, activa inmediatamente
+      // Inyecta el script de Google. Idempotente: el banner puede llamarla sin
+      // riesgo de cargarlo dos veces.
+      window.clickoraLoadGA = function () {
+        if (document.getElementById('ga-script')) return;
+        const s = document.createElement('script');
+        s.id = 'ga-script';
+        s.async = true;
+        s.src = 'https://www.googletagmanager.com/gtag/js?id=' + GA_ID;
+        document.head.appendChild(s);
+      };
+
+      // Si aceptó en una visita anterior, se carga y se concede sin esperar.
       if (localStorage.getItem('clickora_cookies') === 'accepted') {
+        window.clickoraLoadGA();
         gtag('consent', 'update', {
           analytics_storage:  'granted',
           ad_storage:         'granted',

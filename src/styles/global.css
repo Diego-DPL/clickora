@@ -16,7 +16,10 @@
   --color-ink2: #1C1C1C;
   --color-blue: #0032FF;
   --color-yellow: #FFE500;
-  --color-muted: #888888;
+  /* Gris cálido en lugar del neutro #888888: ese daba 3,39 de contraste sobre
+     el marfil y 3,08 sobre el marfil2, por debajo del mínimo AA de 4,5. Este da
+     5,16 y 4,70, y al llevar algo de amarillo encaja mejor con la paleta. */
+  --color-muted: #6E6A5F;
   --color-soft: #E5E1D8;
 }
 
@@ -261,7 +264,7 @@ details[open] .faq-icon { transform: rotate(45deg); }
   outline: none;
   transition: border-color 0.25s ease;
 }
-.input-field::placeholder { color: #aaa; }
+.input-field::placeholder { color: #918D84; }
 .input-field:focus { border-color: #0032FF; }
 
 .input-field-blue {
@@ -355,7 +358,7 @@ details[open] .faq-icon { transform: rotate(45deg); }
   letter-spacing: 0.14em;
   text-transform: uppercase;
   font-weight: 700;
-  color: #888888;
+  color: #6E6A5F;
   border-bottom-width: 1.5px;
   white-space: nowrap;
 }

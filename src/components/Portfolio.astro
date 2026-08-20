@@ -1,4 +1,9 @@
 ---
+import { Image } from 'astro:assets';
+import renderZypace from '../assets/portfolio/render_zypace.webp';
+import renderRaiz from '../assets/portfolio/render_raiz.webp';
+import renderFisioclinic from '../assets/portfolio/render_fisioclinic.webp';
+
 // Cada tarjeta lleva ahora a su caso de estudio interno en vez de salir del
 // sitio: mantiene al visitante dentro, le da la historia completa del proyecto
 // y reparte autoridad hacia las páginas nuevas.
@@ -8,7 +13,7 @@ const projects = [
     title: "Zypace",
     category: "App web · IA · Running",
     url: "/casos/zypace/",
-    image: "/images/portfolio/render_zypace.webp",
+    image: renderZypace,
     tags: ["React", "Strava API", "OpenAI"],
     desc: "Entrenador personal de running con IA que analiza tus rutas de Strava y genera planes de entrenamiento adaptados a tu nivel.",
     overlayBg: "bg-blue",
@@ -20,7 +25,7 @@ const projects = [
     title: "Raíz",
     category: "Diseño web · Identidad · Memoria",
     url: "/casos/raiz/",
-    image: "/images/portfolio/render_raiz.webp",
+    image: renderRaiz,
     tags: ["Firebase", "Diseño sensible", "Identidad visual"],
     desc: "Espacio digital de memoria y dignidad para testimonios sobre duelo perinatal. Diseño emocionalmente consciente y muy cuidado.",
     overlayBg: "bg-ink",
@@ -32,7 +37,7 @@ const projects = [
     title: "FisioClinic Murcia",
     category: "Landing Page · SEO · Salud",
     url: "/casos/fisioclinic/",
-    image: "/images/portfolio/render_fisioclinic.webp",
+    image: renderFisioclinic,
     tags: ["Astro", "SEO Local", "Conversión"],
     desc: "Landing page de alta conversión para clínica de fisioterapia en Murcia. Reservas online y posicionamiento local.",
     overlayBg: "bg-yellow",
@@ -69,13 +74,13 @@ const projects = [
         >
           <!-- Image card -->
           <div class="relative overflow-hidden aspect-[3/4]">
-            <img
+            <Image
               src={p.image}
               alt={`Render del proyecto ${p.title}`}
               loading="lazy"
               decoding="async"
-              width="1792"
-              height="2400"
+              widths={[400, 600, 900]}
+              sizes="(min-width: 768px) 30vw, 100vw"
               class="w-full h-full object-cover object-top transition-transform duration-700 ease-out group-hover:scale-[1.04]"
             />
 

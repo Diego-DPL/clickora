@@ -1,4 +1,5 @@
 ---
+import { Image } from 'astro:assets';
 import Layout from '../../layouts/Layout.astro';
 import Navbar from '../../components/Navbar.astro';
 import Footer from '../../components/Footer.astro';
@@ -25,7 +26,7 @@ const caseSchema = {
   '@type': 'Article',
   headline: `${caso.title} — caso de estudio`,
   description: caso.metaDescription,
-  image: `${SITE_URL}${caso.image}`,
+  image: new URL(caso.image.src, SITE_URL).href,
   author: { '@id': `${SITE_URL}/#business` },
   publisher: { '@id': `${SITE_URL}/#business` },
   mainEntityOfPage: `${SITE_URL}/casos/${caso.slug}/`,
@@ -48,13 +49,13 @@ const caseSchema = {
     <section class="bg-ivory pb-20 md:pb-28 overflow-hidden">
       <div class="max-w-[1600px] mx-auto px-8 md:px-16 lg:px-28">
         <div class="grid lg:grid-cols-[1.4fr_1fr] gap-12 lg:gap-20 items-start">
-          <img
+          <Image
             src={caso.image}
             alt={`Diseño de la web del proyecto ${caso.title}`}
             loading="eager"
             decoding="async"
-            width="1792"
-            height="2400"
+            widths={[600, 900, 1200]}
+            sizes="(min-width: 1024px) 55vw, 100vw"
             class="w-full aspect-[4/3] object-cover object-top reveal"
           />
 
@@ -147,13 +148,13 @@ const caseSchema = {
           {otros.map((c, i) => (
             <a href={`/casos/${c.slug}/`} class="group flex flex-col gap-5 reveal" style={`transition-delay:${i * 0.1}s`}>
               <div class="overflow-hidden aspect-[16/10]">
-                <img
+                <Image
                   src={c.image}
                   alt={`Web del proyecto ${c.title}`}
                   loading="lazy"
                   decoding="async"
-                  width="1792"
-                  height="2400"
+                  widths={[400, 700]}
+                  sizes="(min-width: 768px) 45vw, 100vw"
                   class="w-full h-full object-cover object-top transition-transform duration-700 group-hover:scale-[1.04]"
                 />
               </div>

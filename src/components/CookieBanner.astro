@@ -41,6 +41,9 @@
 
   // Helper para llamar a gtag de forma segura
   function grantConsent() {
+    // El script de Analytics no se ha descargado todavía: se inyecta ahora, en
+    // el momento en que el usuario da su consentimiento.
+    if (typeof window.clickoraLoadGA === 'function') window.clickoraLoadGA();
     if (typeof window.gtag === 'function') {
       window.gtag('consent', 'update', {
         analytics_storage:  'granted',
