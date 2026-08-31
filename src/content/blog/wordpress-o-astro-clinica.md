@@ -19,7 +19,7 @@ lo contrario está vendiendo lo único que sabe hacer.
 ## Qué es cada cosa, sin tecnicismos
 
 **WordPress** es un gestor de contenidos. Cuando alguien visita tu web, un servidor
-consulta una base de datos, monta la página en ese momento y la envía. Vienes con
+consulta una base de datos, monta la página en ese momento y la envía. Viene con
 un panel de administración donde puedes editar cualquier cosa, y se amplía con
 plugins: extensiones que añaden funciones.
 
@@ -90,7 +90,8 @@ Aquí es donde cambia la foto. Números aproximados para una web de negocio loca
 | **Total a 3 años** | **1.840–4.040 €** | **860–2.160 €** |
 
 WordPress suele salir más barato de entrada y bastante más caro con el tiempo. Si
-solo comparas el presupuesto inicial, estás comparando mal.
+solo comparas el presupuesto inicial, estás comparando mal. Desglosamos las partidas
+en [cuánto cuesta una web para una clínica](/blog/cuanto-cuesta-web-clinica/).
 
 ## Cuándo elegir WordPress
 
@@ -106,9 +107,12 @@ Con toda honestidad, hay casos en los que es la opción correcta:
 
 ## Cuándo elegir Astro
 
-- **Web de servicios que cambia poco**: una clínica, un despacho, un gabinete. El
-  contenido se actualiza cada varios meses, no cada día.
-- **Te importa el posicionamiento local** y quieres que la velocidad juegue a favor.
+- **Web de servicios que cambia poco**: una [clínica de fisioterapia](/paginas-web-para-fisioterapeutas/),
+  una [consulta de psicología](/paginas-web-para-psicologos/) o una
+  [clínica estética](/paginas-web-para-clinicas-esteticas/). El contenido se
+  actualiza cada varios meses, no cada día.
+- **Te importa el [posicionamiento local](/diseno-web-murcia/)** y quieres que la
+  velocidad juegue a favor.
 - **No quieres pensar en la web.** Que funcione y ya está.
 - **Quieres pagar poco de mantenimiento**, o incluso nada.
 - **Tienes tráfico de campañas de pago**: cada décima de segundo de carga afecta al
@@ -132,9 +136,10 @@ Trabajamos con Astro por lo que se ve arriba: para webs de negocios de servicios
 la opción que mejor equilibra velocidad, coste de mantenimiento y tranquilidad.
 Nuestra propia web está construida así.
 
-Ahora bien, si tu caso pide WordPress, te lo diremos. Hemos desconectado proyectos
-donde la respuesta correcta era un WordPress bien configurado, y preferimos eso a
-vender lo que no encaja.
+Ahora bien, si tu caso pide WordPress, te lo diremos. Preferimos decirte que no
+somos la opción adecuada antes que venderte lo que no encaja: si publicas contenido
+cada semana o necesitas una tienda con cientos de productos, hay soluciones que te
+van a servir mejor.
 
 Lo que sí es innegociable en cualquiera de las dos: **el dominio a tu nombre**, la
 analítica configurada desde el primer día y la posibilidad de llevarte el proyecto

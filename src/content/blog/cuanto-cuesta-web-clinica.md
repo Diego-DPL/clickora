@@ -57,7 +57,8 @@ WhatsApp con el mensaje ya escrito convierte a menudo mejor que un calendario on
 sobre todo en pacientes mayores de cincuenta.
 
 **La tecnología.** Una web construida con archivos estáticos carga mucho más rápido
-que una montada sobre un gestor de contenidos con veinte plugins. Eso influye en el
+que una montada sobre un gestor de contenidos con veinte plugins. Lo comparamos en
+detalle en [WordPress o Astro para la web de tu negocio](/blog/wordpress-o-astro-clinica/). Eso influye en el
 posicionamiento y en el porcentaje de gente que se va antes de que cargue. También
 suele costar algo más de entrada y bastante menos de mantener.
 
@@ -116,6 +117,12 @@ Todo con el dominio a tu nombre y el proyecto entregado completo si algún día 
 llevarlo tú.
 
 ## Cómo decidir
+
+Según tu sector cambian bastante las prioridades: no es lo mismo una
+[web para una clínica de fisioterapia](/paginas-web-para-fisioterapeutas/), donde
+manda la reserva de cita, que una [web para una consulta de psicología](/paginas-web-para-psicologos/),
+donde manda el tono, o una [web para una clínica estética](/paginas-web-para-clinicas-esteticas/),
+donde manda el precio por tratamiento.
 
 Si estás empezando y quieres validar, no te compliques: una página bien hecha con una
 vía de contacto clara. Si ya tienes pacientes y quieres que Google te traiga más, lo
