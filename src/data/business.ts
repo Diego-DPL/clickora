@@ -56,11 +56,21 @@ export const BUSINESS = {
   description:
     'Estudio de diseño y desarrollo web en Murcia especializado en landing pages de alta conversión para negocios de servicios. Diseño, desarrollo ultrarrápido y medición configurada.',
   /**
-   * Perfiles externos. Cuantos más perfiles reales haya aquí, más fácil es que
-   * Google y los LLMs identifiquen a Clickora como una entidad concreta.
-   * Añade LinkedIn, Google Business Profile y directorios en cuanto los tengas.
+   * Perfiles externos verificados uno a uno. Este campo es lo que le dice a
+   * Google y a los LLMs que el dominio, los directorios y los perfiles son el
+   * mismo negocio: es lo que consolida a Clickora como entidad en lugar de como
+   * un dominio suelto.
+   *
+   * Falta por añadir la ficha de Google Business en cuanto esté verificada, y
+   * la página de empresa de LinkedIn si se crea (pesa más que el perfil
+   * personal). No metas aquí una URL sin comprobar que carga.
    */
-  sameAs: ['https://github.com/Diego-DPL'],
+  sameAs: [
+    'https://www.linkedin.com/in/diego-miguel-perez-lorente/',
+    'https://www.sortlist.es/agency/clickora',
+    'https://www.malt.es/profile/diegoperezlorente',
+    'https://github.com/Diego-DPL',
+  ],
 } as const;
 
 export interface Plan {
