@@ -25,6 +25,17 @@ export const PUBLISH_FISCAL_IDENTITY = false;
 export const BUSINESS = {
   name: 'Clickora',
   founder: 'Diego DPL',
+  /**
+   * Sitio y perfiles personales del fundador.
+   *
+   * Ojo con dónde va esto: diegodpl.com NO puede ir en el `sameAs` del negocio,
+   * porque `sameAs` significa "esta es la misma entidad" y Clickora (empresa) no
+   * es la misma entidad que Diego DPL (persona). Va colgado del nodo Person del
+   * fundador, que es lo que tiende el puente correcto entre los dos dominios:
+   * "este sitio pertenece a la persona que fundó este negocio".
+   */
+  founderUrl: 'https://diegodpl.com',
+  founderSameAs: ['https://www.linkedin.com/in/diego-miguel-perez-lorente/'],
   email: 'info@clickora.es',
   phone: '+34608008081',
   phoneDisplay: '608 00 80 81',

@@ -65,7 +65,13 @@ const businessSchema = {
     longitude: BUSINESS.geo.lng,
   },
   areaServed: BUSINESS.areaServed.map((name) => ({ '@type': 'Place', name })),
-  founder: { '@type': 'Person', name: BUSINESS.founder },
+  founder: {
+    '@type': 'Person',
+    '@id': `${BUSINESS.founderUrl}/#person`,
+    name: BUSINESS.founder,
+    url: BUSINESS.founderUrl,
+    sameAs: [...BUSINESS.founderSameAs],
+  },
   knowsLanguage: ['es-ES'],
   sameAs: [...BUSINESS.sameAs],
   hasOfferCatalog: {

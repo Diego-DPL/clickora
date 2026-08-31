@@ -12,6 +12,7 @@ import type { ImageMetadata } from 'astro';
 import renderFisioclinic from '../assets/portfolio/render_fisioclinic.webp';
 import renderZypace from '../assets/portfolio/render_zypace.webp';
 import renderRaiz from '../assets/portfolio/render_raiz.webp';
+import renderDiegodpl from '../assets/portfolio/render_diegodpl.webp';
 
 export interface Caso {
   slug: string;
@@ -35,6 +36,52 @@ export interface Caso {
 }
 
 export const CASOS: Caso[] = [
+  {
+    slug: 'diegodpl',
+    title: 'Diego DPL',
+    label: 'Marca personal · Dirección de arte · Proyecto propio',
+    intro:
+      'La web de una marca personal de creador de contenido de running y viajes. Un proyecto propio, y el que más lejos ha llevado la parte de dirección de arte.',
+    metaTitle: 'Caso: diegodpl.com — web de marca personal | Clickora',
+    metaDescription:
+      'Diseño y desarrollo de diegodpl.com, la web de marca personal de Diego DPL: estética documental analógica, narrativa por capítulos y tipografía como elemento principal.',
+    image: renderDiegodpl,
+    url: 'https://diegodpl.com',
+    urlLabel: 'diegodpl.com',
+    ficha: [
+      { key: 'Proyecto', value: 'Diego DPL' },
+      { key: 'Sector', value: 'Marca personal · Creación de contenido' },
+      { key: 'Tipo', value: 'Portafolio y narrativa de marca' },
+      { key: 'Stack', value: 'Astro · Tailwind' },
+      { key: 'Rol', value: 'Dirección de arte, diseño y desarrollo' },
+    ],
+    reto: [
+      'Una marca personal no vende un servicio con una lista de características: vende una forma de ver las cosas. El reto no era técnico, era encontrar un tono y sostenerlo en toda la web sin caer en el porfolio genérico de creativo.',
+      'El material de partida son fotografía y vídeo de running y viajes con estética documental analógica. La web tenía que estar al servicio de ese material, no competir con él.',
+    ],
+    solucion: [
+      {
+        title: 'Estructura de capítulos, no de secciones',
+        text: 'La navegación va numerada —el camino, el trabajo, sobre mí, marcas, diario— y se lee como un índice. Convierte el recorrido en una narración en lugar de en un menú, que es exactamente lo que diferencia una marca personal de un currículum.',
+      },
+      {
+        title: 'La tipografía como imagen',
+        text: 'Serif de alto contraste a tamaño enorme sobre fondo casi negro. Con poco material visual disponible en cada momento, la tipografía sostiene sola la personalidad de la página.',
+      },
+      {
+        title: 'Paleta reducida al mínimo',
+        text: 'Negro cálido, hueso y un dorado tenue como único acento. Menos color significa que la fotografía es lo único que aporta saturación, que es justo lo que se buscaba.',
+      },
+      {
+        title: 'Detalles que sitúan',
+        text: 'Coordenadas geográficas en la cabecera, marcas de encuadre, la nota «Super 8 · sin retoque». Pequeñas señales que refuerzan la idea documental sin necesidad de explicarla.',
+      },
+    ],
+    cierre: [
+      'Es un proyecto propio, no un encargo de cliente, y por eso está aquí con esa etiqueta: sirve para enseñar hasta dónde llega la dirección de arte cuando no hay que negociar cada decisión, no para presumir de cartera.',
+      'Si tu proyecto necesita una identidad con criterio y no solo una web que funcione, este es el registro del que hablamos.',
+    ],
+  },
   {
     slug: 'fisioclinic',
     title: 'FisioClinic Murcia',
