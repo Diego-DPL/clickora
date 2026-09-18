@@ -58,6 +58,11 @@ restricciones colegiales de publicidad. Lo que queda hoy en el título VI es el
 
 La norma deontológica te devuelve a la ley general. Así que vamos a la ley.
 
+Y conviene decir una cosa antes de seguir, aunque nos quite trabajo: si tu web
+actual cumple lo que viene ahora, no necesitas una nueva. Nosotros hacemos
+[webs para consultas de psicología](/paginas-web-para-psicologos/), pero rehacer
+una web que ya funciona es la forma más cara de no arreglar nada.
+
 ## Los cuatro límites reales
 
 Están en el **artículo 44 de la Ley 44/2003**, de ordenación de las profesiones
@@ -123,8 +128,11 @@ la diferencia.
 Es, además, donde más se la juegan las webs de plantilla. El texto de relleno del
 tema viene lleno de «expertos» y «especialistas» que nadie revisó al publicar.
 
-Si tienes dudas sobre cómo se cuenta todo esto sin sonar defensivo, así es como
-[planteamos las webs para consultas de psicología](/paginas-web-para-psicologos/).
+En sanidad esto se revisa línea a línea. Cuando montamos la web de
+[FisioClinic Murcia](/casos/fisioclinic/) repasamos cada afirmación clínica antes
+de publicarla, porque en este sector una frase de más no es un problema de estilo:
+es un problema con el colegio profesional.
+
 
 ## El formulario, que es donde casi todos fallan
 
@@ -193,6 +201,11 @@ cualquier testimonio.
 
 Ese es el cambio de foco: la web de un psicólogo no tiene que demostrar que eres
 bueno. Tiene que hacer que dar el primer paso cueste menos.
+
+Si hoy solo vas a hacer una cosa, que sea esta: **abre tu web y busca tu número de
+colegiado.** Si tardas más de cinco segundos en encontrarlo, súbelo al pie de
+página y a tu página «sobre mí». Son diez minutos, no cuesta dinero, y es el dato
+que más confianza genera en alguien que aún está decidiendo si escribirte.
 
 ---
 

@@ -367,7 +367,9 @@ Heredamos los patrones de LinkedIn (§6) y los estiramos:
 2. **Coloca el giro a propósito.** Todo artículo memorable tiene un momento en
    que el lector cambia de idea. Si no sabes cuál es el tuyo, aún no tienes
    artículo.
-3. **Ritmo editorial, no ritmo de landing.** Párrafos de 2 a 5 frases. Las frases
+3. **Ritmo editorial, no ritmo de landing.** Párrafos de 2 a 5 frases como norma,
+   con una excepción deliberada: **el párrafo de una sola frase es el golpe.**
+   Úsalo para rematar un giro o dejar caer un dato, nunca por pereza. Las frases
    largas están permitidas para contexto, pero **nunca dos largas seguidas**:
    detrás de una larga va una corta que remata. Ese contraste es el ritmo.
 4. **Opinión con coste.** Di al menos una cosa que te pueda costar el cliente
