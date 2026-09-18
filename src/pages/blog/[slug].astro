@@ -5,6 +5,7 @@ import Navbar from '../../components/Navbar.astro';
 import Footer from '../../components/Footer.astro';
 import PageHero from '../../components/PageHero.astro';
 import CTASection from '../../components/CTASection.astro';
+import FaqBlock from '../../components/FaqBlock.astro';
 import { SITE_URL } from '../../data/business';
 
 export async function getStaticPaths() {
@@ -86,10 +87,20 @@ const otros = (await getCollection('blog', ({ data }) => !data.draft))
       </section>
     )}
 
+    {post.data.faqs && post.data.faqs.length > 0 && (
+      <FaqBlock
+        faqs={post.data.faqs}
+        titleTop="Lo que nos"
+        titleBottom="preguntan."
+        bg="bg-ivory"
+      />
+    )}
+
     <CTASection
       title="¿Hablamos de tu"
       highlight="proyecto?"
       text="Primera consulta gratuita y sin compromiso. Te decimos con franqueza qué necesitas y qué no."
+      whatsappMessage={post.data.whatsappMessage}
     />
   </main>
 

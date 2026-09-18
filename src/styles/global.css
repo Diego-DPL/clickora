@@ -399,6 +399,38 @@ details[open] .faq-icon { transform: rotate(45deg); }
   outline-offset: 2px;
 }
 
+/* CTA de momento (§6bis de STYLE_GUIDE.md): el bloque que va pegado al pico de
+   tensión del artículo —el checklist, el diagnóstico—, no al final. Se pinta en
+   ink para que corte la lectura sin gritar. */
+.prose-clickora .cta-momento {
+  background: #0F0F0F;
+  padding: 2.2rem 2rem;
+  margin-top: 2.6rem;
+}
+.prose-clickora .cta-momento p {
+  color: rgba(250, 250, 245, 0.72);
+  font-size: 0.95rem;
+  line-height: 1.65;
+  margin: 0;
+}
+.prose-clickora .cta-momento p + p { margin-top: 1rem; }
+.prose-clickora .cta-momento strong { color: #FAFAF5; font-weight: 700; }
+.prose-clickora .cta-momento a {
+  display: inline-block;
+  margin-top: 1.4rem;
+  background: #FFE500;
+  color: #0F0F0F;
+  font-family: 'Syne Variable', sans-serif;
+  font-weight: 800;
+  font-size: 0.78rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  text-decoration: none;
+  padding: 0.85rem 1.5rem;
+  border-bottom: 0;
+}
+.prose-clickora .cta-momento a:hover { background: #FAFAF5; color: #0F0F0F; }
+
 /* Las tablas de precios son el contenido más citable: que respiren y que
    nunca provoquen scroll horizontal en el body. */
 .prose-clickora table {

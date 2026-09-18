@@ -19,6 +19,14 @@ const blog = defineCollection({
     updated: z.coerce.date().optional(),
     /** Resumen de una línea para el índice. */
     excerpt: z.string(),
+    /**
+     * Preguntas del cierre. Se pintan con `FaqBlock`, que emite el `FAQPage`
+     * schema junto al contenido visible: es lo que se lleva las citas en las
+     * respuestas de IA. Ver §6bis de STYLE_GUIDE.md.
+     */
+    faqs: z.array(z.object({ question: z.string(), answer: z.string() })).optional(),
+    /** Mensaje con el que se abre WhatsApp desde el CTA de cierre. */
+    whatsappMessage: z.string().optional(),
     draft: z.boolean().default(false),
   }),
 });
