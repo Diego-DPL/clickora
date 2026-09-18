@@ -96,4 +96,16 @@ const otros = (await getCollection('blog', ({ data }) => !data.draft))
   <Footer />
 
   <script type="application/ld+json" set:html={JSON.stringify(articleSchema)} />
+
+  <!-- Markdown genera las casillas de los checklists deshabilitadas. Las
+       habilitamos para que el lector pueda ir marcando mientras repasa su
+       propia web: sin esto la casilla es decorativa y engaña. -->
+  <script>
+    document
+      .querySelectorAll('.prose-clickora .task-list-item input[type="checkbox"]')
+      .forEach((box) => {
+        box.disabled = false;
+        box.setAttribute('aria-label', box.parentElement?.textContent?.trim() ?? '');
+      });
+  </script>
 </Layout>

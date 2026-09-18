@@ -336,6 +336,69 @@ details[open] .faq-icon { transform: rotate(45deg); }
   background: #0032FF;
 }
 
+/* Las listas numeradas necesitan regla propia: el preflight de Tailwind quita
+   el marcador a `ol`, así que lo repintamos con contador en el azul de marca.
+   Sin esto, un texto que diga «el punto 5» no se puede seguir. */
+.prose-clickora ol {
+  padding-left: 0;
+  list-style: none;
+  counter-reset: paso;
+}
+.prose-clickora ol li {
+  position: relative;
+  padding-left: 2.2rem;
+  margin-top: 0.7rem;
+  counter-increment: paso;
+}
+.prose-clickora ol li::before {
+  content: counter(paso);
+  position: absolute;
+  left: 0;
+  top: 0;
+  font-family: var(--font-sans, inherit);
+  font-weight: 800;
+  font-size: 0.85rem;
+  line-height: 1.75;
+  color: #0032FF;
+}
+
+/* Checklists de auditoría: sustituyen la viñeta por una casilla cuadrada, en
+   el mismo lenguaje que el resto del sistema. Se marcan al hacer clic para
+   que el lector pueda ir repasando su propia web. */
+.prose-clickora ul.contains-task-list li { padding-left: 2rem; }
+.prose-clickora ul.contains-task-list li::before { content: none; }
+.prose-clickora ul.contains-task-list input[type='checkbox'] {
+  position: absolute;
+  left: 0;
+  top: 0.28em;
+  width: 1.05rem;
+  height: 1.05rem;
+  margin: 0;
+  appearance: none;
+  border: 2px solid #0032FF;
+  background: transparent;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+.prose-clickora ul.contains-task-list input[type='checkbox']:checked {
+  background: #0032FF;
+}
+.prose-clickora ul.contains-task-list input[type='checkbox']:checked::after {
+  content: '';
+  position: absolute;
+  left: 0.22rem;
+  top: 0.02rem;
+  width: 0.3rem;
+  height: 0.6rem;
+  border: solid #FFE500;
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+}
+.prose-clickora ul.contains-task-list input[type='checkbox']:focus-visible {
+  outline: 2px solid #FFE500;
+  outline-offset: 2px;
+}
+
 /* Las tablas de precios son el contenido más citable: que respiren y que
    nunca provoquen scroll horizontal en el body. */
 .prose-clickora table {
